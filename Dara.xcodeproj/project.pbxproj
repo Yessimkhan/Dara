@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A01838B2B923D8C0086DB7B /* CardsForWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A01838A2B923D8C0086DB7B /* CardsForWords.swift */; };
+		5A01838D2B92506C0086DB7B /* SignInPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A01838C2B92506C0086DB7B /* SignInPage.swift */; };
 		5A110ED02B8508500087AA9B /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A110ECF2B8508500087AA9B /* LaunchScreen.swift */; };
 		5A2480E32B84C4F20018AA57 /* DaraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480E22B84C4F20018AA57 /* DaraApp.swift */; };
 		5A2480E52B84C4F20018AA57 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480E42B84C4F20018AA57 /* ContentView.swift */; };
@@ -14,12 +16,41 @@
 		5A2480EA2B84C4F70018AA57 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A2480E92B84C4F70018AA57 /* Preview Assets.xcassets */; };
 		5A2480EC2B84C4F70018AA57 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480EB2B84C4F70018AA57 /* Persistence.swift */; };
 		5A2480EF2B84C4F70018AA57 /* Dara.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480ED2B84C4F70018AA57 /* Dara.xcdatamodeld */; };
-		5A7A21672B8DA13A0097B610 /* RegistrationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7A21662B8DA13A0097B610 /* RegistrationPage.swift */; };
+		5A362E832BA5AFBD00A73E0B /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A362E822BA5AFBD00A73E0B /* ProfilePage.swift */; };
+		5A362E862BA5B11B00A73E0B /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A362E852BA5B11B00A73E0B /* LessonView.swift */; };
+		5A362E882BA5B17F00A73E0B /* AlphabeetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A362E872BA5B17F00A73E0B /* AlphabeetPage.swift */; };
+		5A6106C42B9DA78900956D3A /* MenuTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6106C32B9DA78900956D3A /* MenuTabBar.swift */; };
+		5A6106C62B9DC29600956D3A /* ChooseTimePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6106C52B9DC29600956D3A /* ChooseTimePage.swift */; };
+		5A6D73E72BC2292A007DC0B1 /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = 5A6D73E62BC2292A007DC0B1 /* SwiftfulRouting */; };
+		5A6D73EA2BC238E6007DC0B1 /* RegistrationPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D73E92BC238E6007DC0B1 /* RegistrationPageViewModel.swift */; };
+		5A6FD86D2BA2254300D78ADA /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6FD86C2BA2254300D78ADA /* HomePage.swift */; };
+		5A78AD162BBC0A3100521A32 /* ChooseLevelPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78AD152BBC0A3100521A32 /* ChooseLevelPage.swift */; };
+		5A7A21672B8DA13A0097B610 /* RegistrationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7A21662B8DA13A0097B610 /* RegistrationPageView.swift */; };
 		5A7A216A2B8DAD710097B610 /* ChoseLanguagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7A21692B8DAD710097B610 /* ChoseLanguagePage.swift */; };
 		5A7A216C2B8DB2890097B610 /* CreateAccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7A216B2B8DB2890097B610 /* CreateAccountPage.swift */; };
+		5A9BD2982BC247090090CAD2 /* ChooseLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD2972BC247090090CAD2 /* ChooseLanguageViewModel.swift */; };
+		5A9BD29B2BC24CBA0090CAD2 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD29A2BC24CBA0090CAD2 /* CreateAccountViewModel.swift */; };
+		5A9BD29E2BC24DFD0090CAD2 /* ChooseYourPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD29D2BC24DFD0090CAD2 /* ChooseYourPasswordViewModel.swift */; };
+		5A9BD2A12BC251B50090CAD2 /* ChooseLevelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD2A02BC251B50090CAD2 /* ChooseLevelViewModel.swift */; };
+		5A9BD2A42BC253560090CAD2 /* ChooseTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD2A32BC253560090CAD2 /* ChooseTimeViewModel.swift */; };
+		5A9BD2A62BC254E90090CAD2 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD2A52BC254E90090CAD2 /* SignInViewModel.swift */; };
+		5A9BD2A82BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD2A72BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift */; };
+		5AFA181E2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA181D2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift */; };
+		5AFA18202BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFA181F2BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard */; };
+		5AFA18222BC0062300E13F9A /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18212BC0062300E13F9A /* Images.swift */; };
+		5AFA18242BC01AB600E13F9A /* PasswordTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18232BC01AB600E13F9A /* PasswordTextFieldView.swift */; };
+		5AFA18262BC1476B00E13F9A /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18252BC1476B00E13F9A /* TextFieldView.swift */; };
+		5AFA18292BC1584E00E13F9A /* ForgotPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18282BC1584E00E13F9A /* ForgotPasswordPage.swift */; };
+		5AFA182B2BC15DF400E13F9A /* ResetPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA182A2BC15DF400E13F9A /* ResetPasswordPage.swift */; };
+		5AFD0AA72BBF27E20096A237 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AA62BBF27E20096A237 /* Colors.swift */; };
+		5AFD0AA92BBF2DBB0096A237 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AA82BBF2DBB0096A237 /* ButtonView.swift */; };
+		5AFD0AAB2BBF84280096A237 /* SingleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AAA2BBF84280096A237 /* SingleButtonView.swift */; };
+		5AFD0AAD2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AAC2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A01838A2B923D8C0086DB7B /* CardsForWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsForWords.swift; sourceTree = "<group>"; };
+		5A01838C2B92506C0086DB7B /* SignInPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPage.swift; sourceTree = "<group>"; };
 		5A110ECF2B8508500087AA9B /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		5A2480DF2B84C4F20018AA57 /* Dara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2480E22B84C4F20018AA57 /* DaraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaraApp.swift; sourceTree = "<group>"; };
@@ -28,9 +59,35 @@
 		5A2480E92B84C4F70018AA57 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5A2480EB2B84C4F70018AA57 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		5A2480EE2B84C4F70018AA57 /* Dara.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dara.xcdatamodel; sourceTree = "<group>"; };
-		5A7A21662B8DA13A0097B610 /* RegistrationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPage.swift; sourceTree = "<group>"; };
+		5A362E822BA5AFBD00A73E0B /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
+		5A362E852BA5B11B00A73E0B /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
+		5A362E872BA5B17F00A73E0B /* AlphabeetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabeetPage.swift; sourceTree = "<group>"; };
+		5A6106C32B9DA78900956D3A /* MenuTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabBar.swift; sourceTree = "<group>"; };
+		5A6106C52B9DC29600956D3A /* ChooseTimePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTimePage.swift; sourceTree = "<group>"; };
+		5A6D73E92BC238E6007DC0B1 /* RegistrationPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageViewModel.swift; sourceTree = "<group>"; };
+		5A6FD86C2BA2254300D78ADA /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		5A78AD152BBC0A3100521A32 /* ChooseLevelPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLevelPage.swift; sourceTree = "<group>"; };
+		5A7A21662B8DA13A0097B610 /* RegistrationPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageView.swift; sourceTree = "<group>"; };
 		5A7A21692B8DAD710097B610 /* ChoseLanguagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseLanguagePage.swift; sourceTree = "<group>"; };
 		5A7A216B2B8DB2890097B610 /* CreateAccountPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountPage.swift; sourceTree = "<group>"; };
+		5A9BD2972BC247090090CAD2 /* ChooseLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLanguageViewModel.swift; sourceTree = "<group>"; };
+		5A9BD29A2BC24CBA0090CAD2 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
+		5A9BD29D2BC24DFD0090CAD2 /* ChooseYourPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseYourPasswordViewModel.swift; sourceTree = "<group>"; };
+		5A9BD2A02BC251B50090CAD2 /* ChooseLevelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLevelViewModel.swift; sourceTree = "<group>"; };
+		5A9BD2A32BC253560090CAD2 /* ChooseTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTimeViewModel.swift; sourceTree = "<group>"; };
+		5A9BD2A52BC254E90090CAD2 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		5A9BD2A72BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		5AFA181D2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseYourPasswordPage.swift; sourceTree = "<group>"; };
+		5AFA181F2BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DaraLaunchScreen.storyboard; sourceTree = "<group>"; };
+		5AFA18212BC0062300E13F9A /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		5AFA18232BC01AB600E13F9A /* PasswordTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldView.swift; sourceTree = "<group>"; };
+		5AFA18252BC1476B00E13F9A /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		5AFA18282BC1584E00E13F9A /* ForgotPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPage.swift; sourceTree = "<group>"; };
+		5AFA182A2BC15DF400E13F9A /* ResetPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPage.swift; sourceTree = "<group>"; };
+		5AFD0AA62BBF27E20096A237 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		5AFD0AA82BBF2DBB0096A237 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		5AFD0AAA2BBF84280096A237 /* SingleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleButtonView.swift; sourceTree = "<group>"; };
+		5AFD0AAC2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithGoogleAndFacebookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A6D73E72BC2292A007DC0B1 /* SwiftfulRouting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,14 +121,16 @@
 		5A2480E12B84C4F20018AA57 /* Dara */ = {
 			isa = PBXGroup;
 			children = (
-				5A2480E22B84C4F20018AA57 /* DaraApp.swift */,
-				5A2480E42B84C4F20018AA57 /* ContentView.swift */,
-				5A110ECF2B8508500087AA9B /* LaunchScreen.swift */,
-				5A7A21682B8DAD310097B610 /* RegistrationPages */,
-				5A2480E62B84C4F70018AA57 /* Assets.xcassets */,
+				5A6D73E42BC22858007DC0B1 /* Routing */,
+				5A6D73E12BC21DBD007DC0B1 /* Global */,
+				5A7A21682B8DAD310097B610 /* Auth */,
+				5A78AD122BBBF44400521A32 /* Main */,
+				5A362E802BA5AF5500A73E0B /* Components */,
+				5AFD0AA52BBF27AB0096A237 /* Assets */,
 				5A2480EB2B84C4F70018AA57 /* Persistence.swift */,
 				5A2480ED2B84C4F70018AA57 /* Dara.xcdatamodeld */,
 				5A2480E82B84C4F70018AA57 /* Preview Content */,
+				5AFA181F2BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard */,
 			);
 			path = Dara;
 			sourceTree = "<group>";
@@ -83,14 +143,176 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		5A7A21682B8DAD310097B610 /* RegistrationPages */ = {
+		5A362E7F2BA5AF3000A73E0B /* HomePages */ = {
 			isa = PBXGroup;
 			children = (
-				5A7A21662B8DA13A0097B610 /* RegistrationPage.swift */,
-				5A7A21692B8DAD710097B610 /* ChoseLanguagePage.swift */,
-				5A7A216B2B8DB2890097B610 /* CreateAccountPage.swift */,
+				5A6FD86C2BA2254300D78ADA /* HomePage.swift */,
 			);
-			path = RegistrationPages;
+			path = HomePages;
+			sourceTree = "<group>";
+		};
+		5A362E802BA5AF5500A73E0B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5A01838A2B923D8C0086DB7B /* CardsForWords.swift */,
+				5A362E852BA5B11B00A73E0B /* LessonView.swift */,
+				5AFD0AA82BBF2DBB0096A237 /* ButtonView.swift */,
+				5AFD0AAA2BBF84280096A237 /* SingleButtonView.swift */,
+				5AFD0AAC2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift */,
+				5AFA18232BC01AB600E13F9A /* PasswordTextFieldView.swift */,
+				5AFA18252BC1476B00E13F9A /* TextFieldView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		5A362E812BA5AF9800A73E0B /* ProfilePages */ = {
+			isa = PBXGroup;
+			children = (
+				5A362E822BA5AFBD00A73E0B /* ProfilePage.swift */,
+			);
+			path = ProfilePages;
+			sourceTree = "<group>";
+		};
+		5A362E842BA5B0DC00A73E0B /* AlphabeetPages */ = {
+			isa = PBXGroup;
+			children = (
+				5A362E872BA5B17F00A73E0B /* AlphabeetPage.swift */,
+			);
+			path = AlphabeetPages;
+			sourceTree = "<group>";
+		};
+		5A6D73E12BC21DBD007DC0B1 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				5A2480E42B84C4F20018AA57 /* ContentView.swift */,
+				5A2480E22B84C4F20018AA57 /* DaraApp.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		5A6D73E42BC22858007DC0B1 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		5A6D73E82BC238B3007DC0B1 /* RegistrationPage */ = {
+			isa = PBXGroup;
+			children = (
+				5A7A21662B8DA13A0097B610 /* RegistrationPageView.swift */,
+				5A6D73E92BC238E6007DC0B1 /* RegistrationPageViewModel.swift */,
+			);
+			path = RegistrationPage;
+			sourceTree = "<group>";
+		};
+		5A78AD122BBBF44400521A32 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5A6106C32B9DA78900956D3A /* MenuTabBar.swift */,
+				5A362E842BA5B0DC00A73E0B /* AlphabeetPages */,
+				5A362E812BA5AF9800A73E0B /* ProfilePages */,
+				5A362E7F2BA5AF3000A73E0B /* HomePages */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5A78AD172BBC0DA200521A32 /* SignInPages */ = {
+			isa = PBXGroup;
+			children = (
+				5A01838C2B92506C0086DB7B /* SignInPage.swift */,
+				5A9BD2A52BC254E90090CAD2 /* SignInViewModel.swift */,
+			);
+			path = SignInPages;
+			sourceTree = "<group>";
+		};
+		5A78AD182BBC0DAF00521A32 /* SignUpPages */ = {
+			isa = PBXGroup;
+			children = (
+				5A6D73E82BC238B3007DC0B1 /* RegistrationPage */,
+				5A9BD2962BC246E20090CAD2 /* ChooseLanguagePages */,
+				5A9BD2992BC24C7E0090CAD2 /* CreateAccountPages */,
+				5A9BD29C2BC24DDA0090CAD2 /* ChooseYourPasswordPage */,
+				5A9BD29F2BC2512D0090CAD2 /* ChooseLevelPage */,
+				5A9BD2A22BC253330090CAD2 /* ChooseTimePage */,
+				5AFA18272BC1578600E13F9A /* PasswordForgetPages */,
+			);
+			path = SignUpPages;
+			sourceTree = "<group>";
+		};
+		5A7A21682B8DAD310097B610 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				5A110ECF2B8508500087AA9B /* LaunchScreen.swift */,
+				5A78AD182BBC0DAF00521A32 /* SignUpPages */,
+				5A78AD172BBC0DA200521A32 /* SignInPages */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		5A9BD2962BC246E20090CAD2 /* ChooseLanguagePages */ = {
+			isa = PBXGroup;
+			children = (
+				5A7A21692B8DAD710097B610 /* ChoseLanguagePage.swift */,
+				5A9BD2972BC247090090CAD2 /* ChooseLanguageViewModel.swift */,
+			);
+			path = ChooseLanguagePages;
+			sourceTree = "<group>";
+		};
+		5A9BD2992BC24C7E0090CAD2 /* CreateAccountPages */ = {
+			isa = PBXGroup;
+			children = (
+				5A7A216B2B8DB2890097B610 /* CreateAccountPage.swift */,
+				5A9BD29A2BC24CBA0090CAD2 /* CreateAccountViewModel.swift */,
+			);
+			path = CreateAccountPages;
+			sourceTree = "<group>";
+		};
+		5A9BD29C2BC24DDA0090CAD2 /* ChooseYourPasswordPage */ = {
+			isa = PBXGroup;
+			children = (
+				5AFA181D2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift */,
+				5A9BD29D2BC24DFD0090CAD2 /* ChooseYourPasswordViewModel.swift */,
+			);
+			path = ChooseYourPasswordPage;
+			sourceTree = "<group>";
+		};
+		5A9BD29F2BC2512D0090CAD2 /* ChooseLevelPage */ = {
+			isa = PBXGroup;
+			children = (
+				5A78AD152BBC0A3100521A32 /* ChooseLevelPage.swift */,
+				5A9BD2A02BC251B50090CAD2 /* ChooseLevelViewModel.swift */,
+			);
+			path = ChooseLevelPage;
+			sourceTree = "<group>";
+		};
+		5A9BD2A22BC253330090CAD2 /* ChooseTimePage */ = {
+			isa = PBXGroup;
+			children = (
+				5A6106C52B9DC29600956D3A /* ChooseTimePage.swift */,
+				5A9BD2A32BC253560090CAD2 /* ChooseTimeViewModel.swift */,
+			);
+			path = ChooseTimePage;
+			sourceTree = "<group>";
+		};
+		5AFA18272BC1578600E13F9A /* PasswordForgetPages */ = {
+			isa = PBXGroup;
+			children = (
+				5AFA18282BC1584E00E13F9A /* ForgotPasswordPage.swift */,
+				5AFA182A2BC15DF400E13F9A /* ResetPasswordPage.swift */,
+				5A9BD2A72BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift */,
+			);
+			path = PasswordForgetPages;
+			sourceTree = "<group>";
+		};
+		5AFD0AA52BBF27AB0096A237 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				5A2480E62B84C4F70018AA57 /* Assets.xcassets */,
+				5AFD0AA62BBF27E20096A237 /* Colors.swift */,
+				5AFA18212BC0062300E13F9A /* Images.swift */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +331,9 @@
 			dependencies = (
 			);
 			name = Dara;
+			packageProductDependencies = (
+				5A6D73E62BC2292A007DC0B1 /* SwiftfulRouting */,
+			);
 			productName = Dara;
 			productReference = 5A2480DF2B84C4F20018AA57 /* Dara.app */;
 			productType = "com.apple.product-type.application";
@@ -137,6 +362,9 @@
 				Base,
 			);
 			mainGroup = 5A2480D62B84C4F20018AA57;
+			packageReferences = (
+				5A6D73E52BC2292A007DC0B1 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
+			);
 			productRefGroup = 5A2480E02B84C4F20018AA57 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -151,6 +379,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AFA18202BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard in Resources */,
 				5A2480EA2B84C4F70018AA57 /* Preview Assets.xcassets in Resources */,
 				5A2480E72B84C4F70018AA57 /* Assets.xcassets in Resources */,
 			);
@@ -164,13 +393,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A7A216C2B8DB2890097B610 /* CreateAccountPage.swift in Sources */,
+				5AFD0AA72BBF27E20096A237 /* Colors.swift in Sources */,
+				5AFA18242BC01AB600E13F9A /* PasswordTextFieldView.swift in Sources */,
+				5AFA182B2BC15DF400E13F9A /* ResetPasswordPage.swift in Sources */,
+				5A362E882BA5B17F00A73E0B /* AlphabeetPage.swift in Sources */,
 				5A7A216A2B8DAD710097B610 /* ChoseLanguagePage.swift in Sources */,
+				5A6D73EA2BC238E6007DC0B1 /* RegistrationPageViewModel.swift in Sources */,
 				5A2480EC2B84C4F70018AA57 /* Persistence.swift in Sources */,
-				5A7A21672B8DA13A0097B610 /* RegistrationPage.swift in Sources */,
+				5A6106C42B9DA78900956D3A /* MenuTabBar.swift in Sources */,
+				5AFD0AAB2BBF84280096A237 /* SingleButtonView.swift in Sources */,
+				5A01838B2B923D8C0086DB7B /* CardsForWords.swift in Sources */,
+				5A01838D2B92506C0086DB7B /* SignInPage.swift in Sources */,
+				5A6FD86D2BA2254300D78ADA /* HomePage.swift in Sources */,
+				5AFA18262BC1476B00E13F9A /* TextFieldView.swift in Sources */,
+				5A362E862BA5B11B00A73E0B /* LessonView.swift in Sources */,
+				5AFA181E2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift in Sources */,
+				5A9BD29B2BC24CBA0090CAD2 /* CreateAccountViewModel.swift in Sources */,
+				5A7A21672B8DA13A0097B610 /* RegistrationPageView.swift in Sources */,
+				5AFD0AAD2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift in Sources */,
 				5A2480EF2B84C4F70018AA57 /* Dara.xcdatamodeld in Sources */,
+				5AFA18222BC0062300E13F9A /* Images.swift in Sources */,
 				5A110ED02B8508500087AA9B /* LaunchScreen.swift in Sources */,
+				5A362E832BA5AFBD00A73E0B /* ProfilePage.swift in Sources */,
+				5AFA18292BC1584E00E13F9A /* ForgotPasswordPage.swift in Sources */,
+				5A78AD162BBC0A3100521A32 /* ChooseLevelPage.swift in Sources */,
 				5A2480E52B84C4F20018AA57 /* ContentView.swift in Sources */,
+				5A9BD2A62BC254E90090CAD2 /* SignInViewModel.swift in Sources */,
+				5A9BD2A42BC253560090CAD2 /* ChooseTimeViewModel.swift in Sources */,
+				5A9BD2A12BC251B50090CAD2 /* ChooseLevelViewModel.swift in Sources */,
+				5AFD0AA92BBF2DBB0096A237 /* ButtonView.swift in Sources */,
 				5A2480E32B84C4F20018AA57 /* DaraApp.swift in Sources */,
+				5A9BD2A82BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift in Sources */,
+				5A9BD2982BC247090090CAD2 /* ChooseLanguageViewModel.swift in Sources */,
+				5A9BD29E2BC24DFD0090CAD2 /* ChooseYourPasswordViewModel.swift in Sources */,
+				5A6106C62B9DC29600956D3A /* ChooseTimePage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,19 +557,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dara/Preview Content\"";
 				DEVELOPMENT_TEAM = BKNZ54W4AA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Dara;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UILaunchStoryboardName = DaraLaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -337,19 +594,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dara/Preview Content\"";
 				DEVELOPMENT_TEAM = BKNZ54W4AA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Dara;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UILaunchStoryboardName = DaraLaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -390,6 +648,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A6D73E52BC2292A007DC0B1 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulRouting.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A6D73E62BC2292A007DC0B1 /* SwiftfulRouting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A6D73E52BC2292A007DC0B1 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
+			productName = SwiftfulRouting;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5A2480ED2B84C4F70018AA57 /* Dara.xcdatamodeld */ = {
