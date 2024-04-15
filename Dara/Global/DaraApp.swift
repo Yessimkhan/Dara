@@ -11,12 +11,16 @@ import SwiftfulRouting
 @main
 struct DaraApp: App {
     let persistenceController = PersistenceController.shared
+    @AppStorage("isAuthorized") var isAuthorized: Bool = false
     
     var body: some Scene {
         WindowGroup {
-            RouterView { router in
-                RegistrationPageView(viewModel: RegistrationPageViewModel(router: router))
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            if !isAuthorized {
+                RouterView { router in
+                    SignInPage(viewModel: SignInViewModel(router: router))
+                }
+            } else {
+                MenuTabBar()
             }
         }
     }

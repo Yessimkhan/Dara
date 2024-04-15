@@ -35,11 +35,27 @@
 		5A9BD2A42BC253560090CAD2 /* ChooseTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD2A32BC253560090CAD2 /* ChooseTimeViewModel.swift */; };
 		5A9BD2A62BC254E90090CAD2 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD2A52BC254E90090CAD2 /* SignInViewModel.swift */; };
 		5A9BD2A82BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD2A72BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift */; };
+		5AB5EFE22BCBFBD8006783E6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EFE12BCBFBD8006783E6 /* HomeViewModel.swift */; };
+		5AB5EFE82BCC10F0006783E6 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EFE72BCC10F0006783E6 /* HomeRepository.swift */; };
+		5AB5EFEA2BCC1131006783E6 /* TopicsResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EFE92BCC1131006783E6 /* TopicsResponce.swift */; };
+		5ABA54202BC496FE00D60482 /* LessonModulesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABA541F2BC496FE00D60482 /* LessonModulesPage.swift */; };
+		5ABA54242BC4B85400D60482 /* LessonHintPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABA54232BC4B85400D60482 /* LessonHintPage.swift */; };
+		5ABA54262BC4BC4400D60482 /* ListenAndRepeatPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABA54252BC4BC4400D60482 /* ListenAndRepeatPage.swift */; };
+		5ABA54282BC4BD8100D60482 /* Matching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABA54272BC4BD8100D60482 /* Matching.swift */; };
+		5ABA542A2BC4C4AA00D60482 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABA54292BC4C4AA00D60482 /* SoundManager.swift */; };
+		5ABA542D2BC4C50E00D60482 /* hello.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5ABA542C2BC4C50E00D60482 /* hello.mp3 */; };
+		5ABE553E2BC2BC5B003C7ABA /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE553D2BC2BC5B003C7ABA /* NetworkClient.swift */; };
+		5ABE55412BC2C18C003C7ABA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5ABE55402BC2C18C003C7ABA /* Alamofire */; };
+		5ABE55432BC2C18C003C7ABA /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 5ABE55422BC2C18C003C7ABA /* AlamofireDynamic */; };
+		5ABE55472BC2CA44003C7ABA /* LoginResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE55462BC2CA44003C7ABA /* LoginResponce.swift */; };
+		5ABE554A2BC2CDFD003C7ABA /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE55492BC2CDFD003C7ABA /* AuthRepository.swift */; };
+		5AE0F7442BC307D400079110 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0F7432BC307D400079110 /* AppViewModel.swift */; };
+		5AE0F7462BC36A8900079110 /* LessonModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0F7452BC36A8900079110 /* LessonModuleView.swift */; };
+		5AE1DF6E2BCAA2620035319E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE1DF6D2BCAA2620035319E /* TextFieldView.swift */; };
 		5AFA181E2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA181D2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift */; };
 		5AFA18202BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFA181F2BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard */; };
 		5AFA18222BC0062300E13F9A /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18212BC0062300E13F9A /* Images.swift */; };
 		5AFA18242BC01AB600E13F9A /* PasswordTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18232BC01AB600E13F9A /* PasswordTextFieldView.swift */; };
-		5AFA18262BC1476B00E13F9A /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18252BC1476B00E13F9A /* TextFieldView.swift */; };
 		5AFA18292BC1584E00E13F9A /* ForgotPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18282BC1584E00E13F9A /* ForgotPasswordPage.swift */; };
 		5AFA182B2BC15DF400E13F9A /* ResetPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA182A2BC15DF400E13F9A /* ResetPasswordPage.swift */; };
 		5AFD0AA72BBF27E20096A237 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AA62BBF27E20096A237 /* Colors.swift */; };
@@ -77,11 +93,26 @@
 		5A9BD2A32BC253560090CAD2 /* ChooseTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTimeViewModel.swift; sourceTree = "<group>"; };
 		5A9BD2A52BC254E90090CAD2 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		5A9BD2A72BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		5AB5EFE12BCBFBD8006783E6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5AB5EFE52BCC0879006783E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AB5EFE72BCC10F0006783E6 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
+		5AB5EFE92BCC1131006783E6 /* TopicsResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsResponce.swift; sourceTree = "<group>"; };
+		5ABA541F2BC496FE00D60482 /* LessonModulesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModulesPage.swift; sourceTree = "<group>"; };
+		5ABA54232BC4B85400D60482 /* LessonHintPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonHintPage.swift; sourceTree = "<group>"; };
+		5ABA54252BC4BC4400D60482 /* ListenAndRepeatPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenAndRepeatPage.swift; sourceTree = "<group>"; };
+		5ABA54272BC4BD8100D60482 /* Matching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matching.swift; sourceTree = "<group>"; };
+		5ABA54292BC4C4AA00D60482 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		5ABA542C2BC4C50E00D60482 /* hello.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hello.mp3; sourceTree = "<group>"; };
+		5ABE553D2BC2BC5B003C7ABA /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		5ABE55462BC2CA44003C7ABA /* LoginResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponce.swift; sourceTree = "<group>"; };
+		5ABE55492BC2CDFD003C7ABA /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		5AE0F7432BC307D400079110 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		5AE0F7452BC36A8900079110 /* LessonModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModuleView.swift; sourceTree = "<group>"; };
+		5AE1DF6D2BCAA2620035319E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		5AFA181D2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseYourPasswordPage.swift; sourceTree = "<group>"; };
 		5AFA181F2BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DaraLaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AFA18212BC0062300E13F9A /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		5AFA18232BC01AB600E13F9A /* PasswordTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldView.swift; sourceTree = "<group>"; };
-		5AFA18252BC1476B00E13F9A /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		5AFA18282BC1584E00E13F9A /* ForgotPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPage.swift; sourceTree = "<group>"; };
 		5AFA182A2BC15DF400E13F9A /* ResetPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPage.swift; sourceTree = "<group>"; };
 		5AFD0AA62BBF27E20096A237 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -96,6 +127,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A6D73E72BC2292A007DC0B1 /* SwiftfulRouting in Frameworks */,
+				5ABE55432BC2C18C003C7ABA /* AlamofireDynamic in Frameworks */,
+				5ABE55412BC2C18C003C7ABA /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,10 +154,9 @@
 		5A2480E12B84C4F20018AA57 /* Dara */ = {
 			isa = PBXGroup;
 			children = (
-				5A6D73E42BC22858007DC0B1 /* Routing */,
+				5AB5EFE52BCC0879006783E6 /* Info.plist */,
 				5A6D73E12BC21DBD007DC0B1 /* Global */,
-				5A7A21682B8DAD310097B610 /* Auth */,
-				5A78AD122BBBF44400521A32 /* Main */,
+				5ABE55442BC2C990003C7ABA /* DaraViews */,
 				5A362E802BA5AF5500A73E0B /* Components */,
 				5AFD0AA52BBF27AB0096A237 /* Assets */,
 				5A2480EB2B84C4F70018AA57 /* Persistence.swift */,
@@ -146,7 +178,10 @@
 		5A362E7F2BA5AF3000A73E0B /* HomePages */ = {
 			isa = PBXGroup;
 			children = (
+				5AB5EFE12BCBFBD8006783E6 /* HomeViewModel.swift */,
 				5A6FD86C2BA2254300D78ADA /* HomePage.swift */,
+				5ABA541F2BC496FE00D60482 /* LessonModulesPage.swift */,
+				5AE1DF6C2BCA88260035319E /* Tests */,
 			);
 			path = HomePages;
 			sourceTree = "<group>";
@@ -159,8 +194,9 @@
 				5AFD0AA82BBF2DBB0096A237 /* ButtonView.swift */,
 				5AFD0AAA2BBF84280096A237 /* SingleButtonView.swift */,
 				5AFD0AAC2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift */,
+				5AE1DF6D2BCAA2620035319E /* TextFieldView.swift */,
 				5AFA18232BC01AB600E13F9A /* PasswordTextFieldView.swift */,
-				5AFA18252BC1476B00E13F9A /* TextFieldView.swift */,
+				5AE0F7452BC36A8900079110 /* LessonModuleView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -186,15 +222,11 @@
 			children = (
 				5A2480E42B84C4F20018AA57 /* ContentView.swift */,
 				5A2480E22B84C4F20018AA57 /* DaraApp.swift */,
+				5AE0F7432BC307D400079110 /* AppViewModel.swift */,
+				5ABA54292BC4C4AA00D60482 /* SoundManager.swift */,
+				5ABE553C2BC2BC46003C7ABA /* Networking */,
 			);
 			path = Global;
-			sourceTree = "<group>";
-		};
-		5A6D73E42BC22858007DC0B1 /* Routing */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Routing;
 			sourceTree = "<group>";
 		};
 		5A6D73E82BC238B3007DC0B1 /* RegistrationPage */ = {
@@ -210,9 +242,9 @@
 			isa = PBXGroup;
 			children = (
 				5A6106C32B9DA78900956D3A /* MenuTabBar.swift */,
+				5A362E7F2BA5AF3000A73E0B /* HomePages */,
 				5A362E842BA5B0DC00A73E0B /* AlphabeetPages */,
 				5A362E812BA5AF9800A73E0B /* ProfilePages */,
-				5A362E7F2BA5AF3000A73E0B /* HomePages */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -244,8 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				5A110ECF2B8508500087AA9B /* LaunchScreen.swift */,
-				5A78AD182BBC0DAF00521A32 /* SignUpPages */,
 				5A78AD172BBC0DA200521A32 /* SignInPages */,
+				5A78AD182BBC0DAF00521A32 /* SignUpPages */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -295,6 +327,61 @@
 			path = ChooseTimePage;
 			sourceTree = "<group>";
 		};
+		5AB5EFE62BCC10C2006783E6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5AB5EFE72BCC10F0006783E6 /* HomeRepository.swift */,
+				5AB5EFE92BCC1131006783E6 /* TopicsResponce.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5ABA542B2BC4C4E300D60482 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				5ABA542C2BC4C50E00D60482 /* hello.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		5ABE553C2BC2BC46003C7ABA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5ABE553D2BC2BC5B003C7ABA /* NetworkClient.swift */,
+				5ABE55482BC2CC09003C7ABA /* Auth */,
+				5AB5EFE62BCC10C2006783E6 /* Home */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		5ABE55442BC2C990003C7ABA /* DaraViews */ = {
+			isa = PBXGroup;
+			children = (
+				5A7A21682B8DAD310097B610 /* Auth */,
+				5A78AD122BBBF44400521A32 /* Main */,
+			);
+			path = DaraViews;
+			sourceTree = "<group>";
+		};
+		5ABE55482BC2CC09003C7ABA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				5ABE55492BC2CDFD003C7ABA /* AuthRepository.swift */,
+				5ABE55462BC2CA44003C7ABA /* LoginResponce.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		5AE1DF6C2BCA88260035319E /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5ABA54232BC4B85400D60482 /* LessonHintPage.swift */,
+				5ABA54252BC4BC4400D60482 /* ListenAndRepeatPage.swift */,
+				5ABA54272BC4BD8100D60482 /* Matching.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		5AFA18272BC1578600E13F9A /* PasswordForgetPages */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +395,7 @@
 		5AFD0AA52BBF27AB0096A237 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				5ABA542B2BC4C4E300D60482 /* Sounds */,
 				5A2480E62B84C4F70018AA57 /* Assets.xcassets */,
 				5AFD0AA62BBF27E20096A237 /* Colors.swift */,
 				5AFA18212BC0062300E13F9A /* Images.swift */,
@@ -333,6 +421,8 @@
 			name = Dara;
 			packageProductDependencies = (
 				5A6D73E62BC2292A007DC0B1 /* SwiftfulRouting */,
+				5ABE55402BC2C18C003C7ABA /* Alamofire */,
+				5ABE55422BC2C18C003C7ABA /* AlamofireDynamic */,
 			);
 			productName = Dara;
 			productReference = 5A2480DF2B84C4F20018AA57 /* Dara.app */;
@@ -364,6 +454,7 @@
 			mainGroup = 5A2480D62B84C4F20018AA57;
 			packageReferences = (
 				5A6D73E52BC2292A007DC0B1 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
+				5ABE553F2BC2C18B003C7ABA /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 5A2480E02B84C4F20018AA57 /* Products */;
 			projectDirPath = "";
@@ -381,6 +472,7 @@
 			files = (
 				5AFA18202BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard in Resources */,
 				5A2480EA2B84C4F70018AA57 /* Preview Assets.xcassets in Resources */,
+				5ABA542D2BC4C50E00D60482 /* hello.mp3 in Resources */,
 				5A2480E72B84C4F70018AA57 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,23 +487,32 @@
 				5A7A216C2B8DB2890097B610 /* CreateAccountPage.swift in Sources */,
 				5AFD0AA72BBF27E20096A237 /* Colors.swift in Sources */,
 				5AFA18242BC01AB600E13F9A /* PasswordTextFieldView.swift in Sources */,
+				5ABE553E2BC2BC5B003C7ABA /* NetworkClient.swift in Sources */,
 				5AFA182B2BC15DF400E13F9A /* ResetPasswordPage.swift in Sources */,
 				5A362E882BA5B17F00A73E0B /* AlphabeetPage.swift in Sources */,
+				5AE0F7462BC36A8900079110 /* LessonModuleView.swift in Sources */,
 				5A7A216A2B8DAD710097B610 /* ChoseLanguagePage.swift in Sources */,
 				5A6D73EA2BC238E6007DC0B1 /* RegistrationPageViewModel.swift in Sources */,
 				5A2480EC2B84C4F70018AA57 /* Persistence.swift in Sources */,
 				5A6106C42B9DA78900956D3A /* MenuTabBar.swift in Sources */,
+				5ABA54242BC4B85400D60482 /* LessonHintPage.swift in Sources */,
+				5AB5EFE82BCC10F0006783E6 /* HomeRepository.swift in Sources */,
 				5AFD0AAB2BBF84280096A237 /* SingleButtonView.swift in Sources */,
+				5ABA542A2BC4C4AA00D60482 /* SoundManager.swift in Sources */,
 				5A01838B2B923D8C0086DB7B /* CardsForWords.swift in Sources */,
 				5A01838D2B92506C0086DB7B /* SignInPage.swift in Sources */,
 				5A6FD86D2BA2254300D78ADA /* HomePage.swift in Sources */,
-				5AFA18262BC1476B00E13F9A /* TextFieldView.swift in Sources */,
+				5ABA54202BC496FE00D60482 /* LessonModulesPage.swift in Sources */,
 				5A362E862BA5B11B00A73E0B /* LessonView.swift in Sources */,
+				5AB5EFE22BCBFBD8006783E6 /* HomeViewModel.swift in Sources */,
 				5AFA181E2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift in Sources */,
 				5A9BD29B2BC24CBA0090CAD2 /* CreateAccountViewModel.swift in Sources */,
 				5A7A21672B8DA13A0097B610 /* RegistrationPageView.swift in Sources */,
+				5AE1DF6E2BCAA2620035319E /* TextFieldView.swift in Sources */,
 				5AFD0AAD2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift in Sources */,
 				5A2480EF2B84C4F70018AA57 /* Dara.xcdatamodeld in Sources */,
+				5ABA54262BC4BC4400D60482 /* ListenAndRepeatPage.swift in Sources */,
+				5ABE554A2BC2CDFD003C7ABA /* AuthRepository.swift in Sources */,
 				5AFA18222BC0062300E13F9A /* Images.swift in Sources */,
 				5A110ED02B8508500087AA9B /* LaunchScreen.swift in Sources */,
 				5A362E832BA5AFBD00A73E0B /* ProfilePage.swift in Sources */,
@@ -419,10 +520,14 @@
 				5A78AD162BBC0A3100521A32 /* ChooseLevelPage.swift in Sources */,
 				5A2480E52B84C4F20018AA57 /* ContentView.swift in Sources */,
 				5A9BD2A62BC254E90090CAD2 /* SignInViewModel.swift in Sources */,
+				5AE0F7442BC307D400079110 /* AppViewModel.swift in Sources */,
+				5AB5EFEA2BCC1131006783E6 /* TopicsResponce.swift in Sources */,
+				5ABA54282BC4BD8100D60482 /* Matching.swift in Sources */,
 				5A9BD2A42BC253560090CAD2 /* ChooseTimeViewModel.swift in Sources */,
 				5A9BD2A12BC251B50090CAD2 /* ChooseLevelViewModel.swift in Sources */,
 				5AFD0AA92BBF2DBB0096A237 /* ButtonView.swift in Sources */,
 				5A2480E32B84C4F20018AA57 /* DaraApp.swift in Sources */,
+				5ABE55472BC2CA44003C7ABA /* LoginResponce.swift in Sources */,
 				5A9BD2A82BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift in Sources */,
 				5A9BD2982BC247090090CAD2 /* ChooseLanguageViewModel.swift in Sources */,
 				5A9BD29E2BC24DFD0090CAD2 /* ChooseYourPasswordViewModel.swift in Sources */,
@@ -485,7 +590,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -542,7 +647,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -564,6 +669,7 @@
 				DEVELOPMENT_TEAM = BKNZ54W4AA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Dara/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Dara;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -601,6 +707,7 @@
 				DEVELOPMENT_TEAM = BKNZ54W4AA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Dara/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Dara;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -658,6 +765,14 @@
 				minimumVersion = 5.3.2;
 			};
 		};
+		5ABE553F2BC2C18B003C7ABA /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -665,6 +780,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5A6D73E52BC2292A007DC0B1 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
 			productName = SwiftfulRouting;
+		};
+		5ABE55402BC2C18C003C7ABA /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5ABE553F2BC2C18B003C7ABA /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		5ABE55422BC2C18C003C7ABA /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5ABE553F2BC2C18B003C7ABA /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */
 

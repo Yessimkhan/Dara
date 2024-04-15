@@ -9,10 +9,10 @@ import SwiftUI
 
 struct PasswordTextFieldView: View {
     
-    @Binding var isPasswordVisible: Bool
+    @State var isPasswordVisible: Bool = false
     var placeholder: String
     @Binding var text: String
-    var isTextChanged: (Bool) -> Void
+    @Binding var isError: Bool
     
     var body: some View {
         HStack {
@@ -20,15 +20,20 @@ struct PasswordTextFieldView: View {
                 PasswordTextField(
                     placeholder: placeholder,
                     text: $text,
-                    isTextChanged: isTextChanged
+                    isError: $isError
                 )
             } else {
                 PasswordSecuredTextField(
                     placeholder: placeholder,
-                    text: $text
+                    text: $text,
+                    isError: $isError
                 )
             }
-        }.overlay(alignment: .trailing) {
+        }
+        .onChange(of: text) {
+            isError = false
+        }
+        .overlay(alignment: .trailing) {
             Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
                 .padding()
                 .onTapGesture {
@@ -44,19 +49,19 @@ struct PasswordTextField: View {
     
     var placeholder: String
     @Binding var text: String
-    var isTextChanged: (Bool) -> Void
+    @Binding var isError: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(placeholder)
             TextField(
                 "\(placeholder)...",
-                text: $text,
-                onEditingChanged: isTextChanged
+                text: $text
             )
             .padding()
             .frame(height: 56)
             .background(Colors.textFieldBackground.cornerRadius(10))
+            .addBorder(isError ? Color.red : Color.clear, width: isError ? 1 : 0, cornerRadius: 10)
         }
     }
 }
@@ -65,6 +70,7 @@ struct PasswordSecuredTextField: View {
     
     var placeholder: String
     @Binding var text: String
+    @Binding var isError: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -76,6 +82,7 @@ struct PasswordSecuredTextField: View {
             .padding()
             .frame(height: 56)
             .background(Colors.textFieldBackground.cornerRadius(10))
+            .addBorder(isError ? Color.red : Color.clear, width: isError ? 1 : 0, cornerRadius: 10)
         }
     }
 }

@@ -36,31 +36,14 @@ enum SingleButtonType {
 }
 
 struct SingleButtonView: View {
-    @Environment(\.router) var router
-    
     let buttonType: SingleButtonType
     
     var body: some View {
         HStack (spacing: 7){
             Text(buttonType.text)
-            
-            Button {
-                router.showScreen(.push) { router in
-                    switch buttonType {
-                    case .signIn:
-                        SignInPage(viewModel: SignInViewModel(router: router))
-                            .navigationBarBackButtonHidden()
-                    case .signUp:
-                        RegistrationPageView(viewModel: RegistrationPageViewModel(router: router))
-                            .navigationBarBackButtonHidden()
-                    case .forgotPassword:
-                        ForgotPasswordPage(viewModel: ForgotPasswordViewModel(router: router))
-                            .navigationBarBackButtonHidden()
-                    }
-                }
-            } label: {
-                Text(buttonType.link)
-            }
+                .foregroundStyle(Colors.black)
+            Text(buttonType.link)
+                .foregroundStyle(Colors.brandPrimary)
         }
     }
 }

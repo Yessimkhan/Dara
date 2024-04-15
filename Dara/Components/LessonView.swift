@@ -9,37 +9,40 @@ import SwiftUI
 
 struct LessonView: View {
     
-    let numberOfLesson: Int
-    let nameInKazakh: String
-    let nameInAnotherLanguage: String
+    let lessonDate: TopicsResponseElement
     
     var body: some View {
         ZStack (alignment: .leading){
             RoundedRectangle(cornerRadius: 25.0)
-                .fill(Color.gray)
-                .frame(width: 342, height: 140)
-            HStack(spacing: 30) {
+                .fill(Colors.brandPrimary)
+                .frame(maxWidth: .infinity)
+                .frame(height: 140)
+            HStack(spacing: 35) {
                 VStack {
-                    Text("\(numberOfLesson) lesson")
+                    Text("\(lessonDate.topicsResponseID) - lesson")
+                        .foregroundStyle(Colors.white)
+                        .font(.system(size: 14))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text(nameInKazakh)
-                        .font(.title.bold())
+                    Text(lessonDate.title)
+                        .foregroundStyle(Colors.white)
+                        .font(.system(size: 24))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text(nameInAnotherLanguage)
-                        .font(.caption)
+                    Text(lessonDate.title)
+                        .foregroundStyle(Colors.white)
+                        .font(.system(size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .frame(width: 173)
-                .padding(.leading)
+                .frame(width: 160)
+                .padding(.leading, 24)
                 RoundedRectangle(cornerRadius: 12.0)
-                    .fill(Color.black)
+                    .fill(Colors.white)
                     .frame(width: 110, height: 115)
-                    .padding(.trailing)
             }
         }
     }
 }
 
-#Preview {
-    LessonView(numberOfLesson: 1, nameInKazakh: "Yessimkhan", nameInAnotherLanguage: "Yesso")
-}
+
+//#Preview {
+//    LessonView(lessonDate: TopicsResponseElement(numberOfLesson: 1, nameInKazakh: "", nameInAnotherLanguage: ""))
+//}
