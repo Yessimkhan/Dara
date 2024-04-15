@@ -10,6 +10,7 @@
 		5A01838B2B923D8C0086DB7B /* CardsForWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A01838A2B923D8C0086DB7B /* CardsForWords.swift */; };
 		5A01838D2B92506C0086DB7B /* SignInPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A01838C2B92506C0086DB7B /* SignInPage.swift */; };
 		5A110ED02B8508500087AA9B /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A110ECF2B8508500087AA9B /* LaunchScreen.swift */; };
+		5A12D3A52BCDAE6C001BA71D /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A12D3A42BCDAE6C001BA71D /* LoaderView.swift */; };
 		5A2480E32B84C4F20018AA57 /* DaraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480E22B84C4F20018AA57 /* DaraApp.swift */; };
 		5A2480E52B84C4F20018AA57 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480E42B84C4F20018AA57 /* ContentView.swift */; };
 		5A2480E72B84C4F70018AA57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A2480E62B84C4F70018AA57 /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		5A01838A2B923D8C0086DB7B /* CardsForWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsForWords.swift; sourceTree = "<group>"; };
 		5A01838C2B92506C0086DB7B /* SignInPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPage.swift; sourceTree = "<group>"; };
 		5A110ECF2B8508500087AA9B /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		5A12D3A42BCDAE6C001BA71D /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		5A2480DF2B84C4F20018AA57 /* Dara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2480E22B84C4F20018AA57 /* DaraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaraApp.swift; sourceTree = "<group>"; };
 		5A2480E42B84C4F20018AA57 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				5AE1DF6D2BCAA2620035319E /* TextFieldView.swift */,
 				5AFA18232BC01AB600E13F9A /* PasswordTextFieldView.swift */,
 				5AE0F7452BC36A8900079110 /* LessonModuleView.swift */,
+				5A12D3A42BCDAE6C001BA71D /* LoaderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				5A7A216C2B8DB2890097B610 /* CreateAccountPage.swift in Sources */,
 				5AFD0AA72BBF27E20096A237 /* Colors.swift in Sources */,
 				5AFA18242BC01AB600E13F9A /* PasswordTextFieldView.swift in Sources */,
+				5A12D3A52BCDAE6C001BA71D /* LoaderView.swift in Sources */,
 				5ABE553E2BC2BC5B003C7ABA /* NetworkClient.swift in Sources */,
 				5AFA182B2BC15DF400E13F9A /* ResetPasswordPage.swift in Sources */,
 				5A362E882BA5B17F00A73E0B /* AlphabeetPage.swift in Sources */,

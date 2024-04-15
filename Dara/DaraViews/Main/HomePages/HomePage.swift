@@ -14,7 +14,7 @@ struct HomePage: View {
     
     var body: some View {
         if viewModel.isLoading {
-            ProgressView()
+            LoaderView()
         } else {
             ScrollView (showsIndicators: false){
                 VStack (spacing: 10){
@@ -35,7 +35,6 @@ struct HomePage: View {
         }
     }
 }
-
 
 #Preview {
     RouterView { router in

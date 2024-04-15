@@ -14,10 +14,7 @@ struct SignInPage: View {
     var body: some View {
         ZStack {
             if viewModel.isLoading {
-                ProgressView()
-                    .progressViewStyle(.circular)
-                    .scaleEffect(1.5)
-                    .zIndex(1)
+                LoaderView()
             }
 
             VStack(spacing: 64) {
