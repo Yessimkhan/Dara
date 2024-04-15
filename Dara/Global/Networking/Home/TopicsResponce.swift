@@ -8,18 +8,25 @@
 import Foundation
 
 // MARK: - TopicsResponseElement
-struct TopicsResponseElement: Identifiable, Codable {
+// MARK: - TopicsResponseElement
+struct TopicsResponseElement: Codable, Identifiable {
     let id: String
     let topicsResponseID, levelID: Int
     let title: String
     let isOpened: Bool
+    let translation: Translation
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case topicsResponseID = "id"
         case levelID = "level_id"
-        case title, isOpened
+        case title, isOpened, translation
     }
+}
+
+// MARK: - Translation
+struct Translation: Codable {
+    let title: String
 }
 
 typealias TopicsResponse = [TopicsResponseElement]

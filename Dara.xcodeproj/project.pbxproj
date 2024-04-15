@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5A01838B2B923D8C0086DB7B /* CardsForWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A01838A2B923D8C0086DB7B /* CardsForWords.swift */; };
 		5A01838D2B92506C0086DB7B /* SignInPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A01838C2B92506C0086DB7B /* SignInPage.swift */; };
+		5A0F438D2BCDB6440087B3CE /* LessonModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F438C2BCDB6440087B3CE /* LessonModuleViewModel.swift */; };
 		5A110ED02B8508500087AA9B /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A110ECF2B8508500087AA9B /* LaunchScreen.swift */; };
 		5A12D3A52BCDAE6C001BA71D /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A12D3A42BCDAE6C001BA71D /* LoaderView.swift */; };
 		5A2480E32B84C4F20018AA57 /* DaraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480E22B84C4F20018AA57 /* DaraApp.swift */; };
@@ -68,6 +69,7 @@
 /* Begin PBXFileReference section */
 		5A01838A2B923D8C0086DB7B /* CardsForWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsForWords.swift; sourceTree = "<group>"; };
 		5A01838C2B92506C0086DB7B /* SignInPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPage.swift; sourceTree = "<group>"; };
+		5A0F438C2BCDB6440087B3CE /* LessonModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModuleViewModel.swift; sourceTree = "<group>"; };
 		5A110ECF2B8508500087AA9B /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		5A12D3A42BCDAE6C001BA71D /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		5A2480DF2B84C4F20018AA57 /* Dara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dara.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A0F438B2BCDB5C80087B3CE /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5A0F438C2BCDB6440087B3CE /* LessonModuleViewModel.swift */,
+				5ABA541F2BC496FE00D60482 /* LessonModulesPage.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		5A2480D62B84C4F20018AA57 = {
 			isa = PBXGroup;
 			children = (
@@ -182,7 +193,7 @@
 			children = (
 				5AB5EFE12BCBFBD8006783E6 /* HomeViewModel.swift */,
 				5A6FD86C2BA2254300D78ADA /* HomePage.swift */,
-				5ABA541F2BC496FE00D60482 /* LessonModulesPage.swift */,
+				5A0F438B2BCDB5C80087B3CE /* Modules */,
 				5AE1DF6C2BCA88260035319E /* Tests */,
 			);
 			path = HomePages;
@@ -505,6 +516,7 @@
 				5ABA542A2BC4C4AA00D60482 /* SoundManager.swift in Sources */,
 				5A01838B2B923D8C0086DB7B /* CardsForWords.swift in Sources */,
 				5A01838D2B92506C0086DB7B /* SignInPage.swift in Sources */,
+				5A0F438D2BCDB6440087B3CE /* LessonModuleViewModel.swift in Sources */,
 				5A6FD86D2BA2254300D78ADA /* HomePage.swift in Sources */,
 				5ABA54202BC496FE00D60482 /* LessonModulesPage.swift in Sources */,
 				5A362E862BA5B11B00A73E0B /* LessonView.swift in Sources */,

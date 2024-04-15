@@ -27,7 +27,7 @@ struct LessonView: View {
                         .foregroundStyle(Colors.white)
                         .font(.system(size: 24))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text(lessonDate.title)
+                    Text(lessonDate.translation.title)
                         .foregroundStyle(Colors.white)
                         .font(.system(size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
