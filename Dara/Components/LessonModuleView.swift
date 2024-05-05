@@ -12,12 +12,16 @@ struct LessonModuleView: View {
     @Binding var isSelected: Bool
     let moduleName: String
     let procent: Int?
+    let lessonId: Int
+    let moduleId: Int
+    let allPages: Int
+    let allTasks: Int
     let router: AnyRouter
     
     var body: some View {
         Group {
             if isSelected {
-                SelectedModel(moduleName: moduleName, procent: procent, router: router)
+                SelectedModel(moduleName: moduleName, procent: procent, lessonId: lessonId, moduleId: moduleId, allPages: allPages, allTasks: allTasks, router: router)
             } else {
                 NotSelectedModel(moduleName: moduleName, procent: procent)
             }
@@ -29,6 +33,10 @@ struct SelectedModel: View {
     
     let moduleName: String
     let procent: Int?
+    let lessonId: Int
+    let moduleId: Int
+    let allPages: Int
+    let allTasks: Int
     let router: AnyRouter
     
     var body: some View {
@@ -59,10 +67,7 @@ struct SelectedModel: View {
                     .foregroundColor(Colors.white)
                     .frame(width: 48, height: 48)
                     .onTapGesture {
-                        router.showScreen(.push) { router in
-                            LessonHintPage(router: router)
-                                .navigationTitle(moduleName)
-                        }
+                        ModulePagesViewModel(router: router, lessonId: lessonId, moduleId: moduleId, allPages: allPages, allTasks: allTasks, currentPage: 1, currentTask: 1).getPages()
                     }
             }
         }

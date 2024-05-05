@@ -19,7 +19,6 @@ final class SignInViewModel: ObservableObject {
     @AppStorage("isAuthorized") var isAuthorized: Bool = false
     @AppStorage("accessToken") var accessToken: String?
     @AppStorage("acceptLanguage") var acceptLanguage: String?
-    @AppStorage("user_id") var userId: String?
     
     init(router: AnyRouter) {
         self.router = router
@@ -42,7 +41,7 @@ final class SignInViewModel: ObservableObject {
     
     func signInButtonTapped() {
         isLoading = true 
-        AuthRepository().login(email: "asetzhanedilov6@gmail.com", password: "qwerty123") { [weak self] result in
+        AuthRepository().login(email: email, password: password) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 switch result {
@@ -51,8 +50,7 @@ final class SignInViewModel: ObservableObject {
                         self?.isAuthorized = true
                     }
                     self?.accessToken = response.accessToken
-                    self?.acceptLanguage = response.user.language
-                    self?.userId = response.user.id
+                    self?.acceptLanguage = "en"
                     print("Login successful. Access Token: \(String(describing: self?.accessToken))")
                     print("Accept Language: \(String(describing: self?.acceptLanguage))")
                 case .failure(let error):

@@ -9,32 +9,24 @@ import SwiftUI
 import SwiftfulRouting
 
 struct LessonModulesPage: View {
+    
     @StateObject var viewModel: LessonModuleViewModel
-    @State private var selectedModule: String?
     
     var body: some View {
-        VStack {
+        ZStack {
             if viewModel.isLoading {
                 LoaderView()
             } else {
-                ForEach(viewModel.moduleArray) { module in
-                    LessonModuleView(isSelected: .constant(selectedModule == module.title), moduleName: module.title, procent: module.score, router: viewModel.router)
-                        .onTapGesture {
-                            selectModule(module.title)
-                        }
+                VStack {
+                    ForEach(viewModel.moduleArray) { module in
+                        LessonModuleView(isSelected: .constant(viewModel.selectedModule == module.title), moduleName: module.title, procent: module.score, lessonId: viewModel.lessonId, moduleId: module.moduleResponseID, allPages: module.pageCount, allTasks: module.taskCount ?? 0, router: viewModel.router)
+                            .onTapGesture {
+                                viewModel.selectModule(module.title)
+                            }
+                    }
                 }
-            }
-        }
-        .padding(.horizontal, 24)
-    }
-    
-    private func selectModule(_ moduleName: String) {
-        withAnimation(.spring()) {
-            if selectedModule == moduleName {
-                selectedModule = nil
-            } else {
-                selectedModule = moduleName
-                
+                .blur(radius: viewModel.isLoading ? 3 : 0)
+                .padding(.horizontal, 24)
             }
         }
     }
@@ -42,6 +34,6 @@ struct LessonModulesPage: View {
 
 #Preview {
     RouterView{ router in
-        LessonModulesPage(viewModel: LessonModuleViewModel(router: router, lessonId: 1))
+        LessonModulesPage(viewModel: LessonModuleViewModel(router: router, lessonId: 2))
     }
 }

@@ -11,6 +11,7 @@ import SwiftfulRouting
 final class ForgotPasswordViewModel: ObservableObject {
     
     let router: AnyRouter
+    @Published var isError: Bool = false
     
     init(router: AnyRouter) {
         self.router = router

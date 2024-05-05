@@ -17,7 +17,7 @@ enum SingleButtonType {
         case .signIn:
             return "Already Dara's user?"
         case .signUp:
-            return "Not your member?"
+            return "Don't have an account"
         case .forgotPassword:
             return ""
         }

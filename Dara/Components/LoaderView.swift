@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoaderView: View {
     @State private var isAnimating = false
-
+    
     var body: some View {
         GradientCircularLoader()
             .rotationEffect(Angle(degrees: self.isAnimating ? 360 : 0))
@@ -31,4 +31,8 @@ struct GradientCircularLoader: View {
             .rotationEffect(Angle(degrees: -90)) // Start from the top
             .frame(width: 50, height: 50)
     }
+}
+
+#Preview {
+    LoaderView()
 }

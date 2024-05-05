@@ -11,6 +11,7 @@ import SwiftfulRouting
 final class CreateAccountViewModel: ObservableObject {
     
     let router: AnyRouter
+    @Published var isError: Bool = false
     
     init(router: AnyRouter) {
         self.router = router

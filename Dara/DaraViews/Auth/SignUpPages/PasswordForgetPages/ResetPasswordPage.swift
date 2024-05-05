@@ -25,12 +25,9 @@ struct ResetPasswordPage: View {
                         .font(.title)
                     
                     VStack(alignment: .leading , spacing: 18) {
-//                        PasswordTextFieldView(isPasswordVisible: $isPasswordVisible, placeholder: "Password", text: $password) { changed in
-//                        }
+                        PasswordTextFieldView(isPasswordVisible: isPasswordVisible, placeholder: "Password", text: $password, isError: $viewModel.isError)
                         
-//                        PasswordTextFieldView(isPasswordVisible: $isConfirmPasswordVisible, placeholder: "Confirm password", text: $confirmPassword) { changed in
-//                            
-//                        }
+                        PasswordTextFieldView(isPasswordVisible: isConfirmPasswordVisible, placeholder: "Confirm password", text: $confirmPassword, isError: $viewModel.isError)
                     }
                 }
                 Button {

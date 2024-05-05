@@ -26,11 +26,11 @@ struct CreateAccountPage: View {
                     VStack(spacing: 64) {
                         VStack(spacing: 34) {
                             VStack(spacing: 18){
-//                                TextFieldView(placeholder: "Username", text: $userName)
+                                TextFieldView(placeholder: "Username", text: $userName, isError: $viewModel.isError)
                                 
-//                                TextFieldView(placeholder: "Phone number", text: $userNumber)
+                                TextFieldView(placeholder: "Phone number", text: $userNumber, isError: $viewModel.isError)
                                 
-//                                TextFieldView(placeholder: "Email", text: $userEmail)
+                                TextFieldView(placeholder: "Email", text: $userEmail, isError: $viewModel.isError)
                             }
                             
                             Button(action: {

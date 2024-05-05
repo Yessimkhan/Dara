@@ -24,18 +24,16 @@ final class HomeViewModel: ObservableObject {
     
     func getLessons() {
         isLoading = true
-        let headers: HTTPHeaders = [
-            "Accept-Language": "en",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTZiM2I2NTFhNTE2ODY3MzIzNjU5MiIsImVtYWlsIjoiYXNldHpoYW5lZGlsb3Y2QGdtYWlsLmNvbSIsImxhbmd1YWdlIjoicnUiLCJpYXQiOjE3MTMxODYzMTEsImV4cCI6MTcxMzI0MDMxMX0.L2t-kl5WGWHY-ZmycxFeKaepCBaLgOl_Z4EhwmGkKSc"
-        ]
-
-        AF.request("http://localhost:5100/topic/my/1", headers: headers).responseDecodable(of: TopicsResponse.self) { response in
-            switch response.result {
-            case .success(let data):
-                self.isLoading = false
-                self.lessonsArray = data
-            case .failure(let error):
-                print(error.localizedDescription)
+        HomeRepository().getTopics(levelID: "1") { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                switch result {
+                case .success(let response):
+                    self?.lessonsArray = response
+                    print("Lessons get success")
+                case .failure(let error):
+                    print("Get lessons failed: \(error.localizedDescription)")
+                }
             }
         }
     }

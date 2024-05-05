@@ -18,12 +18,6 @@ final class ChooseTimeViewModel: ObservableObject {
     
     func goMenuTabBar() {
         
-        router.showScreen(.push) { router in
-            MenuTabBar().navigationBarBackButtonHidden()
-        }
-        DispatchQueue.main.async {
-            UserDefaults.standard.set(true, forKey: "isLogin")
-        }
     }
 }
 

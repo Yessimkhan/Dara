@@ -17,6 +17,9 @@ enum ButtonType {
     case eng
     case rus
     case submit
+    case `true`
+    case `false`
+    case custom
     
     var type: String {
         switch self {
@@ -29,6 +32,10 @@ enum ButtonType {
         case .eng: "Eng"
         case .rus: "Rus"
         case .submit: "Sumbit"
+        case .true: "True"
+        case .false: "False"
+        case .custom:
+            "custom"
         }
     }
 }
@@ -36,19 +43,38 @@ enum ButtonType {
 struct ButtonView: View {
     
     let buttonType: ButtonType
+    let withBackground: Bool
+    var buttonText: String
+    
+    init(buttonType: ButtonType, withBackground: Bool = false, buttonText: String = "") {
+        self.buttonType = buttonType
+        self.withBackground = withBackground
+        self.buttonText = buttonText
+    }
     
     var body: some View {
-        Text(buttonType.type)
-            .font(.system(size: 18, weight: .regular))
-            .foregroundStyle(Colors.brandPrimary)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 1).foregroundColor(Colors.brandPrimary))
-        
+        if withBackground {
+            Text(buttonType.type == "custom" ? buttonText : buttonType.type)
+                .font(.system(size: 18, weight: .regular))
+                .foregroundStyle(Colors.white)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Colors.brandPrimary.cornerRadius(10))
+                .lineLimit(nil)
+        }
+        else {
+            Text(buttonType.type == "custom" ? buttonText : buttonType.type)
+                .font(.system(size: 18, weight: .regular))
+                .foregroundStyle(Colors.brandPrimary)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 1).foregroundColor(Colors.brandPrimary))
+                .lineLimit(nil)
+        }
     }
 }
 
 
 #Preview {
-    ButtonView(buttonType: .signIn)
+    ButtonView(buttonType: .signIn, withBackground: true)
 }

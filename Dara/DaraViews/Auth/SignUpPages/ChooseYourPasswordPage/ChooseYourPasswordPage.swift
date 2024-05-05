@@ -24,13 +24,9 @@ struct ChooseYourPasswordPage: View {
             VStack(spacing: 64){
                 VStack(spacing: 132) {
                     VStack(spacing: 18) {
-//                        PasswordTextFieldView(isPasswordVisible: $isPasswordVisible, placeholder: "Password", text: $password) { changed in
-//                            
-//                        }
+                        PasswordTextFieldView(isPasswordVisible: isPasswordVisible, placeholder: "Password", text: $password, isError: $viewModel.isError)
                         
-//                        PasswordTextFieldView(isPasswordVisible: $isConfirmPasswordVisible, placeholder: "Confirm password", text: $confirmPassword) { changed in
-//                            
-//                        }
+                        PasswordTextFieldView(isPasswordVisible: isConfirmPasswordVisible, placeholder: "Confirm password", text: $confirmPassword, isError: $viewModel.isError) 
                     }
                     
                     Button {

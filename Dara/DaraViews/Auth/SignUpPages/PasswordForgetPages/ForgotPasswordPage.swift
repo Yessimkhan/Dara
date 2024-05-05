@@ -27,7 +27,7 @@ struct ForgotPasswordPage: View {
                             .font(.system(size: 16, weight: .regular))
                             .fixedSize(horizontal: false, vertical: true)
                         
-//                        TextFieldView(placeholder: "Email adress", text: $email)
+                        TextFieldView(placeholder: "Email adress", text: $email, isError: $viewModel.isError)
                     }
                 }
                 Button {

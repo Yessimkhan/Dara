@@ -18,7 +18,7 @@ final class ChooseLanguageViewModel: ObservableObject {
     
     func goCreateAccountPage() {
         router.showScreen(.push) { router in
-//            CreateAccountPage(viewModel: CreateAccountViewModel(router: router))
+            CreateAccountPage(viewModel: CreateAccountViewModel(router: router))
         }
     }
     

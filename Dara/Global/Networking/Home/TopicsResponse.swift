@@ -8,7 +8,6 @@
 import Foundation
 
 // MARK: - TopicsResponseElement
-// MARK: - TopicsResponseElement
 struct TopicsResponseElement: Codable, Identifiable {
     let id: String
     let topicsResponseID, levelID: Int
@@ -27,6 +26,7 @@ struct TopicsResponseElement: Codable, Identifiable {
 // MARK: - Translation
 struct Translation: Codable {
     let title: String
+    let description, example: String?
 }
 
 typealias TopicsResponse = [TopicsResponseElement]

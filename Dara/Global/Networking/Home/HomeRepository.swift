@@ -8,18 +8,133 @@
 import Foundation
 import SwiftUI
 import Alamofire
+import SVGKit
 
 final class HomeRepository {
     @AppStorage("accessToken") var accessToken: String?
+    @AppStorage("acceptLanguage") var acceptLanguage: String?
+    private lazy var headers: HTTPHeaders = [
+        "Accept-Language": acceptLanguage ?? "",
+        "Authorization": "Bearer \(accessToken ?? "")"
+    ]
     
-//    func getTopics() -> TopicsResponse {
-//        let headers: HTTPHeaders = [
-//            "Accept-Language": "en",
-//            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTZiM2I2NTFhNTE2ODY3MzIzNjU5MiIsImVtYWlsIjoiYXNldHpoYW5lZGlsb3Y2QGdtYWlsLmNvbSIsImxhbmd1YWdlIjoicnUiLCJpYXQiOjE3MTMxODYzMTEsImV4cCI6MTcxMzI0MDMxMX0.L2t-kl5WGWHY-ZmycxFeKaepCBaLgOl_Z4EhwmGkKSc"
-//        ]
-//
-//        AF.request("http://localhost:5100/topic/my/1", headers: headers).responseDecodable(of: TopicsResponse.self) { response in
-//            return response.result
-//        }
-//    }
+    func getTopics(levelID: String, completion: @escaping (Result<TopicsResponse, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "level_id": levelID,
+        ]
+        
+        NetworkClient.shared.get(endpoint: "/topic/my/", parameters: parameters, headers: headers) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(TopicsResponse.self, from: data)
+                    let sortedData = response.sorted(by: { $0.topicsResponseID < $1.topicsResponseID })
+                    completion(.success(sortedData))
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to make request: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getModules(topicID: String, completion: @escaping (Result<ModuleResponse, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "topic_id": topicID,
+        ]
+        
+        NetworkClient.shared.get(endpoint: "/module/my", parameters: parameters, headers: headers) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(ModuleResponse.self, from: data)
+                    let sortedData = response.sorted(by: { $0.moduleResponseID < $1.moduleResponseID })
+                    completion(.success(sortedData))
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to make request: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getPage(topicID: String, moduleID: String, pageID: String, completion: @escaping (Result<PageResponse, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "page_id": pageID,
+            "module_id": moduleID,
+            "topic_id": topicID,
+        ]
+        
+        NetworkClient.shared.get(endpoint: "/page", parameters: parameters, headers: headers) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(PageResponse.self, from: data)
+                    completion(.success(response))
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to make request: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func downloadImage(from url: String, completion: @escaping (Image?) -> Void) {
+        NetworkClient.shared.download(url, headers: headers) { response in
+            switch response {
+            case .success(let response):
+                guard let mimeType = response.response.mimeType else {
+                    print("Failed to get data or MIME type.")
+                    return
+                }
+                switch mimeType {
+                case "image/jpeg":
+                    completion(Image(uiImage: UIImage(data: response.data) ?? UIImage()))
+                case "image/svg+xml":
+                    let svgImage = SVGKImage(data: response.data)
+                    if let uiImage = svgImage?.uiImage {
+                        completion(Image(uiImage: uiImage))
+                    } else {
+                        print("Failed to convert SVG data to UIImage")
+                        completion(nil)
+                    }
+                default:
+                    print("Unsupported MIME type: \(mimeType)")
+                }
+                
+            case .failure(let error):
+                print("Error downloading image: \(error)")
+                completion(nil)
+            }
+        }
+    }
+    
+    
+    func downloadAudio(from url: String, completion: @escaping (Data?) -> Void) {
+        NetworkClient.shared.download(url, headers: headers) { response in
+            switch response {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    completion(result.data)
+                }
+            case .failure(let error):
+                print("Error downloading audio: \(error)")
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+        }
+    }
 }
