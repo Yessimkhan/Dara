@@ -6,26 +6,29 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 struct CorrectView: View {
+    let router: AnyRouter
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     var body: some View {
-        VStack (spacing: 21){
-            Text("Correct Answer!")
-                .font(.system(size: 18, weight: .bold))
-                .foregroundStyle(Colors.white)
-            Button {
-                modulePagesViewModel.router.dismissModal()
-                modulePagesViewModel.getPages()
-            } label: {
-                ButtonView(buttonType: .continue, withBackground: true)
-                
+        if !modulePagesViewModel.isLoading {
+            VStack (spacing: 21){
+                Text("Correct Answer!")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundStyle(Colors.white)
+                Button {
+                    modulePagesViewModel.getPages()
+                } label: {
+                    ButtonView(buttonType: .continue, withBackground: true)
+                    
+                }
             }
+            .padding(.horizontal, 24)
+            .frame(maxWidth: .infinity)
+            .frame(height: 190)
+            .background(Colors.correctAnswer)
+            .cornerRadius(30)
         }
-        .padding(.horizontal, 24)
-        .frame(maxWidth: .infinity)
-        .frame(height: 190)
-        .background(Colors.correctAnswer)
-        .cornerRadius(30)
     }
 }

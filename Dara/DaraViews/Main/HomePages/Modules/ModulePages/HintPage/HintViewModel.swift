@@ -7,15 +7,19 @@
 
 import Foundation
 import SwiftUI
+import SwiftfulRouting
 
 final class HintViewModel: ObservableObject {
+    
+    let router: AnyRouter
     let data: Content
     @Published var imagesArray: [Image] = []
     @Published var isLoading: Bool = false
     @AppStorage("user_id") var userId: String?
     private var downloadCount = 0
     
-    init(data: Content) {
+    init(router: AnyRouter, data: Content) {
+        self.router = router
         self.data = data
         guard let content = data.content else { return }
         isLoading = true

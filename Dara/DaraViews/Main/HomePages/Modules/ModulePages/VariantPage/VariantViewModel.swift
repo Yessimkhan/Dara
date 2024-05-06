@@ -7,9 +7,11 @@
 
 import Foundation
 import SwiftUI
+import SwiftfulRouting
 
 final class VariantViewModel: ObservableObject {
     
+    let router: AnyRouter
     let data: Content
     @Published var isLoading: Bool = false
     @Published var image: Image?
@@ -17,7 +19,8 @@ final class VariantViewModel: ObservableObject {
     @AppStorage("user_id") var userId: String?
     @Published var shuffledVariants: [String] = []
     
-    init(data: Content) {
+    init(router: AnyRouter, data: Content) {
+        self.router = router
         self.data = data
         self.shuffledVariants = data.variants?.shuffled() ?? []
         

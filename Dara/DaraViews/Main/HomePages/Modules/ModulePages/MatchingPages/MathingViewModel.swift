@@ -7,9 +7,11 @@
 
 import Foundation
 import SwiftUI
+import SwiftfulRouting
 
 final class MathingViewModel: ObservableObject {
     
+    let router: AnyRouter
     let data: [Content]
     @Published var isLoading: Bool = false
     @Published var image: Image?
@@ -21,16 +23,21 @@ final class MathingViewModel: ObservableObject {
     @Published var isCorrect1: Bool? = nil
     @Published var isSelected2: Bool = false
     @Published var isCorrect2: Bool? = nil
+    @Published var isSelected3: Bool = false
+    @Published var isCorrect3: Bool? = nil
     @Published var isSelected10: Bool = false
     @Published var isCorrect10: Bool? = nil
     @Published var isSelected11: Bool = false
     @Published var isCorrect11: Bool? = nil
     @Published var isSelected12: Bool = false
     @Published var isCorrect12: Bool? = nil
+    @Published var isSelected13: Bool = false
+    @Published var isCorrect13: Bool? = nil
     @Published var selectedQ: Int? = nil
     @Published var selectedA: Int? = nil
     
-    init(data: [Content]) {
+    init(router: AnyRouter, data: [Content]) {
+        self.router = router
         self.data = data
         self.shuffledQuestions = data.shuffled()
         self.shuffledAnswers = data.shuffled()
@@ -71,6 +78,15 @@ final class MathingViewModel: ObservableObject {
                     }
                 }
             }
+            if selectedA == 3 {
+                isCorrect13 = isCorrect
+                isSelected13 = false
+                if !isCorrect {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.isCorrect13 = nil
+                    }
+                }
+            }
             if selectedQ == 0 {
                 isCorrect0 = isCorrect
                 isSelected0 = false
@@ -95,6 +111,15 @@ final class MathingViewModel: ObservableObject {
                 if !isCorrect {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.isCorrect2 = nil
+                    }
+                }
+            }
+            if selectedQ == 3 {
+                isCorrect3 = isCorrect
+                isSelected3 = false
+                if !isCorrect {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.isCorrect3 = nil
                     }
                 }
             }

@@ -46,7 +46,7 @@ struct ButtonView: View {
     let withBackground: Bool
     var buttonText: String
     
-    init(buttonType: ButtonType, withBackground: Bool = false, buttonText: String = "") {
+    init(buttonType: ButtonType, withBackground: Bool = true, buttonText: String = "") {
         self.buttonType = buttonType
         self.withBackground = withBackground
         self.buttonText = buttonText

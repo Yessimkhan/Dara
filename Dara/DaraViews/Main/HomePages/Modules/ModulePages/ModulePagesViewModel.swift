@@ -86,7 +86,7 @@ final class ModulePagesViewModel: ObservableObject {
     func handleHint(_ contents: [Content]) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
-                HintPage(viewModel: HintViewModel(data: contents[0]), modulePagesViewModel: self)
+                HintPage(viewModel: HintViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
                     .navigationBarTitle("\(contents[0].translation.title)", displayMode: .inline)
             }
         } else {
@@ -108,7 +108,7 @@ final class ModulePagesViewModel: ObservableObject {
     func handleTrueFalse(_ contents: [Content]) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
-                TrueFalsePage(viewModel: TrueFalseViewModel(data: contents[0]), modulePagesViewModel: self)
+                TrueFalsePage(viewModel: TrueFalseViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
                     .navigationBarTitle("\(contents[0].translation.title)", displayMode: .inline)
             }
         } else {
@@ -119,7 +119,7 @@ final class ModulePagesViewModel: ObservableObject {
     func handleVariant(_ contents: [Content]) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
-                VariantPage(viewModel: VariantViewModel(data: contents[0]), modulePagesViewModel: self)
+                VariantPage(viewModel: VariantViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
                     .navigationBarTitle("\(contents[0].translation.title)", displayMode: .inline)
             }
         } else {
@@ -130,7 +130,7 @@ final class ModulePagesViewModel: ObservableObject {
     func handleMatching(_ contents: [Content], title: String) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
-                Matching(viewModel: MathingViewModel(data: contents), modulePagesViewModel: self)
+                Matching(viewModel: MathingViewModel(router: router, data: contents), modulePagesViewModel: self)
                     .navigationBarTitle("\(contents[0].translation.title)", displayMode: .inline)
             }
         }

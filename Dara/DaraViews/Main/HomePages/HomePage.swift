@@ -23,7 +23,7 @@ struct HomePage: View {
                         LessonView(lessonDate: lesson)
                             .onTapGesture {
                                 viewModel.router.showScreen(.push) { router in
-                                    LessonModulesPage(viewModel: LessonModuleViewModel(router: viewModel.router, lessonId: lesson.topicsResponseID))
+                                    LessonModulesPage(viewModel: LessonModuleViewModel(router: router, lessonId: lesson.topicsResponseID))
                                         .navigationBarTitle("Modules", displayMode: .inline)
                                         .toolbar(.hidden, for: .tabBar)
                                 }
