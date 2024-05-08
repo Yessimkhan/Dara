@@ -14,7 +14,7 @@ struct TextPage: View {
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     
     var body: some View {
-        if viewModel.isLoading || modulePagesViewModel.isLoading {
+        if modulePagesViewModel.isLoading {
             LoaderView()
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -49,7 +49,7 @@ struct TextPage: View {
                     }
                     
                     HStack(spacing: 16) {
-                        if let audio = viewModel.audioData {
+                        if viewModel.data.audio != "" {
                             Image(systemName: "speaker.wave.2")
                                 .resizable()
                                 .frame( width: 25, height: 20)
@@ -98,7 +98,9 @@ struct TextPage: View {
                             .foregroundColor(Colors.brandPrimary)
                     )
                     
-                    if let image = viewModel.image {
+                    if viewModel.isLoadingImage {
+                        LoaderView()
+                    } else if let image = viewModel.image {
                         image
                             .resizable()
                             .frame(maxHeight: 200)
@@ -114,7 +116,7 @@ struct TextPage: View {
                     }
                     
                 }
-                .blur(radius: viewModel.isLoading || modulePagesViewModel.isLoading ? 3 : 0)
+                .blur(radius: modulePagesViewModel.isLoading ? 3 : 0)
                 .padding(24)
             }
             .toolbar {
