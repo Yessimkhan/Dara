@@ -10,7 +10,6 @@ import SwiftUI
 struct VariantPage: View {
     @StateObject var viewModel: VariantViewModel
     @StateObject var modulePagesViewModel: ModulePagesViewModel
-    @State var variantButtonIsActive: Bool = true
     
     var body: some View {
         if viewModel.isLoading || modulePagesViewModel.isLoading {
@@ -47,12 +46,18 @@ struct VariantPage: View {
                         Text("\(modulePagesViewModel.currentTask-1)/\(modulePagesViewModel.allTasks)")
                     }
                     
-                    HStack() {
-                        if (viewModel.audioData != nil) {
+                    HStack(spacing: 16) {
+                        if let audio = viewModel.audioData {
                             Image(systemName: "speaker.wave.2")
                                 .resizable()
                                 .frame( width: 25, height: 20)
-                                .padding(.trailing, 24)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(lineWidth: 1)
+                                        .foregroundColor(Colors.black)
+                                )
                                 .onTapGesture {
                                     SoundManager.instance.playAudio(audioData: viewModel.audioData)
                                 }
@@ -60,16 +65,27 @@ struct VariantPage: View {
                         
                         VStack(alignment: .leading) {
                             Text("Дұрыс нұсқаны тап.")
+                                .font(.system(size: 14, weight: .regular))
                             if modulePagesViewModel.acceptLanguage == "en" {
                                 Text("Find the correct option.")
-                                    .font(.callout)
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundStyle(Colors.buttonInactive)
                             } else {
                                 Text("Найдите правильный вариант.")
-                                    .font(.callout)
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundStyle(Colors.buttonInactive)
                             }
                         }
                         
                         Spacer()
+                    }
+                    
+                    VStack {
+                        Text(viewModel.data.title)
+                            .font(.system(size: 14, weight: .regular))
+                        Text(viewModel.data.translation.title)
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(Colors.buttonInactive)
                     }
                     
                     if let image = viewModel.image {
@@ -79,36 +95,25 @@ struct VariantPage: View {
                             .cornerRadius(12)
                     }
                     
-                    VStack {
-                        Text(viewModel.data.title)
-                            .font(.title)
-                        Text(viewModel.data.translation.title)
-                            .font(.title2)
-                        
-                    }
-                    
                     Spacer()
                     
-                    if variantButtonIsActive {
-                        VStack (spacing: 12) {
-                            ForEach(viewModel.shuffledVariants, id: \.self) { variant in
-                                Button {
-                                    let isCorrect = viewModel.isCorrectAnswer(variant)
-                                    if isCorrect {
-                                        SoundManager.instance.playSound(sound: .success)
-                                        viewModel.router.showModal(transition: .move(edge: .bottom), animation: .easeInOut, alignment: .bottom) {
-                                            CorrectView(router: viewModel.router, modulePagesViewModel: modulePagesViewModel)
-                                        }
-                                    } else {
-                                        SoundManager.instance.playSound(sound: .sad)
-                                        viewModel.router.showModal(transition: .move(edge: .bottom), animation: .easeInOut, alignment: .bottom) {
-                                            WrongView(router: viewModel.router, modulePagesViewModel: modulePagesViewModel)
-                                        }
+                    VStack (spacing: 12) {
+                        ForEach(viewModel.shuffledVariants, id: \.self) { variant in
+                            Button {
+                                let isCorrect = viewModel.isCorrectAnswer(variant)
+                                if isCorrect {
+                                    SoundManager.instance.playSound(sound: .success)
+                                    viewModel.router.showModal(transition: .move(edge: .bottom), animation: .easeInOut, alignment: .bottom) {
+                                        CorrectView(router: viewModel.router, modulePagesViewModel: modulePagesViewModel)
                                     }
-                                    variantButtonIsActive = false
-                                } label: {
-                                    ButtonView(buttonType: .custom, buttonText: variant)
+                                } else {
+                                    SoundManager.instance.playSound(sound: .sad)
+                                    viewModel.router.showModal(transition: .move(edge: .bottom), animation: .easeInOut, alignment: .bottom) {
+                                        WrongView(router: viewModel.router, modulePagesViewModel: modulePagesViewModel)
+                                    }
                                 }
+                            } label: {
+                                ButtonView(buttonType: .custom, buttonText: variant)
                             }
                         }
                     }

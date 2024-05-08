@@ -113,10 +113,22 @@ struct Matching: View {
                     
                     Spacer()
                     
-                    Button {
-                        modulePagesViewModel.getPages()
-                    } label: {
-                        ButtonView(buttonType: .continue)
+                    if viewModel.contuneButtonIsActive {
+                        Button {
+                            modulePagesViewModel.getPages()
+                        } label: {
+                            ButtonView(buttonType: .continue)
+                        }
+                    } else {
+                        Button {
+                            
+                        } label: {
+                            Text("vfavfadvfadbva")
+                                .font(.system(size: 18, weight: .regular))
+                                .foregroundStyle(Color.clear)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                        }
                     }
                     
                 }

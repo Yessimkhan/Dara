@@ -48,26 +48,55 @@ struct TextPage: View {
                         Text("\(modulePagesViewModel.currentTask-1)/\(modulePagesViewModel.allTasks)")
                     }
                     
-                    HStack() {
-                        Image(systemName: "speaker.wave.2")
-                            .resizable()
-                            .frame( width: 25, height: 20)
-                            .padding(.trailing, 24)
-                            .onTapGesture {
-                                SoundManager.instance.playAudio(audioData: viewModel.audioData)
-                            }
+                    HStack(spacing: 16) {
+                        if let audio = viewModel.audioData {
+                            Image(systemName: "speaker.wave.2")
+                                .resizable()
+                                .frame( width: 25, height: 20)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(lineWidth: 1)
+                                        .foregroundColor(Colors.black)
+                                )
+                                .onTapGesture {
+                                    SoundManager.instance.playAudio(audioData: viewModel.audioData)
+                                }
+                        }
                         
                         VStack(alignment: .leading) {
                             Text("Тыңдаңыз және қайталаңыз.")
+                                .font(.system(size: 14, weight: .regular))
                             if modulePagesViewModel.acceptLanguage == "en" {
                                 Text("Listen and repeat.")
-                                    .font(.callout)
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundStyle(Colors.buttonInactive)
                             } else {
                                 Text("Прослушайте и повторите.")
-                                    .font(.callout)
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundStyle(Colors.buttonInactive)
                             }
                         }
+                        
+                        Spacer()
                     }
+                    
+                    VStack {
+                        Text(viewModel.data.title)
+                            .font(.system(size: 14, weight: .regular))
+                        Text(viewModel.data.translation.title)
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(Colors.buttonInactive)
+                        
+                    }
+                    .padding(.horizontal, 40)
+                    .padding(.vertical, 10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 1)
+                            .foregroundColor(Colors.brandPrimary)
+                    )
                     
                     if let image = viewModel.image {
                         image
@@ -76,13 +105,6 @@ struct TextPage: View {
                             .cornerRadius(12)
                     }
                     
-                    VStack {
-                        Text(viewModel.data.title)
-                            .font(.title)
-                        Text(viewModel.data.translation.title)
-                            .font(.title2)
-                        
-                    }
                     Spacer()
                     
                     Button {

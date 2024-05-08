@@ -34,9 +34,9 @@ final class VariantViewModel: ObservableObject {
             }
         }
         
-        if let audio = data.audio {
-            if audio != "" {
-                HomeRepository().downloadAudio(from:  audio) { data in
+        if let audioData = data.audio {
+            if audioData != "" {
+                HomeRepository().downloadAudio(from: audioData) { data in
                     self.audioData = data
                 }
             }

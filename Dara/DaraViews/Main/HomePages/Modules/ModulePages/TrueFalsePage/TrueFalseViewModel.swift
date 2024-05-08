@@ -25,12 +25,20 @@ final class TrueFalseViewModel: ObservableObject {
         self.shuffledVariants = data.variants?.shuffled() ?? []
         print(shuffledVariants)
         
-        if let imageData = data.image, imageData != "" {
+        if let imageData = data.image {
             if imageData != "" {
                 isLoading = true
                 HomeRepository().downloadImage(from: imageData) { image in
                     self.isLoading = false
                     self.image = image
+                }
+            }
+        }
+        
+        if let audioData = data.audio {
+            if audioData != "" {
+                HomeRepository().downloadAudio(from: audioData) { data in
+                    self.audioData = data
                 }
             }
         }

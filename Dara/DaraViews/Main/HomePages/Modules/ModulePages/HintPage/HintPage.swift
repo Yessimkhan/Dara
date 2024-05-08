@@ -49,7 +49,8 @@ struct HintPage: View {
                     }
                 }
             }
-            .padding(24)
+            .padding(.bottom, 24)
+            .padding(.horizontal, 24)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {

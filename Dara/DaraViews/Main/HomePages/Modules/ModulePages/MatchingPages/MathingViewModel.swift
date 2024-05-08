@@ -35,6 +35,7 @@ final class MathingViewModel: ObservableObject {
     @Published var isCorrect13: Bool? = nil
     @Published var selectedQ: Int? = nil
     @Published var selectedA: Int? = nil
+    @Published var contuneButtonIsActive: Bool = false
     
     init(router: AnyRouter, data: [Content]) {
         self.router = router
@@ -121,6 +122,16 @@ final class MathingViewModel: ObservableObject {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.isCorrect3 = nil
                     }
+                }
+            }
+            
+            if (isCorrect0 == true && isCorrect1 == true && isCorrect10 == true && isCorrect11 == true) {
+                if data.count == 3 {
+                    if (isCorrect2 == true && isCorrect12 == true) {
+                        self.contuneButtonIsActive = true
+                    }
+                } else {
+                    self.contuneButtonIsActive = true
                 }
             }
             self.selectedA = nil

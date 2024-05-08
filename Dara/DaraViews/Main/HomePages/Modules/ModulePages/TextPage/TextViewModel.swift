@@ -21,8 +21,8 @@ final class TextViewModel: ObservableObject {
         self.data = data
         
         if let imageData = data.image {
-            isLoading = true
             if imageData != "" {
+                isLoading = true
                 HomeRepository().downloadImage(from: imageData) { image in
                     self.isLoading = false
                     self.image = image
@@ -30,9 +30,12 @@ final class TextViewModel: ObservableObject {
             }
         }
         
-        guard let audio = data.audio else {return}
-        HomeRepository().downloadAudio(from: audio) { data in
-            self.audioData = data
+        if let audioData = data.audio {
+            if audioData != "" {
+                HomeRepository().downloadAudio(from: audioData) { data in
+                    self.audioData = data
+                }
+            }
         }
     }
 }
