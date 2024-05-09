@@ -93,7 +93,8 @@ struct VariantPage: View {
                     } else if let image = viewModel.image {
                         image
                             .resizable()
-                            .frame(maxHeight: 200)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 200)
                             .cornerRadius(12)
                     }
                     
@@ -105,6 +106,7 @@ struct VariantPage: View {
                                 let isCorrect = viewModel.isCorrectAnswer(variant)
                                 if isCorrect {
                                     SoundManager.instance.playSound(sound: .success)
+                                    modulePagesViewModel.score += 1
                                     viewModel.router.showModal(transition: .move(edge: .bottom), animation: .easeInOut, alignment: .bottom) {
                                         CorrectView(router: viewModel.router, modulePagesViewModel: modulePagesViewModel)
                                     }

@@ -16,6 +16,7 @@ final class ModulePagesViewModel: ObservableObject {
     let allTasks: Int
     var currentPage: Int
     var currentTask: Int
+    var score: Int = 0
     let router: AnyRouter
     let homeRepository = HomeRepository()
     @Published var isLoading: Bool = false
@@ -34,6 +35,12 @@ final class ModulePagesViewModel: ObservableObject {
     
     func getPages() {
         guard currentPage <= allPages else {
+            let scoreInPercent: Int = Int((Double(score) / Double(allTasks)) * 100)
+            if moduleId == 4 {
+                homeRepository.putScore(topicID: "\(lessonId)", score: scoreInPercent) { result in
+                    print(result)
+                }
+            }
             print("Finish")
             router.dismissScreenStack()
             return
@@ -76,6 +83,9 @@ final class ModulePagesViewModel: ObservableObject {
         case "matchword":
             print("matchword")
             handleMatching(pageResponse.content, title: "Сәйкестендіру")
+        case "dialog":
+            print("dialog")
+            handleDialog(pageResponse.content, title: "Диалог")
         default:
             print(pageResponse.page.pageType)
             print("Unknown page type")
@@ -132,6 +142,15 @@ final class ModulePagesViewModel: ObservableObject {
             router.showScreen(.push) { router in
                 Matching(viewModel: MathingViewModel(router: router, data: contents), modulePagesViewModel: self)
                     .navigationBarTitle("\(contents[0].translation.title)", displayMode: .inline)
+            }
+        }
+    }
+    
+    func handleDialog(_ contents: [Content], title: String) {
+        if contents.count != 0 {
+            router.showScreen(.push) { router in
+                DialogPage(viewModel: DialogViewModel(router: router, data: contents), modulePagesViewModel: self)
+                    .navigationBarTitle(title, displayMode: .inline)
             }
         }
     }

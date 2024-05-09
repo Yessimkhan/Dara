@@ -19,6 +19,7 @@ final class SignInViewModel: ObservableObject {
     @AppStorage("isAuthorized") var isAuthorized: Bool = false
     @AppStorage("accessToken") var accessToken: String?
     @AppStorage("acceptLanguage") var acceptLanguage: String?
+    @AppStorage("userId") var userId: String?
     
     init(router: AnyRouter) {
         self.router = router
@@ -51,6 +52,7 @@ final class SignInViewModel: ObservableObject {
                     }
                     self?.accessToken = response.accessToken
                     self?.acceptLanguage = "en"
+                    self?.userId = response.user.id
                     print("Login successful. Access Token: \(String(describing: self?.accessToken))")
                     print("Accept Language: \(String(describing: self?.acceptLanguage))")
                 case .failure(let error):

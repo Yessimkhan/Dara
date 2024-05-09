@@ -11,7 +11,7 @@ import SwiftfulRouting
 struct AlphabeetPage: View {
     let router: AnyRouter
     
-    let alphabetArray: [Character] = Array("abcdefghijklmnopqrstuvwxyz")
+    let alphabetArray: [Character] = Array("аәбвгғдежзийкқлмнңоөпрстуұүфхһцчшщъыіьэюя")
     
     var body: some View {
         ScrollView (showsIndicators: false){

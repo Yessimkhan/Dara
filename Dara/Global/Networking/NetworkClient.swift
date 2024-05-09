@@ -34,6 +34,11 @@ public final class NetworkClient {
         request(endpoint, method: .post, parameters: parameters, completion: completion)
     }
     
+    /// Sends a POST request to the specified endpoint.
+    public func put(endpoint: String, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, completion: @escaping (Result<Data, AFError>) -> Void) {
+        request(endpoint, method: .put, parameters: parameters, headers: headers, completion: completion)
+    }
+    
     /// Sends a GET request to the specified endpoint.
     public func get(endpoint: String, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, completion: @escaping (Result<Data, AFError>) -> Void) {
         request(endpoint, method: .get, parameters: parameters, headers: headers, completion: completion)
@@ -60,7 +65,7 @@ public final class NetworkClient {
 
     /// A private method to centralize the request logic with headers.
     private func request(_ endpoint: String, method: HTTPMethod, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, completion: @escaping (Result<Data, AFError>) -> Void) {
-        var url = baseURL + endpoint
+        let url = baseURL + endpoint
         session.request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseData { response in
             switch response.result {
             case .success(let data):

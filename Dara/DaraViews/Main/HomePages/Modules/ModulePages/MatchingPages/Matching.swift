@@ -115,6 +115,7 @@ struct Matching: View {
                     
                     if viewModel.contuneButtonIsActive {
                         Button {
+                            modulePagesViewModel.score += 1
                             modulePagesViewModel.getPages()
                         } label: {
                             ButtonView(buttonType: .continue)

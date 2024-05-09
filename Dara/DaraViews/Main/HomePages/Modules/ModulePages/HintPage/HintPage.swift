@@ -54,7 +54,7 @@ struct HintPage: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        modulePagesViewModel.router.dismissScreenStack()
+                        modulePagesViewModel.router.dismissModal(id: "")
                     } label: {
                         Image(systemName: "xmark")
                     }

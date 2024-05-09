@@ -45,6 +45,7 @@
 		5A9BD2A82BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD2A72BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift */; };
 		5AAF45CB2BE95E390057A3A4 /* sad.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5AAF45CA2BE95E390057A3A4 /* sad.mp3 */; };
 		5AAF45CE2BE975F00057A3A4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5AAF45CD2BE975F00057A3A4 /* Alamofire */; };
+		5AAF45D62BEBC60D0057A3A4 /* TestProgressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF45D52BEBC60D0057A3A4 /* TestProgressResponse.swift */; };
 		5AB5EFE22BCBFBD8006783E6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EFE12BCBFBD8006783E6 /* HomeViewModel.swift */; };
 		5AB5EFE82BCC10F0006783E6 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EFE72BCC10F0006783E6 /* HomeRepository.swift */; };
 		5AB5EFEA2BCC1131006783E6 /* TopicsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EFE92BCC1131006783E6 /* TopicsResponse.swift */; };
@@ -59,6 +60,8 @@
 		5AC9891F2BCFEFA20007DA63 /* ModulePagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC9891E2BCFEFA10007DA63 /* ModulePagesViewModel.swift */; };
 		5AC989222BD0929B0007DA63 /* HintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC989212BD0929B0007DA63 /* HintViewModel.swift */; };
 		5AC9892A2BD0B5380007DA63 /* TextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC989292BD0B5380007DA63 /* TextViewModel.swift */; };
+		5ACBA6B22BECA02900E503DE /* DialogPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA6B12BECA02900E503DE /* DialogPage.swift */; };
+		5ACBA6B42BECA03200E503DE /* DialogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA6B32BECA03200E503DE /* DialogViewModel.swift */; };
 		5ACEF5EB2BD9641600BF9158 /* ModuleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEF5EA2BD9641600BF9158 /* ModuleResponse.swift */; };
 		5ACEF5ED2BD9678000BF9158 /* PageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEF5EC2BD9678000BF9158 /* PageResponse.swift */; };
 		5AD69A9B2BD12E43000570EA /* TrueFalsePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69A9A2BD12E43000570EA /* TrueFalsePage.swift */; };
@@ -129,6 +132,7 @@
 		5A9BD2A52BC254E90090CAD2 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		5A9BD2A72BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		5AAF45CA2BE95E390057A3A4 /* sad.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sad.mp3; sourceTree = "<group>"; };
+		5AAF45D52BEBC60D0057A3A4 /* TestProgressResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProgressResponse.swift; sourceTree = "<group>"; };
 		5AB5EFE12BCBFBD8006783E6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5AB5EFE52BCC0879006783E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AB5EFE72BCC10F0006783E6 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 		5AC9891E2BCFEFA10007DA63 /* ModulePagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulePagesViewModel.swift; sourceTree = "<group>"; };
 		5AC989212BD0929B0007DA63 /* HintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintViewModel.swift; sourceTree = "<group>"; };
 		5AC989292BD0B5380007DA63 /* TextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewModel.swift; sourceTree = "<group>"; };
+		5ACBA6B12BECA02900E503DE /* DialogPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPage.swift; sourceTree = "<group>"; };
+		5ACBA6B32BECA03200E503DE /* DialogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewModel.swift; sourceTree = "<group>"; };
 		5ACEF5EA2BD9641600BF9158 /* ModuleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleResponse.swift; sourceTree = "<group>"; };
 		5ACEF5EC2BD9678000BF9158 /* PageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageResponse.swift; sourceTree = "<group>"; };
 		5AD69A9A2BD12E43000570EA /* TrueFalsePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrueFalsePage.swift; sourceTree = "<group>"; };
@@ -417,6 +423,7 @@
 				5AB5EFE92BCC1131006783E6 /* TopicsResponse.swift */,
 				5ACEF5EA2BD9641600BF9158 /* ModuleResponse.swift */,
 				5ACEF5EC2BD9678000BF9158 /* PageResponse.swift */,
+				5AAF45D52BEBC60D0057A3A4 /* TestProgressResponse.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -476,6 +483,15 @@
 			path = TextPage;
 			sourceTree = "<group>";
 		};
+		5ACBA6B02BECA00F00E503DE /* Dialog Page */ = {
+			isa = PBXGroup;
+			children = (
+				5ACBA6B32BECA03200E503DE /* DialogViewModel.swift */,
+				5ACBA6B12BECA02900E503DE /* DialogPage.swift */,
+			);
+			path = "Dialog Page";
+			sourceTree = "<group>";
+		};
 		5AD69A9C2BD12E5A000570EA /* TrueFalsePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +510,7 @@
 				5AD69A9C2BD12E5A000570EA /* TrueFalsePage */,
 				5A7CA6CC2BD730A700B2FD84 /* VariantPage */,
 				5A9AB9FD2BDCF0FA005AB13B /* MatchingPages */,
+				5ACBA6B02BECA00F00E503DE /* Dialog Page */,
 			);
 			path = ModulePages;
 			sourceTree = "<group>";
@@ -614,6 +631,7 @@
 				5AFA182B2BC15DF400E13F9A /* ResetPasswordPage.swift in Sources */,
 				5A362E882BA5B17F00A73E0B /* AlphabeetPage.swift in Sources */,
 				5AE0F7462BC36A8900079110 /* LessonModuleView.swift in Sources */,
+				5ACBA6B42BECA03200E503DE /* DialogViewModel.swift in Sources */,
 				5A7A216A2B8DAD710097B610 /* ChoseLanguagePage.swift in Sources */,
 				5A6D73EA2BC238E6007DC0B1 /* RegistrationPageViewModel.swift in Sources */,
 				5A7CA6D02BD730D600B2FD84 /* VariantViewModel.swift in Sources */,
@@ -643,6 +661,7 @@
 				5ABE554A2BC2CDFD003C7ABA /* AuthRepository.swift in Sources */,
 				5AFA18222BC0062300E13F9A /* Images.swift in Sources */,
 				5A110ED02B8508500087AA9B /* LaunchScreen.swift in Sources */,
+				5AAF45D62BEBC60D0057A3A4 /* TestProgressResponse.swift in Sources */,
 				5A362E832BA5AFBD00A73E0B /* ProfilePage.swift in Sources */,
 				5AFA18292BC1584E00E13F9A /* ForgotPasswordPage.swift in Sources */,
 				5A78AD162BBC0A3100521A32 /* ChooseLevelPage.swift in Sources */,
@@ -659,6 +678,7 @@
 				5ABE55472BC2CA44003C7ABA /* LoginResponse.swift in Sources */,
 				5AD69A9E2BD12E7E000570EA /* TrueFalseViewModel.swift in Sources */,
 				5A9BD2A82BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift in Sources */,
+				5ACBA6B22BECA02900E503DE /* DialogPage.swift in Sources */,
 				5A9BD2982BC247090090CAD2 /* ChooseLanguageViewModel.swift in Sources */,
 				5AE1A5BF2BE25077007014C4 /* CorrectVeiw.swift in Sources */,
 				5ACEF5ED2BD9678000BF9158 /* PageResponse.swift in Sources */,

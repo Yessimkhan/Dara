@@ -105,6 +105,7 @@ struct TrueFalsePage: View {
                                 let isCorrect = viewModel.isCorrectAnswer(variant)
                                 if isCorrect {
                                     SoundManager.instance.playSound(sound: .success)
+                                    modulePagesViewModel.score += 1
                                     viewModel.router.showModal(transition: .move(edge: .bottom), animation: .easeInOut, alignment: .bottom) {
                                         CorrectView(router: viewModel.router, modulePagesViewModel: modulePagesViewModel)
                                     }

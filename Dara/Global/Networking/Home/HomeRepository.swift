@@ -13,6 +13,7 @@ import SVGKit
 final class HomeRepository {
     @AppStorage("accessToken") var accessToken: String?
     @AppStorage("acceptLanguage") var acceptLanguage: String?
+    @AppStorage("userId") var userId: String?
     private lazy var headers: HTTPHeaders = [
         "Accept-Language": acceptLanguage ?? "",
         "Authorization": "Bearer \(accessToken ?? "")"
@@ -100,7 +101,7 @@ final class HomeRepository {
                     return
                 }
                 switch mimeType {
-                case "image/jpeg":
+                case "image/jpeg", "image/png":  // Handling both JPEG and PNG
                     completion(Image(uiImage: UIImage(data: response.data) ?? UIImage()))
                 case "image/svg+xml":
                     let svgImage = SVGKImage(data: response.data)
@@ -112,6 +113,7 @@ final class HomeRepository {
                     }
                 default:
                     print("Unsupported MIME type: \(mimeType)")
+                    completion(nil)
                 }
                 
             case .failure(let error):
@@ -120,7 +122,6 @@ final class HomeRepository {
             }
         }
     }
-    
     
     func downloadAudio(from url: String, completion: @escaping (Data?) -> Void) {
         NetworkClient.shared.download(url, headers: headers) { response in
@@ -137,4 +138,30 @@ final class HomeRepository {
             }
         }
     }
+    
+    func putScore(topicID: String, score: Int, completion: @escaping (Result<TestProgressResponse, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "user_id": userId ?? "",
+            "topic_id": topicID,
+            "score": score
+        ]
+        
+        NetworkClient.shared.put(endpoint: "/module/test", parameters: parameters, headers: headers) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(TestProgressResponse.self, from: data)
+                    completion(.success(response))
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to make request: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
 }
