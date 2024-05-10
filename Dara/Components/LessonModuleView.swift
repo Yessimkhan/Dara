@@ -49,7 +49,7 @@ struct SelectedModel: View {
                 VStack {
                     
                     Text(moduleName)
-                        .font(.system(size: 32, weight: .bold))
+                        .font(.system(size: 30, weight: .bold))
                         .foregroundColor(Colors.white)
                         .frame(width: 200, alignment: .leading)
                         .padding(.leading, 24)
