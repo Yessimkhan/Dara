@@ -6,15 +6,18 @@
 //
 
 import SwiftUI
+import PhotosUI
 import SwiftfulRouting
 
 struct ProfilePage: View {
     
     let router: AnyRouter
     
-    @State var numberOfLesson: Int = 1
-    @State var nameInKazakh: String = ""
-    @State var nameInAnotherLanguage: String = ""
+    @State private var avatarImage: UIImage?
+    @State private var photosPickerItem: PhotosPickerItem?
+    @State private var numberOfLesson: Int = 1
+    @State private var nameInKazakh: String = ""
+    @State private var nameInAnotherLanguage: String = ""
     @AppStorage("isAuthorized") var isAuthorized: Bool = false
     
     var body: some View {
@@ -22,15 +25,13 @@ struct ProfilePage: View {
             ZStack {
                 VStack (spacing: 100){
                     VStack {
-                        Image(systemName: "person.fill")
-                            .foregroundColor(.white)
-                            .font(.system(size: 100))
-                            .padding()
-                            .background(Color.black.cornerRadius(70))
+                        Image(uiImage: avatarImage ?? UIImage(resource: .avatar))
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 128, height: 128)
+                            .clipShape(.circle)
                             .overlay (alignment: .bottomTrailing){
-                                Button {
-                                    // action for change image
-                                } label: {
+                                PhotosPicker(selection: $photosPickerItem, matching: .images) {
                                     Image(systemName: "pencil.circle.fill")
                                         .font(.system(size: 30))
                                         .foregroundStyle(Color.blue)
@@ -48,14 +49,39 @@ struct ProfilePage: View {
                         ExtractedView(imageName: "globe", text: "Language")
                         ExtractedView(imageName: "arrow.left.square", text: "Logout")
                             .onTapGesture {
-                                DispatchQueue.main.async {
-                                    withAnimation {
-                                        self.isAuthorized = false
+                                router.showAlert(.alert, title: "Are you sure you want to logout?") {
+                                    Button {
+                                        DispatchQueue.main.async {
+                                            withAnimation {
+                                                self.isAuthorized = false
+                                            }
+                                        }
+                                    } label: {
+                                        Text("Logout")
                                     }
+                                    
+                                    Button {
+                                        
+                                    } label: {
+                                        Text("Cancel")
+                                    }
+
                                 }
                             }
                     }
                     .padding(.leading)
+                    .onChange(of: photosPickerItem) { _, _ in
+                        Task {
+                            if let photosPickerItem,
+                               let data = try? await photosPickerItem.loadTransferable(type: Data.self) {
+                                if let image = UIImage(data: data) {
+                                    avatarImage = image
+                                }
+                            }
+                            
+                            photosPickerItem = nil
+                        }
+                    }
                     
                     Spacer()
                     

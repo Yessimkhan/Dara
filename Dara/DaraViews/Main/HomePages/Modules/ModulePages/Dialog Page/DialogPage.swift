@@ -45,7 +45,7 @@ struct DialogPage: View {
                         
                         Text("\(modulePagesViewModel.currentTask-1)/\(modulePagesViewModel.allTasks)")
                     }
-                    ScrollView() {
+                    ScrollView(showsIndicators: false) {
                         VStack (alignment: .leading) {
                             ForEach(viewModel.audioData.indices, id: \.self) { index in
                                 if let data = viewModel.audioData[index] {
@@ -65,11 +65,11 @@ struct DialogPage: View {
                                             }
                                         
                                         VStack(alignment: .leading) {
-                                            Text(viewModel.data[index].title)
+                                            Text(viewModel.data[index].title.replacingOccurrences(of: "\\n", with: "\n"))
                                                 .font(.system(size: 14, weight: .regular))
-                                            Text(viewModel.data[index].translation.title)
-                                                .font(.system(size: 14, weight: .regular))
-                                                .foregroundStyle(Colors.buttonInactive)
+//                                            Text(viewModel.data[index].translation.title.replacingOccurrences(of: "\\n", with: "\n"))
+//                                                .font(.system(size: 14, weight: .regular))
+//                                                .foregroundStyle(Colors.buttonInactive)
                                         }
                                         .padding(.horizontal, 40)
                                         .padding(.vertical, 10)
@@ -79,17 +79,21 @@ struct DialogPage: View {
                                                 .foregroundColor(Colors.brandPrimary)
                                         )
                                     }
+                                    Spacer()
                                 }
                             }
                         }
+                        .padding()
                     }
-                    
-                    Spacer()
                     
                     Button {
                         modulePagesViewModel.getPages()
                     } label: {
-                        ButtonView(buttonType: .continue)
+                        if modulePagesViewModel.currentPage >= modulePagesViewModel.allPages {
+                            ButtonView(buttonType: .finish)
+                        } else {
+                            ButtonView(buttonType: .continue)
+                        }
                     }
                     
                 }

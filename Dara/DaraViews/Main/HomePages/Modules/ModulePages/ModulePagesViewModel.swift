@@ -35,7 +35,7 @@ final class ModulePagesViewModel: ObservableObject {
     
     func getPages() {
         guard currentPage <= allPages else {
-            let scoreInPercent: Int = Int((Double(score) / Double(allTasks)) * 100)
+            let scoreInPercent: Int = score == 0 ? 0 : Int((Double(score) / Double(allTasks)) * 100)
             if moduleId == 4 {
                 homeRepository.putScore(topicID: "\(lessonId)", score: scoreInPercent) { result in
                     print(result)
@@ -70,16 +70,16 @@ final class ModulePagesViewModel: ObservableObject {
         case "hint":
             print("Hint")
             currentTask -= 1
-            handleHint(pageResponse.content)
+            handleHint(pageResponse.content, title: "Назар аударыңыз")
         case "text":
             print("text")
-            handleText(pageResponse.content)
+            handleText(pageResponse.content, title: "Текст")
         case "tf":
             print("tf")
-            handleTrueFalse(pageResponse.content)
+            handleTrueFalse(pageResponse.content, title: "Тест")
         case "variant":
             print("variant")
-            handleVariant(pageResponse.content)
+            handleVariant(pageResponse.content, title: "Тест")
         case "matchword":
             print("matchword")
             handleMatching(pageResponse.content, title: "Сәйкестендіру")
@@ -93,44 +93,44 @@ final class ModulePagesViewModel: ObservableObject {
         }
     }
     
-    func handleHint(_ contents: [Content]) {
+    func handleHint(_ contents: [Content], title: String) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
                 HintPage(viewModel: HintViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
-                    .navigationBarTitle("\(contents[0].translation.title)", displayMode: .inline)
+                    .navigationBarTitle(title, displayMode: .inline)
             }
         } else {
             getPages()
         }
     }
     
-    func handleText(_ contents: [Content]) {
+    func handleText(_ contents: [Content], title: String) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
                 TextPage(viewModel: TextViewModel(data: contents[0]), modulePagesViewModel: self)
-                    .navigationBarTitle("\(contents[0].translation.title)", displayMode: .inline)
+                    .navigationBarTitle(title, displayMode: .inline)
             }
         } else {
             getPages()
         }
     }
     
-    func handleTrueFalse(_ contents: [Content]) {
+    func handleTrueFalse(_ contents: [Content], title: String) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
                 TrueFalsePage(viewModel: TrueFalseViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
-                    .navigationBarTitle("\(contents[0].translation.title)", displayMode: .inline)
+                    .navigationBarTitle(title, displayMode: .inline)
             }
         } else {
             getPages()
         }
     }
     
-    func handleVariant(_ contents: [Content]) {
+    func handleVariant(_ contents: [Content], title: String) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
                 VariantPage(viewModel: VariantViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
-                    .navigationBarTitle("\(contents[0].translation.title)", displayMode: .inline)
+                    .navigationBarTitle(title, displayMode: .inline)
             }
         } else {
             getPages()
@@ -141,7 +141,7 @@ final class ModulePagesViewModel: ObservableObject {
         if contents.count != 0 {
             router.showScreen(.push) { router in
                 Matching(viewModel: MathingViewModel(router: router, data: contents), modulePagesViewModel: self)
-                    .navigationBarTitle("\(contents[0].translation.title)", displayMode: .inline)
+                    .navigationBarTitle(title, displayMode: .inline)
             }
         }
     }

@@ -20,14 +20,16 @@ struct HomePage: View {
             ScrollView (showsIndicators: false) {
                 VStack (spacing: 10){
                     ForEach(viewModel.lessonsArray) { lesson in
-                        LessonView(lessonDate: lesson)
-                            .onTapGesture {
-                                viewModel.router.showScreen(.push) { router in
-                                    LessonModulesPage(viewModel: LessonModuleViewModel(router: router, lessonId: lesson.topicsResponseID))
-                                        .navigationBarTitle("Modules", displayMode: .inline)
-                                        .toolbar(.hidden, for: .tabBar)
+                        if lesson.topicsResponseID <= 10 {
+                            LessonView(lessonDate: lesson)
+                                .onTapGesture {
+                                    viewModel.router.showScreen(.push) { router in
+                                        LessonModulesPage(viewModel: LessonModuleViewModel(router: router, lessonId: lesson.topicsResponseID))
+                                            .navigationBarTitle(lesson.title, displayMode: .inline)
+                                            .toolbar(.hidden, for: .tabBar)
+                                    }
                                 }
-                            }
+                        }
                     }
                 }
                 .padding(.horizontal, 24)

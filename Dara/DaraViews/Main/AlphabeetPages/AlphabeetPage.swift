@@ -15,31 +15,41 @@ struct AlphabeetPage: View {
     
     var body: some View {
         ScrollView (showsIndicators: false){
-            VStack {
+            VStack (spacing: 16){
                 ForEach(alphabetArray, id: \.self) { letter in
                     HStack (spacing: 60){
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 25.0)
-                                .fill(Colors.brandPrimary)
-                                .frame(maxWidth: 200)
-                                .frame(height: 165)
-                            HStack () {
-                                Text(String(letter).uppercased())
-                                    .font(.system(size: 64))
-                                    .padding()
-                                Text(String(letter))
-                                    .font(.system(size: 64))
-                                    .padding()
-                            }
-                        }
                         
                         Image(systemName: "speaker.wave.2")
                             .resizable()
-                            .frame( width: 60, height: 48)
-                            .padding(.trailing, 24)
+                            .frame( width: 40, height: 32)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(lineWidth: 1)
+                                    .foregroundColor(Colors.black)
+                            )
+                        
+                        ZStack {
+                            HStack (spacing: 16) {
+                                Text(String(letter).uppercased())
+                                    .font(.system(size: 56))
+                                Text(String(letter))
+                                    .font(.system(size: 56))
+                            }
+                            .frame(width: 150)
+                            .padding(.horizontal, 40)
+                            .padding(.vertical, 5)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(lineWidth: 1)
+                                    .foregroundColor(Colors.brandPrimary)
+                            )
+                        }
                     }
                 }
             }
+            .padding()
         }
         .navigationTitle("Alphabeet")
     }

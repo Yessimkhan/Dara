@@ -85,9 +85,9 @@ struct TextPage: View {
                     VStack {
                         Text(viewModel.data.title)
                             .font(.system(size: 14, weight: .regular))
-                        Text(viewModel.data.translation.title)
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundStyle(Colors.buttonInactive)
+//                        Text(viewModel.data.translation.title)
+//                            .font(.system(size: 14, weight: .regular))
+//                            .foregroundStyle(Colors.buttonInactive)
                         
                     }
                     .padding(.horizontal, 40)
@@ -112,7 +112,11 @@ struct TextPage: View {
                     Button {
                         modulePagesViewModel.getPages()
                     } label: {
-                        ButtonView(buttonType: .continue)
+                        if modulePagesViewModel.currentPage >= modulePagesViewModel.allPages {
+                            ButtonView(buttonType: .finish)
+                        } else {
+                            ButtonView(buttonType: .continue)
+                        }
                     }
                     
                 }

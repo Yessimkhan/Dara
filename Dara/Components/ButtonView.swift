@@ -10,6 +10,7 @@ import SwiftUI
 enum ButtonType {
     case next
     case `continue`
+    case finish
     case signIn
     case signUp
     case signOut
@@ -25,6 +26,7 @@ enum ButtonType {
         switch self {
         case .next: "Next"
         case .continue: "Continue"
+        case .finish: "Finish"
         case .signIn: "Sign In"
         case .signUp: "Sign Up"
         case .signOut: "Sign Out"

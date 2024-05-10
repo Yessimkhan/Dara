@@ -19,7 +19,7 @@ struct LessonView: View {
                 .frame(height: 140)
             HStack(spacing: 35) {
                 VStack {
-                    Text("\(lessonDate.topicsResponseID) - lesson")
+                    Text("\(lessonDate.topicsResponseID - 1) - lesson")
                         .foregroundStyle(Colors.white)
                         .font(.system(size: 14))
                         .frame(maxWidth: .infinity, alignment: .leading)

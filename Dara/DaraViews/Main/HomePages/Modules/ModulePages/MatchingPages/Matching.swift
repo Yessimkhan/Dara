@@ -118,7 +118,11 @@ struct Matching: View {
                             modulePagesViewModel.score += 1
                             modulePagesViewModel.getPages()
                         } label: {
-                            ButtonView(buttonType: .continue)
+                            if modulePagesViewModel.currentPage >= modulePagesViewModel.allPages {
+                                ButtonView(buttonType: .finish)
+                            } else {
+                                ButtonView(buttonType: .continue)
+                            }
                         }
                     } else {
                         Button {

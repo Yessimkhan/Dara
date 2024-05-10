@@ -45,7 +45,11 @@ struct HintPage: View {
                     Button {
                         modulePagesViewModel.getPages()
                     } label: {
-                        ButtonView(buttonType: .continue)
+                        if modulePagesViewModel.currentPage >= modulePagesViewModel.allPages {
+                            ButtonView(buttonType: .finish)
+                        } else {
+                            ButtonView(buttonType: .continue)
+                        }
                     }
                 }
             }
@@ -54,7 +58,7 @@ struct HintPage: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        modulePagesViewModel.router.dismissModal(id: "")
+                        modulePagesViewModel.router.dismissScreenStack()
                     } label: {
                         Image(systemName: "xmark")
                     }
