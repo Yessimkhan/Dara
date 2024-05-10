@@ -12,6 +12,7 @@ struct TopicsResponseElement: Codable, Identifiable {
     let id: String
     let topicsResponseID, levelID: Int
     let title: String
+    let image: String
     let isOpened: Bool
     let translation: Translation
 
@@ -19,7 +20,7 @@ struct TopicsResponseElement: Codable, Identifiable {
         case id = "_id"
         case topicsResponseID = "id"
         case levelID = "level_id"
-        case title, isOpened, translation
+        case title, isOpened, translation, image
     }
 }
 

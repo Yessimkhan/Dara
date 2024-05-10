@@ -10,6 +10,7 @@ import SwiftUI
 struct LessonView: View {
     
     let lessonDate: TopicsResponseElement
+    let image: Image
     
     var body: some View {
         ZStack (alignment: .leading){
@@ -34,9 +35,11 @@ struct LessonView: View {
                 }
                 .frame(width: 160)
                 .padding(.leading, 24)
-                RoundedRectangle(cornerRadius: 12.0)
-                    .fill(Colors.white)
+                
+                image
+                    .resizable()
                     .frame(width: 110, height: 115)
+                    .cornerRadius(12)
             }
         }
     }

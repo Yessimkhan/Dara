@@ -13,8 +13,10 @@ import SwiftUI
 final class HomeViewModel: ObservableObject {
     let router: AnyRouter
     @Published var lessonsArray: TopicsResponse = []
+    @Published var imagesArray: [Image] = []
     @Published var isLoading: Bool = false
     @AppStorage("user_id") var userId: String?
+    private var downloadCount = 0
     
     init(router: AnyRouter) {
         self.router = router
@@ -30,6 +32,22 @@ final class HomeViewModel: ObservableObject {
                 switch result {
                 case .success(let response):
                     self?.lessonsArray = response
+                    self?.imagesArray = Array(repeating: Image(uiImage: UIImage()), count: response.count)
+                    var downloadImages = self?.imagesArray
+                    for (index, url) in response.enumerated() {
+                        print(url.image)
+                        HomeRepository().downloadImage(from: url.image) { [weak self] image in
+                            guard let self = self else { return }
+                            DispatchQueue.main.async {
+                                downloadImages?[index] = image ?? Image(systemName: "star.fill")
+                                self.downloadCount += 1
+                                if self.downloadCount == response.count {
+                                    self.isLoading = false
+                                    self.imagesArray = downloadImages ?? []
+                                }
+                            }
+                        }
+                    }
                     print("Lessons get success")
                 case .failure(let error):
                     print("Get lessons failed: \(error.localizedDescription)")

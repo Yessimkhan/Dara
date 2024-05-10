@@ -100,6 +100,7 @@ final class HomeRepository {
                     print("Failed to get data or MIME type.")
                     return
                 }
+                print(String(data: response.data , encoding: .utf8))
                 switch mimeType {
                 case "image/jpeg", "image/png":  // Handling both JPEG and PNG
                     completion(Image(uiImage: UIImage(data: response.data) ?? UIImage()))
@@ -112,7 +113,7 @@ final class HomeRepository {
                         completion(nil)
                     }
                 default:
-                    print("Unsupported MIME type: \(mimeType)")
+                    print("Unsupported MIME uu type: \(mimeType)")
                     completion(nil)
                 }
                 
@@ -163,5 +164,30 @@ final class HomeRepository {
             }
         }
     }
+    
+//    func getAlphabet(completion: @escaping (Result<PageResponse, Error>) -> Void) {
+//        let parameters: [String: Any] = [
+//            "page_id": pageID,
+//            "module_id": moduleID,
+//            "topic_id": topicID,
+//        ]
+//        
+//        NetworkClient.shared.get(endpoint: "/page", parameters: parameters, headers: headers) { result in
+//            switch result {
+//            case .success(let data):
+//                do {
+//                    let decoder = JSONDecoder()
+//                    let response = try decoder.decode(PageResponse.self, from: data)
+//                    completion(.success(response))
+//                } catch {
+//                    print("Failed to decode response: \(error)")
+//                    completion(.failure(error))
+//                }
+//            case .failure(let error):
+//                print("Failed to make request: \(error.localizedDescription)")
+//                completion(.failure(error))
+//            }
+//        }
+//    }
     
 }
