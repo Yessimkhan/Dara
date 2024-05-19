@@ -20,7 +20,7 @@ struct CorrectView: View {
                 Button {
                     modulePagesViewModel.getPages()
                 } label: {
-                    if modulePagesViewModel.currentPage >= modulePagesViewModel.allPages {
+                    if modulePagesViewModel.currentPage > modulePagesViewModel.allPages {
                         ButtonView(buttonType: .finish)
                     } else {
                         ButtonView(buttonType: .continue)
