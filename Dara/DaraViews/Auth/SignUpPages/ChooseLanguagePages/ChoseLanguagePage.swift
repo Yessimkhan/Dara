@@ -19,12 +19,14 @@ struct ChoseLanguagePage: View {
                 
                 HStack (spacing: 20){
                     Button {
+                        viewModel.language = "us"
                         viewModel.goCreateAccountPage()
                     } label: {
                         ButtonView(buttonType: .eng)
                     }
                     
                     Button {
+                        viewModel.language = "ru"
                         viewModel.goCreateAccountPage()
                     } label: {
                         ButtonView(buttonType: .rus)

@@ -86,6 +86,9 @@ final class ModulePagesViewModel: ObservableObject {
         case "dialog":
             print("dialog")
             handleDialog(pageResponse.content, title: "Диалог")
+        case "card":
+            print("card")
+            handleCard(pageResponse.content, title: "Карта")
         default:
             print(pageResponse.page.pageType)
             print("Unknown page type")
@@ -152,6 +155,17 @@ final class ModulePagesViewModel: ObservableObject {
                 DialogPage(viewModel: DialogViewModel(router: router, data: contents), modulePagesViewModel: self)
                     .navigationBarTitle(title, displayMode: .inline)
             }
+        }
+    }
+    
+    func handleCard(_ contents: [Content], title: String) {
+        if contents.count != 0 {
+            router.showScreen(.push) { router in
+                CardPage(viewModel: CardViewModel(data: contents[0]), modulePagesViewModel: self)
+                    .navigationBarTitle(title, displayMode: .inline)
+            }
+        } else {
+            getPages()
         }
     }
     

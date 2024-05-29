@@ -18,7 +18,7 @@ struct LessonView: View {
                 .fill(Colors.brandPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 140)
-            HStack(spacing: 35) {
+            HStack(spacing: 25) {
                 VStack {
                     Text("\(lessonDate.topicsResponseID - 1) - lesson")
                         .foregroundStyle(Colors.white)
@@ -38,8 +38,9 @@ struct LessonView: View {
                 
                 image
                     .resizable()
-                    .frame(width: 110, height: 115)
-                    .cornerRadius(12)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 115)
+                    .padding(.trailing)
             }
         }
     }

@@ -83,9 +83,9 @@ struct VariantPage: View {
                     VStack {
                         Text(viewModel.data.title.replacingOccurrences(of: "\\n", with: "\n"))
                             .font(.system(size: 14, weight: .regular))
-//                        Text(viewModel.data.translation.title.replacingOccurrences(of: "\\n", with: "\n"))
-//                            .font(.system(size: 14, weight: .regular))
-//                            .foregroundStyle(Colors.buttonInactive)
+                        Text(viewModel.data.translation.title.replacingOccurrences(of: "\\n", with: "\n"))
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(Colors.buttonInactive)
                     }
                     
                     if viewModel.isLoadingImage {

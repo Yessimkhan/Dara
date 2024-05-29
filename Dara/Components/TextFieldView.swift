@@ -27,6 +27,7 @@ struct TextFieldView: View {
             Text(placeholder)
             TextField("\(placeholder)...", text: $text)
                 .padding()
+                .frame(height: 56)
                 .background(Colors.textFieldBackground.cornerRadius(10))
                 .addBorder(isError ? Color.red : Color.clear, width: isError ? 1 : 0, cornerRadius: 10)
                 .onChange(of: text) {

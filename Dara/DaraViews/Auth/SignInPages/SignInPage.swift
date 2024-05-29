@@ -25,7 +25,10 @@ struct SignInPage: View {
                 VStack(spacing: 86) {
                     VStack(alignment: .leading, spacing: 18) {
                         TextFieldView(placeholder: "Email address", text: $viewModel.email, isError: $viewModel.isError)
+                            .submitLabel(.done)
+                            .keyboardType(.emailAddress)
                         PasswordTextFieldView(placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
+                            .submitLabel(.done)
                         if viewModel.isError {
                             Text("Email or Password is Incorrect")
                                 .foregroundStyle(Colors.wrongAnswer)
@@ -53,8 +56,8 @@ struct SignInPage: View {
                     }
                 }
             }
-            .blur(radius: viewModel.isLoading ? 3 : 0)
         }
+        .blur(radius: viewModel.isLoading ? 3 : 0)
         .padding(.horizontal, 24)
         .padding(.bottom, 42)
     }

@@ -10,50 +10,77 @@ import SwiftfulRouting
 
 struct ChooseYourPasswordPage: View {
     
-    @State var password: String = ""
-    @State var confirmPassword: String = ""
-    @State var isPasswordVisible: Bool = false
-    @State var isConfirmPasswordVisible: Bool = false
     @StateObject var viewModel: ChooseYourPasswordViewModel
     
     var body: some View {
-        VStack(spacing: 74) {
-            Spacer()
-            Text("Choose your password")
-                .font(.title)
-            VStack(spacing: 64){
-                VStack(spacing: 132) {
-                    VStack(spacing: 18) {
-                        PasswordTextFieldView(isPasswordVisible: isPasswordVisible, placeholder: "Password", text: $password, isError: $viewModel.isError)
-                        
-                        PasswordTextFieldView(isPasswordVisible: isConfirmPasswordVisible, placeholder: "Confirm password", text: $confirmPassword, isError: $viewModel.isError) 
-                    }
-                    
-                    Button {
-                        viewModel.goChooseLevelPage()
-                    } label: {
-                        ButtonView(buttonType: .signUp)
-                    }
-                }
+        ZStack {
+            VStack (spacing: 32) {
+                Spacer()
+                Text("Choose your password")
+                    .font(.title)
                 
-                VStack(spacing: 17){
-                    LoginWithGoogleAndFacebookView()
-                    Button {
-                        viewModel.goSignInPageView()
-                    } label: {
-                        SingleButtonView(buttonType: .signIn)
+                VStack(spacing: 64) {
+                    VStack(spacing: 32) {
+                        VStack(alignment: .leading, spacing: 16) {
+                            
+                            PasswordTextFieldView(isPasswordVisible: viewModel.isPasswordVisible, placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
+                                .onChange(of: viewModel.password) {
+                                    viewModel.verifyPassword()
+                                }
+                                .hidden()
+                            
+                            
+                            PasswordTextFieldView(isPasswordVisible: viewModel.isPasswordVisible, placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
+                                .onChange(of: viewModel.password) {
+                                    viewModel.verifyPassword()
+                                }
+                            
+                            PasswordTextFieldView(isPasswordVisible: viewModel.isConfirmPasswordVisible, placeholder: "Confirm password", text: $viewModel.confirmPassword, isError: $viewModel.isError)
+                                .onChange(of: viewModel.confirmPassword) {
+                                    viewModel.verifyPassword()
+                                }
+                            
+                            if let message = viewModel.errorMessage {
+                                Text(message)
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundStyle(Colors.wrongAnswer)
+                            } else {
+                                Text("space")
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundStyle(.clear)
+                            }
+                        }
+                        
+                        Button {
+                            viewModel.goChooseLevelPage()
+                        } label: {
+                            if !viewModel.verified {
+                                ButtonView(buttonType: .continue, disabled: true)
+                            } else {
+                                ButtonView(buttonType: .continue, disabled: false)
+                            }
+                        }
+                        .disabled(!viewModel.verified)
                     }
-
+                    VStack(spacing: 16){
+                        LoginWithGoogleAndFacebookView()
+                        Button {
+                            viewModel.goSignInPageView()
+                        } label: {
+                            SingleButtonView(buttonType: .signIn)
+                        }
+                    }
                 }
             }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 42)
         }
-        .padding(.horizontal, 24)
-        .padding(.bottom, 42)
+        .ignoresSafeArea()
     }
 }
 
 #Preview {
     RouterView { router in
-        ChooseYourPasswordPage(viewModel: ChooseYourPasswordViewModel(router: router))
+        ChooseYourPasswordPage(viewModel: ChooseYourPasswordViewModel(router: router, language: "", userName: "", userNumber: "", userEmail: ""))
     }
 }

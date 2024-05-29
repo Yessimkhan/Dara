@@ -35,7 +35,6 @@ final class HomeViewModel: ObservableObject {
                     self?.imagesArray = Array(repeating: Image(uiImage: UIImage()), count: response.count)
                     var downloadImages = self?.imagesArray
                     for (index, url) in response.enumerated() {
-                        print(url.image)
                         HomeRepository().downloadImage(from: url.image) { [weak self] image in
                             guard let self = self else { return }
                             DispatchQueue.main.async {

@@ -16,7 +16,7 @@ struct ChooseLevelPage: View {
         
         VStack {
             Spacer()
-            ChooseLevelView()
+            ChooseLevelView(selectedLevel: $viewModel.level)
             Button {
                 viewModel.goChooseTimePage()
             } label: {
@@ -38,10 +38,20 @@ struct ChooseLevelView: View {
         case C1 = "C1 - Advanced"
         case C2 = "C2 - Proficency"
         var id: LanguageLevel { self }
+        var levelValue: Int {
+            switch self {
+            case .A1: return 1
+            case .A2: return 2
+            case .B1: return 3
+            case .B2: return 4
+            case .C1: return 5
+            case .C2: return 6
+            }
+        }
     }
     
     
-    @State private var selectedLevel: LanguageLevel = .A1
+    @Binding var selectedLevel: ChooseLevelView.LanguageLevel
     
     
     var body: some View {
@@ -68,6 +78,6 @@ struct ChooseLevelView: View {
 
 #Preview {
     RouterView { router in
-        ChooseLevelPage(viewModel: ChooseLevelViewModel(router: router))
+        ChooseLevelPage(viewModel: ChooseLevelViewModel(router: router, language: "", userName: "", userNumber: "", userEmail: "", password: ""))
     }
 }

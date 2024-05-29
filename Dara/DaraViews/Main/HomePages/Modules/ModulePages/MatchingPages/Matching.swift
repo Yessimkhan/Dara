@@ -195,7 +195,7 @@ struct MatchCards: View {
                 Text(text)
                     .font(.system(size: 18))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.black)
+                    .foregroundColor(Colors.black)
                     .padding()
             }
             .onTapGesture {

@@ -85,9 +85,9 @@ struct TextPage: View {
                     VStack {
                         Text(viewModel.data.title)
                             .font(.system(size: 14, weight: .regular))
-//                        Text(viewModel.data.translation.title)
-//                            .font(.system(size: 14, weight: .regular))
-//                            .foregroundStyle(Colors.buttonInactive)
+                        Text(viewModel.data.translation.title)
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(Colors.buttonInactive)
                         
                     }
                     .padding(.horizontal, 40)

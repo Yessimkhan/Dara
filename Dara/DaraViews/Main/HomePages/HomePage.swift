@@ -20,16 +20,15 @@ struct HomePage: View {
             ScrollView (showsIndicators: false) {
                 VStack (spacing: 10){
                     ForEach(viewModel.lessonsArray) { lesson in
-                        if lesson.topicsResponseID <= 10 {
-                            LessonView(lessonDate: lesson, image: viewModel.imagesArray[lesson.topicsResponseID - 2])
-                                .onTapGesture {
-                                    viewModel.router.showScreen(.push) { router in
-                                        LessonModulesPage(viewModel: LessonModuleViewModel(router: router, lessonId: lesson.topicsResponseID))
-                                            .navigationBarTitle(lesson.title, displayMode: .inline)
-                                            .toolbar(.hidden, for: .tabBar)
-                                    }
+                        LessonView(lessonDate: lesson, image: viewModel.imagesArray[lesson.topicsResponseID - 2])
+                        
+                            .onTapGesture {
+                                viewModel.router.showScreen(.push) { router in
+                                    LessonModulesPage(viewModel: LessonModuleViewModel(router: router, lessonId: lesson.topicsResponseID))
+                                        .navigationBarTitle(lesson.title, displayMode: .inline)
+                                        .toolbar(.hidden, for: .tabBar)
                                 }
-                        }
+                            }
                     }
                 }
                 .padding(.horizontal, 24)

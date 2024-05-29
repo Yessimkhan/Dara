@@ -47,7 +47,6 @@ public final class NetworkClient {
     /// Sends a Download request to the specified endpoint.
     public func download(_ endpoint: String, headers: HTTPHeaders? = nil, completion: @escaping (Result<(data: Data, response: HTTPURLResponse), AFError>) -> Void) {
         let url = "\(baseURL)/\(endpoint)"
-        print("yesso \(url)")
 
         session.download(url, headers: headers).responseData { response in
             switch response.result {

@@ -42,7 +42,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="white"/>
                         <constraints>
                             <constraint firstItem="uQx-d0-57T" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4hw-R8-hmO"/>
                             <constraint firstItem="VI2-Sv-t0H" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="BM7-wY-kGw"/>
@@ -71,6 +71,9 @@
         <image name="topLineImage" width="390" height="130"/>
         <namedColor name="AccentColor">
             <color red="0.289000004529953" green="0.64099997282028198" blue="0.76899999380111694" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

@@ -10,17 +10,17 @@ import SwiftUI
 enum Colors {
     static let alphabet = Color(hex: "FF3131")
     static let alphabetConsonant = Color(hex: "004AAD")
-    static let brandPrimary = Color(hex: "00A6C8")
+    static let brandPrimary = Color("AccentColor")
     static let brandSecondary = Color(hex: "FFED40")
     static let brandTertiary = Color(hex: "65D0E3")
-    static let buttonInactive = Color(hex: "919399")
-    static let brandAdditional = Color(hex: "F7F8F3")
+    static let buttonInactive = Color("buttonInactive")
+    static let brandAdditional = Color("brandAdditional")
     static let correctAnswer = Color(hex: "5DEF46")
     static let wrongAnswer = Color(hex: "FE2C16")
-    static let white = Color(hex: "FFFFFF")
-    static let black = Color(hex: "000000")
-    static let textFieldBackground = Color(hex: "080E1E").opacity(0.05)
-    static let gradient = LinearGradient(colors: [white, brandPrimary], startPoint: .topLeading, endPoint: .bottomTrailing)
+    static let textFieldBackground = Color("textFieldBackground")
+    static let black = Color("black")
+    static let white = Color("white")
+    static let gradient = LinearGradient(colors: [Colors.white, brandPrimary], startPoint: .topLeading, endPoint: .bottomTrailing)
 }
 
 extension Color {

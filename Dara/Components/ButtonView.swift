@@ -47,11 +47,13 @@ struct ButtonView: View {
     let buttonType: ButtonType
     let withBackground: Bool
     var buttonText: String
+    @State var disabled: Bool
     
-    init(buttonType: ButtonType, withBackground: Bool = true, buttonText: String = "") {
+    init(buttonType: ButtonType, withBackground: Bool = true, buttonText: String = "", disabled: Bool = false) {
         self.buttonType = buttonType
         self.withBackground = withBackground
         self.buttonText = buttonText
+        self.disabled = disabled
     }
     
     var body: some View {
@@ -61,7 +63,7 @@ struct ButtonView: View {
                 .foregroundStyle(Colors.white)
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Colors.brandPrimary.cornerRadius(10))
+                .background(!disabled ? Colors.brandPrimary.cornerRadius(10) : Colors.buttonInactive.cornerRadius(10))
                 .lineLimit(nil)
         }
         else {

@@ -12,4 +12,6 @@ enum Images {
     static let eaglesImage = Image("eaglesImage")
     static let googleIcon = Image("googleIcon")
     static let facebookIcon = Image("facebookIcon")
+    static let whiteTop = Image("whiteTop")
+    static let blueTop = Image("blueTop")
 }

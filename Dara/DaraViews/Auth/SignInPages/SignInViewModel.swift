@@ -18,8 +18,9 @@ final class SignInViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @AppStorage("isAuthorized") var isAuthorized: Bool = false
     @AppStorage("accessToken") var accessToken: String?
-    @AppStorage("acceptLanguage") var acceptLanguage: String?
+    @AppStorage("userLanguage") var userLanguage: String?
     @AppStorage("userId") var userId: String?
+    @AppStorage("userEmail") var userEmail: String?
     
     init(router: AnyRouter) {
         self.router = router
@@ -51,10 +52,13 @@ final class SignInViewModel: ObservableObject {
                         self?.isAuthorized = true
                     }
                     self?.accessToken = response.accessToken
-                    self?.acceptLanguage = "en"
+                    self?.userLanguage = "en"
                     self?.userId = response.user.id
+                    self?.userEmail = response.user.email
                     print("Login successful. Access Token: \(String(describing: self?.accessToken))")
-                    print("Accept Language: \(String(describing: self?.acceptLanguage))")
+                    print("UserID: \(String(describing: self?.userId))")
+                    print("UserLanguage: \(String(describing: self?.userLanguage))")
+                    print("UserEmail: \(String(describing: self?.userEmail))")
                 case .failure(let error):
                     self?.isError = true
                     print("Login failed: \(error.localizedDescription)")

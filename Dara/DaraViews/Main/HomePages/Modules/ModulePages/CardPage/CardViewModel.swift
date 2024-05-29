@@ -1,29 +1,23 @@
 //
-//  VariantViewModel.swift
+//  CardViewModel.swift
 //  Dara
 //
-//  Created by Yessimkhan Zhumash on 23.04.2024.
+//  Created by Yessimkhan Zhumash on 27.05.2024.
 //
 
 import Foundation
 import SwiftUI
-import SwiftfulRouting
 
-final class VariantViewModel: ObservableObject {
+final class CardViewModel: ObservableObject {
     
-    let router: AnyRouter
     let data: Content
     @Published var isLoadingImage: Bool = false
     @Published var image: Image?
     @Published var audioData: Data?
     @AppStorage("user_id") var userId: String?
-    @Published var shuffledVariants: [String] = []
-    @Published var hideVariants: Bool = false
     
-    init(router: AnyRouter, data: Content) {
-        self.router = router
+    init(data: Content) {
         self.data = data
-        self.shuffledVariants = data.variants?.shuffled() ?? []
         
         if let imageData = data.image {
             if imageData != "" {
@@ -41,15 +35,6 @@ final class VariantViewModel: ObservableObject {
                     self.audioData = data
                 }
             }
-        }
-    }
-    
-    func isCorrectAnswer(_ answer: String) -> Bool {
-        if answer == data.variants?.first {
-            hideVariants = true
-            return true
-        } else {
-            return false
         }
     }
 }

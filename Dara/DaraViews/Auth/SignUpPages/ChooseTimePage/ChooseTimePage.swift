@@ -13,24 +13,29 @@ struct ChooseTimePage: View {
     @StateObject var viewModel: ChooseTimeViewModel
     
     var body: some View {
-        VStack {
-            Spacer()
-            ChooseTimeView()
-            Button {
-                viewModel.goMenuTabBar()
-            } label: {
-                ButtonView(buttonType: .next)
+        ZStack {
+            if viewModel.isLoading {
+                LoaderView()
+            }
+            VStack {
+                Spacer()
+                ChooseTimeView(selectedTime: $viewModel.time)
+                Button {
+                    viewModel.goMenuTabBar()
+                } label: {
+                    ButtonView(buttonType: .next)
+                }
             }
         }
+        .blur(radius: viewModel.isLoading ? 3 : 0)
         .padding(.horizontal, 24)
         .padding(.bottom, 42)
-        
     }
 }
 
 #Preview {
     RouterView { router in
-        ChooseTimePage(viewModel: ChooseTimeViewModel(router: router))
+        ChooseTimePage(viewModel: ChooseTimeViewModel(router: router, language: "", userName: "", userNumber: "", userEmail: "", password: "", level: .A1))
     }
 }
 
@@ -50,22 +55,22 @@ struct ChooseTimeView: View {
         var id: TimeLevel { self }
         
         var stringValue: String {
-            return "\(self.rawValue) minutes"
+            return "\(self.rawValue) - minutes"
         }
     }
     
-    @State private var selectedTime: TimeLevel = .five
+    @Binding var selectedTime: TimeLevel
     
     var body: some View {
         VStack (spacing: 20){
             
             Images.eaglesImage
             
-            Text("Choose your time")
+            Text("What’s your daily study goal in minutes?")
                 .font(.title)
                 .fontWeight(.semibold)
             
-            Picker("What’s your daily study goal in minutes?", selection: $selectedTime) {
+            Picker("", selection: $selectedTime) {
                 ForEach(TimeLevel.allCases) { category in
                     Text(category.stringValue).tag(category)
                 }

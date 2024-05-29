@@ -47,7 +47,7 @@ struct DialogPage: View {
                     }
                     ScrollView(showsIndicators: false) {
                         VStack (alignment: .leading) {
-                            ForEach(viewModel.audioData.indices, id: \.self) { index in
+                            ForEach(viewModel.data.indices, id: \.self) { index in
                                 if let data = viewModel.audioData[index] {
                                     HStack(alignment: .top, spacing: 16) {
                                         Image(systemName: "speaker.wave.2")
@@ -67,9 +67,9 @@ struct DialogPage: View {
                                         VStack(alignment: .leading) {
                                             Text(viewModel.data[index].title.replacingOccurrences(of: "\\n", with: "\n"))
                                                 .font(.system(size: 14, weight: .regular))
-//                                            Text(viewModel.data[index].translation.title.replacingOccurrences(of: "\\n", with: "\n"))
-//                                                .font(.system(size: 14, weight: .regular))
-//                                                .foregroundStyle(Colors.buttonInactive)
+                                            Text(viewModel.data[index].translation.title.replacingOccurrences(of: "\\n", with: "\n"))
+                                                .font(.system(size: 14, weight: .regular))
+                                                .foregroundStyle(Colors.buttonInactive)
                                         }
                                         .padding(.horizontal, 40)
                                         .padding(.vertical, 10)

@@ -100,7 +100,6 @@ final class HomeRepository {
                     print("Failed to get data or MIME type.")
                     return
                 }
-                print(String(data: response.data , encoding: .utf8))
                 switch mimeType {
                 case "image/jpeg", "image/png":  // Handling both JPEG and PNG
                     completion(Image(uiImage: UIImage(data: response.data) ?? UIImage()))

@@ -19,6 +19,7 @@ struct ProfilePage: View {
     @State private var nameInKazakh: String = ""
     @State private var nameInAnotherLanguage: String = ""
     @AppStorage("isAuthorized") var isAuthorized: Bool = false
+    @AppStorage("userEmail") var userEmail: String?
     
     var body: some View {
         RouterView{ router in
@@ -39,7 +40,7 @@ struct ProfilePage: View {
                                 }
                                 
                             }
-                        Text("Yessimkhan")
+                        Text(userEmail ?? "")
                             .font(.system(size: 29).bold())
                     }
                     
@@ -65,11 +66,11 @@ struct ProfilePage: View {
                                     } label: {
                                         Text("Cancel")
                                     }
-
+                                    
                                 }
                             }
                     }
-                    .padding(.leading)
+                    .padding(24)
                     .onChange(of: photosPickerItem) { _, _ in
                         Task {
                             if let photosPickerItem,
@@ -104,6 +105,13 @@ struct ExtractedView: View {
     
     let imageName: String
     let text: String
+    @State var isSelected: Bool = false {
+        didSet {
+            print("hello")
+            angle = Angle(degrees: isSelected ? 0 : 180)
+        }
+    }
+    @State var angle: Angle = Angle(degrees: 180)
     
     var body: some View {
         HStack {
@@ -112,6 +120,14 @@ struct ExtractedView: View {
             Text(text)
                 .font(.system(size: 20))
             Spacer()
+            Image(systemName: "chevron.up")
+                .rotationEffect(angle)
+                .onTapGesture {
+                    withAnimation() {
+                        isSelected.toggle()
+                    }
+                }
         }
     }
 }
+
