@@ -12,10 +12,10 @@ import SVGKit
 
 final class HomeRepository {
     @AppStorage("accessToken") var accessToken: String?
-    @AppStorage("acceptLanguage") var acceptLanguage: String?
+    @AppStorage("userLanguage") var userLanguage: String?
     @AppStorage("userId") var userId: String?
     private lazy var headers: HTTPHeaders = [
-        "Accept-Language": acceptLanguage ?? "",
+        "Accept-Language": userLanguage ?? "",
         "Authorization": "Bearer \(accessToken ?? "")"
     ]
     
@@ -27,6 +27,7 @@ final class HomeRepository {
         NetworkClient.shared.get(endpoint: "/topic/my/", parameters: parameters, headers: headers) { result in
             switch result {
             case .success(let data):
+                print(String(data: data, encoding: .utf8))
                 do {
                     let decoder = JSONDecoder()
                     let response = try decoder.decode(TopicsResponse.self, from: data)
@@ -53,9 +54,9 @@ final class HomeRepository {
             case .success(let data):
                 do {
                     let decoder = JSONDecoder()
-                    let response = try decoder.decode(ModuleResponse.self, from: data)
-                    let sortedData = response.sorted(by: { $0.moduleResponseID < $1.moduleResponseID })
-                    completion(.success(sortedData))
+                    var response = try decoder.decode(ModuleResponse.self, from: data)
+                    response = response.sorted(by: { $0.moduleResponseID < $1.moduleResponseID })
+                    completion(.success(response))
                 } catch {
                     print("Failed to decode response: \(error)")
                     completion(.failure(error))
@@ -164,29 +165,29 @@ final class HomeRepository {
         }
     }
     
-//    func getAlphabet(completion: @escaping (Result<PageResponse, Error>) -> Void) {
-//        let parameters: [String: Any] = [
-//            "page_id": pageID,
-//            "module_id": moduleID,
-//            "topic_id": topicID,
-//        ]
-//        
-//        NetworkClient.shared.get(endpoint: "/page", parameters: parameters, headers: headers) { result in
-//            switch result {
-//            case .success(let data):
-//                do {
-//                    let decoder = JSONDecoder()
-//                    let response = try decoder.decode(PageResponse.self, from: data)
-//                    completion(.success(response))
-//                } catch {
-//                    print("Failed to decode response: \(error)")
-//                    completion(.failure(error))
-//                }
-//            case .failure(let error):
-//                print("Failed to make request: \(error.localizedDescription)")
-//                completion(.failure(error))
-//            }
-//        }
-//    }
+    //    func getAlphabet(completion: @escaping (Result<PageResponse, Error>) -> Void) {
+    //        let parameters: [String: Any] = [
+    //            "page_id": pageID,
+    //            "module_id": moduleID,
+    //            "topic_id": topicID,
+    //        ]
+    //
+    //        NetworkClient.shared.get(endpoint: "/page", parameters: parameters, headers: headers) { result in
+    //            switch result {
+    //            case .success(let data):
+    //                do {
+    //                    let decoder = JSONDecoder()
+    //                    let response = try decoder.decode(PageResponse.self, from: data)
+    //                    completion(.success(response))
+    //                } catch {
+    //                    print("Failed to decode response: \(error)")
+    //                    completion(.failure(error))
+    //                }
+    //            case .failure(let error):
+    //                print("Failed to make request: \(error.localizedDescription)")
+    //                completion(.failure(error))
+    //            }
+    //        }
+    //    }
     
 }

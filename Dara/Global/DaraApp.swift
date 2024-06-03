@@ -10,8 +10,10 @@ import SwiftfulRouting
 
 @main
 struct DaraApp: App {
+    
     let persistenceController = PersistenceController.shared
     @AppStorage("isAuthorized") var isAuthorized: Bool = false
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {

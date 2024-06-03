@@ -12,19 +12,11 @@ struct VariantPage: View {
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     
     var body: some View {
-        if modulePagesViewModel.isLoading {
-            LoaderView()
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            modulePagesViewModel.router.dismissScreenStack()
-                        } label: {
-                            Image(systemName: "xmark")
-                        }
-                    }
-                }
-        } else {
-            ZStack {
+        ZStack {
+            if modulePagesViewModel.isLoading {
+                LoaderView()
+                
+            } else {
                 VStack (spacing: 32) {
                     VStack(spacing: 16){
                         ZStack (alignment: .leading) {
@@ -66,7 +58,7 @@ struct VariantPage: View {
                         VStack(alignment: .leading) {
                             Text("Дұрыс нұсқаны тап.")
                                 .font(.system(size: 14, weight: .regular))
-                            if modulePagesViewModel.acceptLanguage == "en" {
+                            if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
                                 Text("Find the correct option.")
                                     .font(.system(size: 14, weight: .regular))
                                     .foregroundStyle(Colors.buttonInactive)
@@ -122,18 +114,29 @@ struct VariantPage: View {
                         }
                     }
                 }
-                .blur(radius: modulePagesViewModel.isLoading ? 3 : 0)
                 .padding(24)
+                .blur(radius: modulePagesViewModel.isLoading ? 3 : 0)
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        modulePagesViewModel.router.dismissScreenStack()
-                    } label: {
-                        Image(systemName: "xmark")
-                    }
-                    
+        }
+        .toolbar {
+            ToolbarItem (placement: .topBarLeading) {
+                Button {
+                    print("back button tapped \(modulePagesViewModel.currentPage)")
+                    modulePagesViewModel.currentPage -= 1
+                    modulePagesViewModel.currentTask -= 1
+                    viewModel.router.dismissScreen()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .fontWeight(.semibold)
                 }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    modulePagesViewModel.router.dismissScreenStack()
+                } label: {
+                    Image(systemName: "xmark")
+                }
+                
             }
         }
     }

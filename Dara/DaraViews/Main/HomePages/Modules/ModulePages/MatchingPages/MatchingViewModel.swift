@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import SwiftfulRouting
 
-final class MathingViewModel: ObservableObject {
+final class MatchingViewModel: ObservableObject {
     
     let router: AnyRouter
     let data: [Content]

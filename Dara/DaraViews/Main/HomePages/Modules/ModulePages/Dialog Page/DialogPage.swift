@@ -12,19 +12,10 @@ struct DialogPage: View {
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     
     var body: some View {
-        if modulePagesViewModel.isLoading {
-            LoaderView()
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            modulePagesViewModel.router.dismissScreenStack()
-                        } label: {
-                            Image(systemName: "xmark")
-                        }
-                    }
-                }
-        } else {
-            ZStack {
+        ZStack {
+            if modulePagesViewModel.isLoading {
+                LoaderView()
+            } else {
                 VStack (spacing: 32) {
                     VStack(spacing: 16){
                         ZStack (alignment: .leading) {
@@ -97,18 +88,29 @@ struct DialogPage: View {
                     }
                     
                 }
-                .blur(radius: modulePagesViewModel.isLoading ? 3 : 0)
                 .padding(24)
+                .blur(radius: modulePagesViewModel.isLoading ? 3 : 0)
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        modulePagesViewModel.router.dismissScreenStack()
-                    } label: {
-                        Image(systemName: "xmark")
-                    }
-                    
+        }
+        .toolbar {
+            ToolbarItem (placement: .topBarLeading) {
+                Button {
+                    print("back button tapped \(modulePagesViewModel.currentPage)")
+                    modulePagesViewModel.currentPage -= 1
+                    modulePagesViewModel.currentTask -= 1
+                    viewModel.router.dismissScreen()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .fontWeight(.semibold)
                 }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    modulePagesViewModel.router.dismissScreenStack()
+                } label: {
+                    Image(systemName: "xmark")
+                }
+                
             }
         }
     }

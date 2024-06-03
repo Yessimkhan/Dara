@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Matching: View {
-    @StateObject var viewModel: MathingViewModel
+    @StateObject var viewModel: MatchingViewModel
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     var body: some View {
         if viewModel.isLoading || modulePagesViewModel.isLoading {
@@ -47,7 +47,7 @@ struct Matching: View {
                     
                     VStack(alignment: .leading) {
                         Text("Дұрыс жауаппен сәйкестендір.")
-                        if modulePagesViewModel.acceptLanguage == "en" {
+                        if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
                             Text("Match with the correct answer.")
                                 .font(.callout)
                         } else {

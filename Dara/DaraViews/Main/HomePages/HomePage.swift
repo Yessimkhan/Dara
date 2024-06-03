@@ -19,6 +19,7 @@ struct HomePage: View {
             }
             ScrollView (showsIndicators: false) {
                 VStack (spacing: 10){
+                    Text(viewModel.errorMessage)
                     ForEach(viewModel.lessonsArray) { lesson in
                         LessonView(lessonDate: lesson, image: viewModel.imagesArray[lesson.topicsResponseID - 2])
                         

@@ -20,7 +20,7 @@ final class ModulePagesViewModel: ObservableObject {
     let router: AnyRouter
     let homeRepository = HomeRepository()
     @Published var isLoading: Bool = false
-    @AppStorage("acceptLanguage") var acceptLanguage: String?
+    @AppStorage("userLanguage") var userLanguage: String?
     
     init(router: AnyRouter, lessonId: Int, moduleId: Int, allPages: Int, allTasks: Int, currentPage: Int, currentTask: Int) {
         self.router = router
@@ -101,6 +101,7 @@ final class ModulePagesViewModel: ObservableObject {
             router.showScreen(.push) { router in
                 HintPage(viewModel: HintViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
                     .navigationBarTitle(title, displayMode: .inline)
+                    .navigationBarBackButtonHidden()
             }
         } else {
             getPages()
@@ -110,8 +111,9 @@ final class ModulePagesViewModel: ObservableObject {
     func handleText(_ contents: [Content], title: String) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
-                TextPage(viewModel: TextViewModel(data: contents[0]), modulePagesViewModel: self)
+                TextPage(viewModel: TextViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
                     .navigationBarTitle(title, displayMode: .inline)
+                    .navigationBarBackButtonHidden()
             }
         } else {
             getPages()
@@ -123,6 +125,7 @@ final class ModulePagesViewModel: ObservableObject {
             router.showScreen(.push) { router in
                 TrueFalsePage(viewModel: TrueFalseViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
                     .navigationBarTitle(title, displayMode: .inline)
+                    .navigationBarBackButtonHidden()
             }
         } else {
             getPages()
@@ -134,6 +137,7 @@ final class ModulePagesViewModel: ObservableObject {
             router.showScreen(.push) { router in
                 VariantPage(viewModel: VariantViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
                     .navigationBarTitle(title, displayMode: .inline)
+                    .navigationBarBackButtonHidden()
             }
         } else {
             getPages()
@@ -143,8 +147,9 @@ final class ModulePagesViewModel: ObservableObject {
     func handleMatching(_ contents: [Content], title: String) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
-                Matching(viewModel: MathingViewModel(router: router, data: contents), modulePagesViewModel: self)
+                Matching(viewModel: MatchingViewModel(router: router, data: contents), modulePagesViewModel: self)
                     .navigationBarTitle(title, displayMode: .inline)
+                    .navigationBarBackButtonHidden()
             }
         }
     }
@@ -154,6 +159,7 @@ final class ModulePagesViewModel: ObservableObject {
             router.showScreen(.push) { router in
                 DialogPage(viewModel: DialogViewModel(router: router, data: contents), modulePagesViewModel: self)
                     .navigationBarTitle(title, displayMode: .inline)
+                    .navigationBarBackButtonHidden()
             }
         }
     }
@@ -161,8 +167,9 @@ final class ModulePagesViewModel: ObservableObject {
     func handleCard(_ contents: [Content], title: String) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
-                CardPage(viewModel: CardViewModel(data: contents[0]), modulePagesViewModel: self)
+                CardPage(viewModel: CardViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
                     .navigationBarTitle(title, displayMode: .inline)
+                    .navigationBarBackButtonHidden()
             }
         } else {
             getPages()
@@ -177,6 +184,15 @@ final class ModulePagesViewModel: ObservableObject {
         }
         return CGFloat(width)
     }
+    
+//    func goBack () {
+//        router.dismissScreenStack()
+//        router.showScreen(.push) { router in
+//            LessonModulesPage(viewModel: LessonModuleViewModel(router: router, lessonId: lesson.topicsResponseID))
+//                .navigationBarTitle(modulePagesViewModel.lesson.title, displayMode: .inline)
+//                .toolbar(.hidden, for: .tabBar)
+//        }
+//    }
 }
 
 

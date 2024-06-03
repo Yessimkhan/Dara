@@ -12,7 +12,7 @@ struct ModuleResponseElement: Codable, Identifiable {
     let id, title: String
     let moduleResponseID: Int
     let translation: Translation?
-    let pageCount: Int
+    let pageCount: Int?
     let taskCount: Int?
     let score: Int?
     

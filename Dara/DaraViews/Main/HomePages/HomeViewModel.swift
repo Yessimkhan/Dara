@@ -12,6 +12,7 @@ import SwiftUI
 
 final class HomeViewModel: ObservableObject {
     let router: AnyRouter
+    @Published var errorMessage: String = ""
     @Published var lessonsArray: TopicsResponse = []
     @Published var imagesArray: [Image] = []
     @Published var isLoading: Bool = false
@@ -49,7 +50,8 @@ final class HomeViewModel: ObservableObject {
                     }
                     print("Lessons get success")
                 case .failure(let error):
-                    print("Get lessons failed: \(error.localizedDescription)")
+                    self?.errorMessage = "\(error)"
+                    print("Get lessons failed: \(error)")
                 }
             }
         }

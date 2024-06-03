@@ -19,7 +19,7 @@ struct LessonModulesPage: View {
             } else {
                 VStack {
                     ForEach(viewModel.moduleArray) { module in
-                        LessonModuleView(isSelected: .constant(viewModel.selectedModule == module.title), moduleName: module.title, procent: module.score, lessonId: viewModel.lessonId, moduleId: module.moduleResponseID, allPages: module.pageCount, allTasks: module.taskCount ?? 0, router: viewModel.router)
+                        LessonModuleView(isSelected: .constant(viewModel.selectedModule == module.title), moduleName: module.title, procent: module.score, lessonId: viewModel.lessonId, moduleId: module.moduleResponseID, allPages: module.pageCount ?? 0, allTasks: module.taskCount ?? 0, router: viewModel.router)
                             .onTapGesture {
                                 viewModel.selectModule(module.title)
                             }

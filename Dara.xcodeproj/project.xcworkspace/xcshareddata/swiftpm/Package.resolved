@@ -1,5 +1,5 @@
 {
-  "originHash" : "050ebcf228f4b7d40bf7aad3916838b8bd6cdaf2bf7d72f2a44409b705cc5718",
+  "originHash" : "5c38110a2314319dba093d4f3e899ebc189c39c037328b313513c24563be7b66",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -22,10 +22,10 @@
     {
       "identity" : "iphonenumberfield",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/MojtabaHs/iPhoneNumberField.git",
+      "location" : "https://github.com/MojtabaHs/iPhoneNumberField",
       "state" : {
-        "revision" : "081c1bde0bcb4b9102694076c02fa9dd9cb1f520",
-        "version" : "0.10.3"
+        "revision" : "cd961621559393c5220c6c955690ecc52318e753",
+        "version" : "0.10.4"
       }
     },
     {
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftfulThinking/SwiftfulRouting",
       "state" : {
-        "revision" : "1efdf6a43fdb3d491dbf6a6068dc79630e9d82e9",
-        "version" : "5.3.2"
+        "revision" : "c9c536b9e6bd99589ab9d41d2178e4ac0bd4fe2b",
+        "version" : "5.3.4"
       }
     }
   ],

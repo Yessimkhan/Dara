@@ -12,14 +12,18 @@ import SwiftfulRouting
 struct ProfilePage: View {
     
     let router: AnyRouter
+    let scenes = UIApplication.shared.connectedScenes
     
     @State private var avatarImage: UIImage?
     @State private var photosPickerItem: PhotosPickerItem?
     @State private var numberOfLesson: Int = 1
     @State private var nameInKazakh: String = ""
     @State private var nameInAnotherLanguage: String = ""
+    @State private var showAlert: Bool = false
     @AppStorage("isAuthorized") var isAuthorized: Bool = false
     @AppStorage("userEmail") var userEmail: String?
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false
+    @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         RouterView{ router in
@@ -44,31 +48,43 @@ struct ProfilePage: View {
                             .font(.system(size: 29).bold())
                     }
                     
-                    VStack (spacing: 20){
+                    VStack (spacing: 20) {
                         ExtractedView(imageName: "person", text: "Personal Information")
+                        
                         ExtractedView(imageName: "lock", text: "Login and security")
                         ExtractedView(imageName: "globe", text: "Language")
                         ExtractedView(imageName: "arrow.left.square", text: "Logout")
                             .onTapGesture {
-                                router.showAlert(.alert, title: "Are you sure you want to logout?") {
-                                    Button {
+                                showAlert.toggle()
+                            }
+                            .alert(isPresented: $showAlert) {
+                                Alert(
+                                    title: Text("Are you sure you want to logout?"),
+                                    primaryButton: .destructive(Text("Logout"), action: {
                                         DispatchQueue.main.async {
                                             withAnimation {
                                                 self.isAuthorized = false
                                             }
                                         }
-                                    } label: {
-                                        Text("Logout")
-                                    }
-                                    
-                                    Button {
-                                        
-                                    } label: {
-                                        Text("Cancel")
-                                    }
-                                    
+                                    }),
+                                    secondaryButton: .default(Text("Cancel"))
+                                )
+                            }
+                        HStack {
+                            Image(systemName: isDarkMode ? "moon" : "sun.min")
+                                .font(.system(size: 32))
+                            Toggle(isOn: $isDarkMode) {
+                                Text("Dark Mode")
+                                    .font(.system(size: 20))
+                            }
+                            .onChange(of: isDarkMode) { value in
+                                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                                    scene.windows.first?.overrideUserInterfaceStyle = value ? .dark : .light
                                 }
                             }
+                            .tint(Colors.brandPrimary)
+                            
+                        }
                     }
                     .padding(24)
                     .onChange(of: photosPickerItem) { _, _ in
@@ -85,7 +101,6 @@ struct ProfilePage: View {
                     }
                     
                     Spacer()
-                    
                 }
             }
             .navigationTitle("Profile")

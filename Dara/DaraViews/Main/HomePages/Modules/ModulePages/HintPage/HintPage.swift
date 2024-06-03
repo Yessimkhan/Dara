@@ -13,19 +13,10 @@ struct HintPage: View {
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     
     var body: some View {
-        if viewModel.isLoading || modulePagesViewModel.isLoading {
-            LoaderView()
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            modulePagesViewModel.router.dismissScreenStack()
-                        } label: {
-                            Image(systemName: "xmark")
-                        }
-                    }
-                }
-        } else {
-            ZStack {
+        ZStack {
+            if viewModel.isLoading || modulePagesViewModel.isLoading {
+                LoaderView()
+            } else {
                 ScrollView(showsIndicators: false) {
                     LazyVStack (spacing: 50) {
                         Images.eaglesImage
@@ -53,15 +44,26 @@ struct HintPage: View {
                     }
                 }
             }
-            .padding(.bottom, 24)
-            .padding(.horizontal, 24)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        modulePagesViewModel.router.dismissScreenStack()
-                    } label: {
-                        Image(systemName: "xmark")
-                    }
+        }
+        .padding(.bottom, 24)
+        .padding(.horizontal, 24)
+        .toolbar {
+            ToolbarItem (placement: .topBarLeading) {
+                Button {
+                    print("back button tapped \(modulePagesViewModel.currentPage)")
+                    modulePagesViewModel.currentPage -= 1
+                    viewModel.router.dismissScreen()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .fontWeight(.semibold)
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    viewModel.router.dismissScreenStack()
+                } label: {
+                    Image(systemName: "xmark")
+                        .fontWeight(.semibold)
                 }
             }
         }

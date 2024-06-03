@@ -7,9 +7,11 @@
 
 import Foundation
 import SwiftUI
+import SwiftfulRouting
 
 final class TextViewModel: ObservableObject {
     
+    let router: AnyRouter
     let data: Content
     @Published var imagesArray: [Image] = []
     @Published var isLoadingImage: Bool = false
@@ -17,7 +19,8 @@ final class TextViewModel: ObservableObject {
     @Published var audioData: Data?
     @AppStorage("user_id") var userId: String?
     
-    init(data: Content) {
+    init(router: AnyRouter, data: Content) {
+        self.router = router
         self.data = data
         
         if let imageData = data.image {
