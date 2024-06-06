@@ -47,12 +47,15 @@ struct Matching: View {
                     
                     VStack(alignment: .leading) {
                         Text("Дұрыс жауаппен сәйкестендір.")
+                            .font(.system(size: 14, weight: .regular))
                         if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
                             Text("Match with the correct answer.")
-                                .font(.callout)
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundStyle(Colors.buttonInactive)
                         } else {
                             Text("Сопоставьте правильный ответ.")
-                                .font(.callout)
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundStyle(Colors.buttonInactive)
                         }
                     }
                     
@@ -113,32 +116,33 @@ struct Matching: View {
                     
                     Spacer()
                     
-                    if viewModel.contuneButtonIsActive {
-                        Button {
-                            modulePagesViewModel.score += 1
-                            modulePagesViewModel.getPages()
-                        } label: {
-                            if modulePagesViewModel.currentPage > modulePagesViewModel.allPages {
-                                ButtonView(buttonType: .finish)
-                            } else {
-                                ButtonView(buttonType: .continue)
-                            }
+                    Button {
+                        modulePagesViewModel.score += 1
+                        modulePagesViewModel.getPages()
+                    } label: {
+                        if modulePagesViewModel.currentPage > modulePagesViewModel.allPages {
+                            ButtonView(buttonType: .finish)
+                        } else {
+                            ButtonView(buttonType: .continue, disabled: $viewModel.isDisabled)
                         }
-                    } else {
-                        Button {
-                            
-                        } label: {
-                            Text("vfavfadvfadbva")
-                                .font(.system(size: 18, weight: .regular))
-                                .foregroundStyle(Color.clear)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                        }
-                    }
+                    }.disabled(viewModel.isDisabled)
                     
                 }
             }
             .toolbar {
+                if modulePagesViewModel.moduleId != 4 {
+                    ToolbarItem (placement: .topBarLeading) {
+                        Button {
+                            print("back button tapped \(modulePagesViewModel.currentPage)")
+                            modulePagesViewModel.currentPage -= 1
+                            modulePagesViewModel.currentTask -= 1
+                            viewModel.router.dismissScreen()
+                        } label: {
+                            Image(systemName: "chevron.left")
+                                .fontWeight(.semibold)
+                        }
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         modulePagesViewModel.router.dismissScreenStack()
@@ -198,6 +202,7 @@ struct MatchCards: View {
                     .foregroundColor(Colors.black)
                     .padding()
             }
+            .background(.clear)
             .onTapGesture {
                 withAnimation(.spring) {
                     isSelected.toggle()
@@ -218,6 +223,7 @@ struct MatchCards: View {
                     .foregroundColor(Colors.white)
                     .padding()
             }
+            .background(.clear)
             .onTapGesture {
                 withAnimation(.spring) {
                     isSelected.toggle()

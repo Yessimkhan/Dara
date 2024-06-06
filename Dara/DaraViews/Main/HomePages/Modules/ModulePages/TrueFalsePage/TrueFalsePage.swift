@@ -71,12 +71,23 @@ struct TrueFalsePage: View {
                         Spacer()
                     }
                     
-                    VStack {
-                        Text(viewModel.data.title)
-                            .font(.system(size: 14, weight: .regular))
-                        Text(viewModel.data.translation.title)
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundStyle(Colors.buttonInactive)
+                    if viewModel.data.title != "" {
+                        VStack (alignment: .center) {
+                            Text(viewModel.data.title.replacingOccurrences(of: "\\n", with: "\n"))
+                                .font(.system(size: viewModel.image == nil ? 20 : 14 , weight: .semibold))
+                                .multilineTextAlignment(.center)
+                            Text(viewModel.data.translation.title.replacingOccurrences(of: "\\n", with: "\n"))
+                                .font(.system(size: viewModel.image == nil ? 20 : 14, weight: .semibold))
+                                .foregroundStyle(Colors.buttonInactive)
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding(.horizontal, 40)
+                        .padding(.vertical, 10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(lineWidth: 1)
+                                .foregroundColor(Colors.brandPrimary)
+                        )
                     }
                     
                     if viewModel.isLoadingImage {
@@ -84,7 +95,8 @@ struct TrueFalsePage: View {
                     } else if let image = viewModel.image {
                         image
                             .resizable()
-                            .frame(maxHeight: 200)
+                            .scaledToFit()
+                            .frame(height: 200)
                             .cornerRadius(12)
                     }
                     
@@ -93,6 +105,7 @@ struct TrueFalsePage: View {
                     HStack (spacing: 20) {
                         ForEach(viewModel.shuffledVariants, id: \.self) { variant in
                             Button {
+                                viewModel.variantsDisabled = true
                                 let isCorrect = viewModel.isCorrectAnswer(variant)
                                 if isCorrect {
                                     SoundManager.instance.playSound(sound: .success)
@@ -103,12 +116,13 @@ struct TrueFalsePage: View {
                                 } else {
                                     SoundManager.instance.playSound(sound: .sad)
                                     viewModel.router.showModal(transition: .move(edge: .bottom), animation: .easeInOut, alignment: .bottom) {
-                                        WrongView(router: viewModel.router, modulePagesViewModel: modulePagesViewModel)
+                                        WrongView(router: viewModel.router, isTest: modulePagesViewModel.moduleId == 4, isDisabled: $viewModel.variantsDisabled, modulePagesViewModel: modulePagesViewModel)
                                     }
                                 }
                             } label: {
-                                ButtonView(buttonType: .custom, buttonText: variant)
+                                ButtonView(buttonType: .custom, buttonText: variant, disabled: $viewModel.variantsDisabled)
                             }
+                            .disabled(viewModel.variantsDisabled)
                         }
                     }
                 }
@@ -117,15 +131,17 @@ struct TrueFalsePage: View {
             }
         }
         .toolbar {
-            ToolbarItem (placement: .topBarLeading) {
-                Button {
-                    print("back button tapped \(modulePagesViewModel.currentPage)")
-                    modulePagesViewModel.currentPage -= 1
-                    modulePagesViewModel.currentTask -= 1
-                    viewModel.router.dismissScreen()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .fontWeight(.semibold)
+            if modulePagesViewModel.moduleId != 4 {
+                ToolbarItem (placement: .topBarLeading) {
+                    Button {
+                        print("back button tapped \(modulePagesViewModel.currentPage)")
+                        modulePagesViewModel.currentPage -= 1
+                        modulePagesViewModel.currentTask -= 1
+                        viewModel.router.dismissScreen()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .fontWeight(.semibold)
+                    }
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {

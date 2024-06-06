@@ -35,7 +35,7 @@ final class MatchingViewModel: ObservableObject {
     @Published var isCorrect13: Bool? = nil
     @Published var selectedQ: Int? = nil
     @Published var selectedA: Int? = nil
-    @Published var contuneButtonIsActive: Bool = false
+    @Published var isDisabled: Bool = true
     
     init(router: AnyRouter, data: [Content]) {
         self.router = router
@@ -128,10 +128,10 @@ final class MatchingViewModel: ObservableObject {
             if (isCorrect0 == true && isCorrect1 == true && isCorrect10 == true && isCorrect11 == true) {
                 if data.count == 3 {
                     if (isCorrect2 == true && isCorrect12 == true) {
-                        self.contuneButtonIsActive = true
+                        self.isDisabled = false
                     }
                 } else {
-                    self.contuneButtonIsActive = true
+                    self.isDisabled = false
                 }
             }
             self.selectedA = nil

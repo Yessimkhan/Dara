@@ -18,11 +18,10 @@ struct HomePage: View {
                 LoaderView()
             }
             ScrollView (showsIndicators: false) {
-                VStack (spacing: 10){
+                VStack(spacing: 10) {
                     Text(viewModel.errorMessage)
-                    ForEach(viewModel.lessonsArray) { lesson in
-                        LessonView(lessonDate: lesson, image: viewModel.imagesArray[lesson.topicsResponseID - 2])
-                        
+                    ForEach(Array(viewModel.lessonsArray.enumerated()), id: \.element.id) { index, lesson in
+                        LessonView(lessonDate: lesson, image: viewModel.imagesArray[index])
                             .onTapGesture {
                                 viewModel.router.showScreen(.push) { router in
                                     LessonModulesPage(viewModel: LessonModuleViewModel(router: router, lessonId: lesson.topicsResponseID))

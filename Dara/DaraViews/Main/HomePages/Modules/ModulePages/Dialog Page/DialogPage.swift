@@ -35,46 +35,44 @@ struct DialogPage: View {
                         }
                         
                         Text("\(modulePagesViewModel.currentTask-1)/\(modulePagesViewModel.allTasks)")
-                    }
-                    ScrollView(showsIndicators: false) {
-                        VStack (alignment: .leading) {
-                            ForEach(viewModel.data.indices, id: \.self) { index in
-                                if let data = viewModel.audioData[index] {
-                                    HStack(alignment: .top, spacing: 16) {
-                                        Image(systemName: "speaker.wave.2")
-                                            .resizable()
-                                            .frame( width: 25, height: 20)
-                                            .padding(.horizontal, 6)
-                                            .padding(.vertical, 8)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 8)
-                                                    .stroke(lineWidth: 1)
-                                                    .foregroundColor(Colors.black)
-                                            )
-                                            .onTapGesture {
-                                                SoundManager.instance.playAudio(audioData: data)
-                                            }
-                                        
-                                        VStack(alignment: .leading) {
-                                            Text(viewModel.data[index].title.replacingOccurrences(of: "\\n", with: "\n"))
-                                                .font(.system(size: 14, weight: .regular))
-                                            Text(viewModel.data[index].translation.title.replacingOccurrences(of: "\\n", with: "\n"))
-                                                .font(.system(size: 14, weight: .regular))
-                                                .foregroundStyle(Colors.buttonInactive)
-                                        }
-                                        .padding(.horizontal, 40)
-                                        .padding(.vertical, 10)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .stroke(lineWidth: 1)
-                                                .foregroundColor(Colors.brandPrimary)
-                                        )
-                                    }
-                                    Spacer()
+                        
+                        HStack() {
+                            VStack(alignment: .leading) {
+                                Text("Тыңдаңыз және қайталаңыз.")
+                                    .font(.system(size: 14, weight: .regular))
+                                if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
+                                    Text("Listen and repeat.")
+                                        .font(.system(size: 14, weight: .regular))
+                                        .foregroundStyle(Colors.buttonInactive)
+                                } else {
+                                    Text("Прослушайте и повторите.")
+                                        .font(.system(size: 14, weight: .regular))
+                                        .foregroundStyle(Colors.buttonInactive)
                                 }
                             }
+                            Spacer()
                         }
-                        .padding()
+                    }
+                    ScrollView(showsIndicators: false) {
+                        VStack {
+                            ForEach(viewModel.data.indices, id: \.self) { index in
+                                VStack(alignment: .leading) {
+                                    VStack(alignment: .leading) {
+                                        Text(viewModel.data[index].title.replacingOccurrences(of: "\\n", with: "\n"))
+                                            .font(.system(size: 14, weight: .regular))
+                                        Text(viewModel.data[index].translation.title.replacingOccurrences(of: "\\n", with: "\n"))
+                                            .font(.system(size: 14, weight: .regular))
+                                            .foregroundStyle(Colors.buttonInactive)
+                                    }
+                                    
+                                    AudioPlayerView(data: $viewModel.audioData[index], isPlaying: $viewModel.isPlaying[index])
+                                }
+                                .padding()
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(16)
+                                Spacer()
+                            }
+                        }
                     }
                     
                     Button {

@@ -19,16 +19,18 @@ struct ProfilePage: View {
     @State private var numberOfLesson: Int = 1
     @State private var nameInKazakh: String = ""
     @State private var nameInAnotherLanguage: String = ""
-    @State private var showAlert: Bool = false
+    @State private var showLogoutAlert: Bool = false
+    @State private var showReloadAlert: Bool = false
     @AppStorage("isAuthorized") var isAuthorized: Bool = false
     @AppStorage("userEmail") var userEmail: String?
     @AppStorage("isDarkMode") var isDarkMode: Bool = false
-    @Environment(\.scenePhase) private var scenePhase
-    
+    @AppStorage("user_level") var userLevel: Int = 1
+    @AppStorage("level") var level: LanguageLevel = .A1
+
     var body: some View {
         RouterView{ router in
             ZStack {
-                VStack (spacing: 100){
+                VStack (spacing: 60){
                     VStack {
                         Image(uiImage: avatarImage ?? UIImage(resource: .avatar))
                             .resizable()
@@ -55,9 +57,9 @@ struct ProfilePage: View {
                         ExtractedView(imageName: "globe", text: "Language")
                         ExtractedView(imageName: "arrow.left.square", text: "Logout")
                             .onTapGesture {
-                                showAlert.toggle()
+                                showLogoutAlert.toggle()
                             }
-                            .alert(isPresented: $showAlert) {
+                            .alert(isPresented: $showLogoutAlert) {
                                 Alert(
                                     title: Text("Are you sure you want to logout?"),
                                     primaryButton: .destructive(Text("Logout"), action: {
@@ -70,6 +72,33 @@ struct ProfilePage: View {
                                     secondaryButton: .default(Text("Cancel"))
                                 )
                             }
+                        
+                        HStack {
+                            Image(systemName: "arrowshape.up.circle")
+                                .font(.system(size: 32))
+                            Text("Level")
+                                .font(.system(size: 20))
+                            Spacer()
+                            Picker("Choose your level", selection: $level) {
+                                ForEach(LanguageLevel.allCases) { category in
+                                    Text(category.rawValue).tag(category)
+                                        .font(.callout)
+                                }
+                            }
+                            .onChange(of: level, {
+                                userLevel = level.levelValue
+                                showReloadAlert.toggle()
+                                print(userLevel)
+                            })
+                            .pickerStyle(.menu)
+                        }
+                        .alert(isPresented: $showReloadAlert) {
+                            Alert(
+                                title: Text("Get a new level"),
+                                message: Text("To get a new level you need to restart the application.")
+                            )
+                        }
+                        
                         HStack {
                             Image(systemName: isDarkMode ? "moon" : "sun.min")
                                 .font(.system(size: 32))
@@ -83,7 +112,6 @@ struct ProfilePage: View {
                                 }
                             }
                             .tint(Colors.brandPrimary)
-                            
                         }
                     }
                     .padding(24)
@@ -135,13 +163,13 @@ struct ExtractedView: View {
             Text(text)
                 .font(.system(size: 20))
             Spacer()
-            Image(systemName: "chevron.up")
-                .rotationEffect(angle)
-                .onTapGesture {
-                    withAnimation() {
-                        isSelected.toggle()
-                    }
-                }
+            Image(systemName: "chevron.right")
+//                .rotationEffect(angle)
+//                .onTapGesture {
+//                    withAnimation() {
+//                        isSelected.toggle()
+//                    }
+//                }
         }
     }
 }

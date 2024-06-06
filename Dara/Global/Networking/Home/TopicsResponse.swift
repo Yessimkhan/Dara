@@ -27,7 +27,7 @@ struct TopicsResponseElement: Codable, Identifiable {
 // MARK: - Translation
 struct Translation: Codable {
     let title: String
-    let description, example: String?
+    let description, example, question: String?
 }
 
 typealias TopicsResponse = [TopicsResponseElement]

@@ -20,6 +20,8 @@ enum ButtonType {
     case submit
     case `true`
     case `false`
+    case tryAgain
+    case check
     case custom
     
     var type: String {
@@ -36,6 +38,8 @@ enum ButtonType {
         case .submit: "Sumbit"
         case .true: "True"
         case .false: "False"
+        case .tryAgain: "Try again"
+        case .check: "Check"
         case .custom:
             "custom"
         }
@@ -47,13 +51,13 @@ struct ButtonView: View {
     let buttonType: ButtonType
     let withBackground: Bool
     var buttonText: String
-    @State var disabled: Bool
+    @Binding var disabled: Bool
     
-    init(buttonType: ButtonType, withBackground: Bool = true, buttonText: String = "", disabled: Bool = false) {
+    init(buttonType: ButtonType, withBackground: Bool = true, buttonText: String = "", disabled: Binding<Bool> = .constant(false)) {
         self.buttonType = buttonType
         self.withBackground = withBackground
         self.buttonText = buttonText
-        self.disabled = disabled
+        self._disabled = disabled
     }
     
     var body: some View {

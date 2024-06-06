@@ -77,6 +77,11 @@
 		5AE1A5BF2BE25077007014C4 /* CorrectVeiw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE1A5BE2BE25077007014C4 /* CorrectVeiw.swift */; };
 		5AE1A5C12BE25098007014C4 /* WrongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE1A5C02BE25098007014C4 /* WrongView.swift */; };
 		5AE1DF6E2BCAA2620035319E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE1DF6D2BCAA2620035319E /* TextFieldView.swift */; };
+		5AF4DCC42C104A4300E1809F /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4DCC32C104A4300E1809F /* AudioPlayerView.swift */; };
+		5AF4DCC62C10F1F900E1809F /* MiniLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4DCC52C10F1F900E1809F /* MiniLoaderView.swift */; };
+		5AF4DCC92C11FF3400E1809F /* ShufflewordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4DCC82C11FF3400E1809F /* ShufflewordPage.swift */; };
+		5AF4DCCB2C11FF4700E1809F /* ShufflewordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4DCCA2C11FF4700E1809F /* ShufflewordViewModel.swift */; };
+		5AF4DCCE2C121C1700E1809F /* WrappingStack in Frameworks */ = {isa = PBXBuildFile; productRef = 5AF4DCCD2C121C1700E1809F /* WrappingStack */; };
 		5AFA181E2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA181D2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift */; };
 		5AFA18202BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFA181F2BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard */; };
 		5AFA18222BC0062300E13F9A /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18212BC0062300E13F9A /* Images.swift */; };
@@ -170,6 +175,10 @@
 		5AE1A5BE2BE25077007014C4 /* CorrectVeiw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectVeiw.swift; sourceTree = "<group>"; };
 		5AE1A5C02BE25098007014C4 /* WrongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongView.swift; sourceTree = "<group>"; };
 		5AE1DF6D2BCAA2620035319E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		5AF4DCC32C104A4300E1809F /* AudioPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
+		5AF4DCC52C10F1F900E1809F /* MiniLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniLoaderView.swift; sourceTree = "<group>"; };
+		5AF4DCC82C11FF3400E1809F /* ShufflewordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShufflewordPage.swift; sourceTree = "<group>"; };
+		5AF4DCCA2C11FF4700E1809F /* ShufflewordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShufflewordViewModel.swift; sourceTree = "<group>"; };
 		5AFA181D2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseYourPasswordPage.swift; sourceTree = "<group>"; };
 		5AFA181F2BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DaraLaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AFA18212BC0062300E13F9A /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -190,6 +199,7 @@
 				5ABEE0E02C09A476003B7951 /* Alamofire in Frameworks */,
 				5ABEE0DD2C09A45F003B7951 /* SVGKitSwift in Frameworks */,
 				5ABEE0DB2C09A45F003B7951 /* SVGKit in Frameworks */,
+				5AF4DCCE2C121C1700E1809F /* WrappingStack in Frameworks */,
 				5ABEE0E52C09A576003B7951 /* iPhoneNumberField in Frameworks */,
 				5ABEE0E32C09A48E003B7951 /* SwiftfulRouting in Frameworks */,
 			);
@@ -272,8 +282,10 @@
 				5A629C172C072A6500498D9B /* PhoneTextFieldView.swift */,
 				5AE0F7452BC36A8900079110 /* LessonModuleView.swift */,
 				5A12D3A42BCDAE6C001BA71D /* LoaderView.swift */,
+				5AF4DCC52C10F1F900E1809F /* MiniLoaderView.swift */,
 				5AE1A5BE2BE25077007014C4 /* CorrectVeiw.swift */,
 				5AE1A5C02BE25098007014C4 /* WrongView.swift */,
+				5AF4DCC32C104A4300E1809F /* AudioPlayerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -536,8 +548,18 @@
 				5A9AB9FD2BDCF0FA005AB13B /* MatchingPages */,
 				5ACBA6B02BECA00F00E503DE /* Dialog Page */,
 				5A87442F2C037FD40033F947 /* CardPage */,
+				5AF4DCC72C11FF0700E1809F /* ShufflewordPage */,
 			);
 			path = ModulePages;
+			sourceTree = "<group>";
+		};
+		5AF4DCC72C11FF0700E1809F /* ShufflewordPage */ = {
+			isa = PBXGroup;
+			children = (
+				5AF4DCCA2C11FF4700E1809F /* ShufflewordViewModel.swift */,
+				5AF4DCC82C11FF3400E1809F /* ShufflewordPage.swift */,
+			);
+			path = ShufflewordPage;
 			sourceTree = "<group>";
 		};
 		5AFA18272BC1578600E13F9A /* PasswordForgetPages */ = {
@@ -584,6 +606,7 @@
 				5ABEE0DF2C09A476003B7951 /* Alamofire */,
 				5ABEE0E22C09A48E003B7951 /* SwiftfulRouting */,
 				5ABEE0E42C09A576003B7951 /* iPhoneNumberField */,
+				5AF4DCCD2C121C1700E1809F /* WrappingStack */,
 			);
 			productName = Dara;
 			productReference = 5A2480DF2B84C4F20018AA57 /* Dara.app */;
@@ -618,6 +641,7 @@
 				5ABEE0D92C09A45F003B7951 /* XCRemoteSwiftPackageReference "SVGKit" */,
 				5ABEE0DE2C09A476003B7951 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				5ABEE0E12C09A48E003B7951 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
+				5AF4DCCC2C121C1700E1809F /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */,
 			);
 			productRefGroup = 5A2480E02B84C4F20018AA57 /* Products */;
 			projectDirPath = "";
@@ -654,6 +678,7 @@
 				5AFA18242BC01AB600E13F9A /* PasswordTextFieldView.swift in Sources */,
 				5AE1A5C12BE25098007014C4 /* WrongView.swift in Sources */,
 				5A12D3A52BCDAE6C001BA71D /* LoaderView.swift in Sources */,
+				5AF4DCC62C10F1F900E1809F /* MiniLoaderView.swift in Sources */,
 				5ABE553E2BC2BC5B003C7ABA /* NetworkClient.swift in Sources */,
 				5AFA182B2BC15DF400E13F9A /* ResetPasswordPage.swift in Sources */,
 				5A362E882BA5B17F00A73E0B /* AlphabeetPage.swift in Sources */,
@@ -707,14 +732,17 @@
 				5AFD0AA92BBF2DBB0096A237 /* ButtonView.swift in Sources */,
 				5ACEF5EB2BD9641600BF9158 /* ModuleResponse.swift in Sources */,
 				5A2480E32B84C4F20018AA57 /* DaraApp.swift in Sources */,
+				5AF4DCCB2C11FF4700E1809F /* ShufflewordViewModel.swift in Sources */,
 				5ABE55472BC2CA44003C7ABA /* LoginResponse.swift in Sources */,
 				5AD69A9E2BD12E7E000570EA /* TrueFalseViewModel.swift in Sources */,
 				5A9BD2A82BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift in Sources */,
 				5ACBA6B22BECA02900E503DE /* DialogPage.swift in Sources */,
+				5AF4DCC42C104A4300E1809F /* AudioPlayerView.swift in Sources */,
 				5A9BD2982BC247090090CAD2 /* ChooseLanguageViewModel.swift in Sources */,
 				5AE1A5BF2BE25077007014C4 /* CorrectVeiw.swift in Sources */,
 				5ACEF5ED2BD9678000BF9158 /* PageResponse.swift in Sources */,
 				5A9BD29E2BC24DFD0090CAD2 /* ChooseYourPasswordViewModel.swift in Sources */,
+				5AF4DCC92C11FF3400E1809F /* ShufflewordPage.swift in Sources */,
 				5AC9891F2BCFEFA20007DA63 /* ModulePagesViewModel.swift in Sources */,
 				5A7CA6CE2BD730C800B2FD84 /* VariantPage.swift in Sources */,
 				5A6106C62B9DC29600956D3A /* ChooseTimePage.swift in Sources */,
@@ -975,6 +1003,14 @@
 				minimumVersion = 5.3.4;
 			};
 		};
+		5AF4DCCC2C121C1700E1809F /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/diniska/swiftui-wrapping-stack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1002,6 +1038,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5ABEE0D82C09A3C4003B7951 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */;
 			productName = iPhoneNumberField;
+		};
+		5AF4DCCD2C121C1700E1809F /* WrappingStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5AF4DCCC2C121C1700E1809F /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */;
+			productName = WrappingStack;
 		};
 /* End XCSwiftPackageProductDependency section */
 

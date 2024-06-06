@@ -5,7 +5,7 @@
 //  Created by Yessimkhan Zhumash on 09.04.2024.
 //
 
-import AVFoundation
+import AVKit
 class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     static let instance = SoundManager()

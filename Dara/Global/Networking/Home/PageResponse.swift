@@ -40,10 +40,11 @@ struct Content: Codable {
     let image: String?
     let audio: String?
     let variants: [String]?
+    let question: String?
     let translation: Translation
     
     enum CodingKeys: String, CodingKey {
-        case title, description, logo, example, image, audio, translation, content, variants
+        case title, description, logo, example, image, audio, translation, content, variants, question
         case id = "_id"
         case topicId = "topic_id"
         case moduleId = "module_id"

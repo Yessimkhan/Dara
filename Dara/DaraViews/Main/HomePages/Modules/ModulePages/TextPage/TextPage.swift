@@ -57,14 +57,14 @@ struct TextPage: View {
                         }
                         
                         VStack(alignment: .leading) {
-                            Text("Тыңдаңыз және қайталаңыз.")
+                            Text(viewModel.data.question ?? "Тыңдаңыз және қайталаңыз.")
                                 .font(.system(size: 14, weight: .regular))
                             if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
-                                Text("Listen and repeat.")
+                                Text(viewModel.data.translation.question ?? "Listen and repeat.")
                                     .font(.system(size: 14, weight: .regular))
                                     .foregroundStyle(Colors.buttonInactive)
                             } else {
-                                Text("Прослушайте и повторите.")
+                                Text(viewModel.data.translation.question ?? "Прослушайте и повторите.")
                                     .font(.system(size: 14, weight: .regular))
                                     .foregroundStyle(Colors.buttonInactive)
                             }
@@ -73,28 +73,32 @@ struct TextPage: View {
                         Spacer()
                     }
                     
-                    VStack {
-                        Text(viewModel.data.title)
-                            .font(.system(size: 14, weight: .regular))
-                        Text(viewModel.data.translation.title)
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundStyle(Colors.buttonInactive)
-                        
+                    if viewModel.data.title != "" {
+                        VStack (alignment: .center){
+                            Text(viewModel.data.title.replacingOccurrences(of: "\\n", with: "\n"))
+                                .font(.system(size: viewModel.image == nil ? 20 : 14 , weight: .semibold))
+                                .multilineTextAlignment(.center)
+                            Text(viewModel.data.translation.title.replacingOccurrences(of: "\\n", with: "\n"))
+                                .font(.system(size: viewModel.image == nil ? 20 : 14, weight: .semibold))
+                                .foregroundStyle(Colors.buttonInactive)
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding(.horizontal, 40)
+                        .padding(.vertical, 10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(lineWidth: 1)
+                                .foregroundColor(Colors.brandPrimary)
+                        )
                     }
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(lineWidth: 1)
-                            .foregroundColor(Colors.brandPrimary)
-                    )
                     
                     if viewModel.isLoadingImage {
                         LoaderView()
                     } else if let image = viewModel.image {
                         image
                             .resizable()
-                            .frame(maxHeight: 200)
+                            .scaledToFit()
+                            .frame(height: 200)
                             .cornerRadius(12)
                     }
                     

@@ -19,7 +19,7 @@ final class HomeRepository {
         "Authorization": "Bearer \(accessToken ?? "")"
     ]
     
-    func getTopics(levelID: String, completion: @escaping (Result<TopicsResponse, Error>) -> Void) {
+    func getTopics(levelID: Int, completion: @escaping (Result<TopicsResponse, Error>) -> Void) {
         let parameters: [String: Any] = [
             "level_id": levelID,
         ]
@@ -27,7 +27,6 @@ final class HomeRepository {
         NetworkClient.shared.get(endpoint: "/topic/my/", parameters: parameters, headers: headers) { result in
             switch result {
             case .success(let data):
-                print(String(data: data, encoding: .utf8))
                 do {
                     let decoder = JSONDecoder()
                     let response = try decoder.decode(TopicsResponse.self, from: data)

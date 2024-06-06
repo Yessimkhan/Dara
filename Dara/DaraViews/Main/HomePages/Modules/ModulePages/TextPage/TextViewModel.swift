@@ -25,6 +25,7 @@ final class TextViewModel: ObservableObject {
         
         if let imageData = data.image {
             if imageData != "" {
+                image = Image(systemName: "star.fill")
                 isLoadingImage = true
                 HomeRepository().downloadImage(from: imageData) { image in
                     self.isLoadingImage = false

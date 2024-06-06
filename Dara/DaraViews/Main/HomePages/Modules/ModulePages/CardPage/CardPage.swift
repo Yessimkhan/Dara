@@ -36,6 +36,23 @@ struct CardPage: View {
                         
                         Text("\(modulePagesViewModel.currentTask-1)/\(modulePagesViewModel.allTasks)")
                         
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Жаңа сөз")
+                                    .font(.system(size: 14, weight: .regular))
+                                if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
+                                    Text("A new word")
+                                        .font(.system(size: 14, weight: .regular))
+                                        .foregroundStyle(Colors.buttonInactive)
+                                } else {
+                                    Text("Новое слово")
+                                        .font(.system(size: 14, weight: .regular))
+                                        .foregroundStyle(Colors.buttonInactive)
+                                }
+                            }
+                            Spacer()
+                        }
+                        
                         Spacer()
                         
                         Button {
@@ -49,7 +66,7 @@ struct CardPage: View {
                         }
                     }
                     
-                    VStack (spacing: 32) {
+                    VStack (spacing: 16) {
                         CardsForWords(title: viewModel.data.title, translate: viewModel.data.translation.title, image: viewModel.image)
                         
                         if viewModel.data.audio != "" {
@@ -68,6 +85,17 @@ struct CardPage: View {
                                 }
                         }
                         
+                        if viewModel.data.example != "" {
+                            VStack (alignment: .center) {
+                                Text(viewModel.data.example?.replacingOccurrences(of: "\\n", with: "\n") ?? "")
+                                    .font(.system(size: 14 , weight: .semibold))
+                                    .multilineTextAlignment(.center)
+                                Text(viewModel.data.translation.example?.replacingOccurrences(of: "\\n", with: "\n") ?? "")
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundStyle(Colors.buttonInactive)
+                                    .multilineTextAlignment(.center)
+                            }
+                        }
                     }
                 }
                 .padding(24)

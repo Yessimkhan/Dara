@@ -18,7 +18,7 @@ final class VariantViewModel: ObservableObject {
     @Published var audioData: Data?
     @AppStorage("user_id") var userId: String?
     @Published var shuffledVariants: [String] = []
-    @Published var hideVariants: Bool = false
+    @Published var variantsDisabled: Bool = false
     
     init(router: AnyRouter, data: Content) {
         self.router = router
@@ -27,6 +27,7 @@ final class VariantViewModel: ObservableObject {
         
         if let imageData = data.image {
             if imageData != "" {
+                image = Image(systemName: "star.fill")
                 isLoadingImage = true
                 HomeRepository().downloadImage(from: imageData) { image in
                     self.isLoadingImage = false
@@ -46,7 +47,6 @@ final class VariantViewModel: ObservableObject {
     
     func isCorrectAnswer(_ answer: String) -> Bool {
         if answer == data.variants?.first {
-            hideVariants = true
             return true
         } else {
             return false

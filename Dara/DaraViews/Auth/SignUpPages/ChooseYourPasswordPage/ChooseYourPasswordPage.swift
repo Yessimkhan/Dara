@@ -54,11 +54,7 @@ struct ChooseYourPasswordPage: View {
                         Button {
                             viewModel.goChooseLevelPage()
                         } label: {
-                            if !viewModel.verified {
-                                ButtonView(buttonType: .continue, disabled: true)
-                            } else {
-                                ButtonView(buttonType: .continue, disabled: false)
-                            }
+                            ButtonView(buttonType: .continue, disabled: $viewModel.verified)
                         }
                         .disabled(!viewModel.verified)
                     }

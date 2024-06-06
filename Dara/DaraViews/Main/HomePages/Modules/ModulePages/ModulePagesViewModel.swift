@@ -89,6 +89,9 @@ final class ModulePagesViewModel: ObservableObject {
         case "card":
             print("card")
             handleCard(pageResponse.content, title: "Карта")
+        case "shuffleword":
+            print("shuffleword")
+            handleShuffleword(pageResponse.content, title: "Аралас сөз")
         default:
             print(pageResponse.page.pageType)
             print("Unknown page type")
@@ -176,11 +179,23 @@ final class ModulePagesViewModel: ObservableObject {
         }
     }
     
+    func handleShuffleword(_ contents: [Content], title: String) {
+        if contents.count != 0 {
+            router.showScreen(.push) { router in
+                ShufflewordPage(viewModel: ShufflewordViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
+                    .navigationBarTitle(title, displayMode: .inline)
+                    .navigationBarBackButtonHidden()
+            }
+        } else {
+            getPages()
+        }
+    }
+    
     func getLineWidth() -> CGFloat {
-        var width = 342
-        width = (width / allTasks) * (currentTask - 1)
-        if width > 342 {
-            width = 342
+        var width = 342.0
+        width = (width / Double(allTasks)) * Double((currentTask - 1))
+        if width > 342.0 {
+            width = 342.0
         }
         return CGFloat(width)
     }

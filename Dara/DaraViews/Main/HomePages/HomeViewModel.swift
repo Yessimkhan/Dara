@@ -17,6 +17,7 @@ final class HomeViewModel: ObservableObject {
     @Published var imagesArray: [Image] = []
     @Published var isLoading: Bool = false
     @AppStorage("user_id") var userId: String?
+    @AppStorage("user_level") var userLevel: Int = 1
     private var downloadCount = 0
     
     init(router: AnyRouter) {
@@ -27,7 +28,7 @@ final class HomeViewModel: ObservableObject {
     
     func getLessons() {
         isLoading = true
-        HomeRepository().getTopics(levelID: "1") { [weak self] result in
+        HomeRepository().getTopics(levelID: userLevel) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 switch result {

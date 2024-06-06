@@ -19,18 +19,18 @@ struct CardsForWords: View {
             myCard(text: title, color: Colors.white, image: image)
                 .rotation3DEffect(
                     .degrees(isFlipped ? 0 : -90),
-                                          axis: (x: 0.0, y: 1.0, z: 0.0)
+                    axis: (x: 0.0, y: 1.0, z: 0.0)
                 )
                 .animation(isFlipped ? .linear.delay(0.35) : .linear, value: isFlipped)
             myCard(text: translate, color: Colors.brandPrimary, image: image)
                 .rotation3DEffect(
                     .degrees(isFlipped ? 90 : 0),
-                                          axis: (x: 0.0, y: 1.0, z: 0.0)
+                    axis: (x: 0.0, y: 1.0, z: 0.0)
                 )
                 .animation(isFlipped ? .linear : .linear.delay(0.35), value: isFlipped)
         }
         .onTapGesture {
-            withAnimation (.spring){
+            withAnimation (.spring) {
                 isFlipped.toggle()
             }
         }
@@ -44,43 +44,40 @@ struct myCard: View {
     var image: Image?
     
     var body: some View {
-        ZStack (){
-            RoundedRectangle(cornerRadius: 20)
-                .frame(width: 340, height: 260)
-                .foregroundStyle(color)
-            
+        ZStack {
             VStack {
-                if color == Colors.white {
-                    Images.blueTop
-                        .resizable()
-                        .frame(width: 334, height: 53)
-                        .offset(y: -8 )
-                } else {
-                    Images.whiteTop
-                        .resizable()
-                        .frame(width: 334, height: 53)
-                        .offset(y: -8 )
-                }
+                (color == Colors.white ? Images.blueTop : Images.whiteTop)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300)
                 if let image = image {
                     image
                         .resizable()
-                        .frame(width: 157, height: 99)
-                        .cornerRadius(12)
+                        .scaledToFit()
+                        .frame(maxWidth: 300, maxHeight: 200)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+
                 } else {
                     LoaderView()
-                        .frame(height: 99)
+                        .frame(height: 200)
                 }
                 
                 Text(text)
-                    .font(.title)
-                    .fontWeight(.semibold)
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(color == Colors.white ? Colors.brandPrimary : Colors.white)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal)
             }
         }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 16)
+        .background(color)
+        .cornerRadius(24)
         .overlay(RoundedRectangle(cornerRadius: 24).stroke(lineWidth: 2).foregroundColor(Colors.brandPrimary))
     }
 }
 
 #Preview {
-//    CardsForWords(title: "Yesso", translate: "Aza", image: Images.eaglesImage)
-    CardsForWords(title: "Yesso", translate: "Aza")
+        CardsForWords(title: "АҚШ (Америка Құрама Штаттары)", translate: "USA (United States of America)", image: Image("speak"))
+//    CardsForWords(title: "Yesso", translate: "Aza")
 }

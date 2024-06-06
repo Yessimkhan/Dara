@@ -80,7 +80,7 @@ struct NotSelectedModel: View {
     var body: some View {
         ZStack (alignment: .leading){
             RoundedRectangle(cornerRadius: 25.0)
-                .fill(Colors.brandAdditional)
+                .fill(.ultraThinMaterial)
                 .frame(maxWidth: .infinity)
                 .frame(height: 128)
             HStack(spacing: 0) {

@@ -16,7 +16,7 @@ final class ChooseTimeViewModel: ObservableObject {
     let userNumber: String
     let userEmail: String
     let password: String
-    let level: ChooseLevelView.LanguageLevel
+    let level: LanguageLevel
     @Published var time: ChooseTimeView.TimeLevel = .five
     @Published var isLoading: Bool = false
     @Published var isError: Bool = false
@@ -25,7 +25,7 @@ final class ChooseTimeViewModel: ObservableObject {
     @AppStorage("userLanguage") var userLanguage: String?
     @AppStorage("userId") var userId: String?
     
-    init(router: AnyRouter, language: String, userName: String, userNumber: String, userEmail: String, password: String, level: ChooseLevelView.LanguageLevel) {
+    init(router: AnyRouter, language: String, userName: String, userNumber: String, userEmail: String, password: String, level: LanguageLevel) {
         self.router = router
         self.language = language
         self.userName = userName

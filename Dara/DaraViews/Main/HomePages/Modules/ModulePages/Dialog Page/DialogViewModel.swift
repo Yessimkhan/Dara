@@ -13,13 +13,16 @@ final class DialogViewModel: ObservableObject {
     let router: AnyRouter
     let data: [Content]
     @Published var audioData: [Data?] = []
+    @Published var isPlaying: [Bool] = []
+    @Published var isLoading: Bool = false
     private var downloadCount = 0
     
     init(router: AnyRouter, data: [Content]) {
         self.router = router
         self.data = data
-        
-        self.audioData = Array(repeating: Data(), count: data.count)
+        self.isLoading = true
+        self.audioData = Array(repeating: nil, count: data.count)
+        self.isPlaying = Array(repeating: false, count: data.count)
         var downloadAudios = self.audioData
         for (index, url) in data.enumerated() {
             HomeRepository().downloadAudio(from: url.audio ?? "") { [weak self] audio in
@@ -28,6 +31,7 @@ final class DialogViewModel: ObservableObject {
                     downloadAudios[index] = audio ?? Data()
                     self.downloadCount += 1
                     if self.downloadCount == data.count {
+                        self.isLoading = false
                         self.audioData = downloadAudios
                     }
                 }

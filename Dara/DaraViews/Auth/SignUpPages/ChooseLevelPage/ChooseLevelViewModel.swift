@@ -16,7 +16,7 @@ final class ChooseLevelViewModel: ObservableObject {
     let userNumber: String
     let userEmail: String
     let password: String
-    @Published var level: ChooseLevelView.LanguageLevel = .A1
+    @Published var level: LanguageLevel = .A1
     
     init(router: AnyRouter, language: String, userName: String, userNumber: String, userEmail: String, password: String) {
         self.router = router

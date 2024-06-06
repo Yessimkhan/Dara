@@ -56,14 +56,14 @@ struct VariantPage: View {
                         }
                         
                         VStack(alignment: .leading) {
-                            Text("Дұрыс нұсқаны тап.")
+                            Text(viewModel.data.question ?? "Дұрыс нұсқаны тап.")
                                 .font(.system(size: 14, weight: .regular))
                             if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
-                                Text("Find the correct option.")
+                                Text(viewModel.data.translation.question ?? "Find the correct option.")
                                     .font(.system(size: 14, weight: .regular))
                                     .foregroundStyle(Colors.buttonInactive)
                             } else {
-                                Text("Найдите правильный вариант.")
+                                Text(viewModel.data.translation.question ?? "Найдите правильный вариант.")
                                     .font(.system(size: 14, weight: .regular))
                                     .foregroundStyle(Colors.buttonInactive)
                             }
@@ -72,12 +72,23 @@ struct VariantPage: View {
                         Spacer()
                     }
                     
-                    VStack {
-                        Text(viewModel.data.title.replacingOccurrences(of: "\\n", with: "\n"))
-                            .font(.system(size: 14, weight: .regular))
-                        Text(viewModel.data.translation.title.replacingOccurrences(of: "\\n", with: "\n"))
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundStyle(Colors.buttonInactive)
+                    if viewModel.data.title != "" {
+                        VStack (alignment: .center){
+                            Text(viewModel.data.title.replacingOccurrences(of: "\\n", with: "\n"))
+                                .font(.system(size: viewModel.image == nil ? 20 : 14 , weight: .semibold))
+                                .multilineTextAlignment(.center)
+                            Text(viewModel.data.translation.title.replacingOccurrences(of: "\\n", with: "\n"))
+                                .font(.system(size: viewModel.image == nil ? 20 : 14, weight: .semibold))
+                                .foregroundStyle(Colors.buttonInactive)
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding(.horizontal, 40)
+                        .padding(.vertical, 10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(lineWidth: 1)
+                                .foregroundColor(Colors.brandPrimary)
+                        )
                     }
                     
                     if viewModel.isLoadingImage {
@@ -85,7 +96,7 @@ struct VariantPage: View {
                     } else if let image = viewModel.image {
                         image
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
                             .frame(height: 200)
                             .cornerRadius(12)
                     }
@@ -95,6 +106,7 @@ struct VariantPage: View {
                     VStack (spacing: 12) {
                         ForEach(viewModel.shuffledVariants, id: \.self) { variant in
                             Button {
+                                viewModel.variantsDisabled = true
                                 let isCorrect = viewModel.isCorrectAnswer(variant)
                                 if isCorrect {
                                     SoundManager.instance.playSound(sound: .success)
@@ -105,12 +117,13 @@ struct VariantPage: View {
                                 } else {
                                     SoundManager.instance.playSound(sound: .sad)
                                     viewModel.router.showModal(transition: .move(edge: .bottom), animation: .easeInOut, alignment: .bottom) {
-                                        WrongView(router: viewModel.router, modulePagesViewModel: modulePagesViewModel)
+                                        WrongView(router: viewModel.router, isTest: modulePagesViewModel.moduleId == 4, isDisabled: $viewModel.variantsDisabled, modulePagesViewModel: modulePagesViewModel)
                                     }
                                 }
                             } label: {
-                                ButtonView(buttonType: .custom, buttonText: variant)
+                                ButtonView(buttonType: .custom, buttonText: variant, disabled: $viewModel.variantsDisabled)
                             }
+                            .disabled(viewModel.variantsDisabled)
                         }
                     }
                 }
@@ -119,15 +132,17 @@ struct VariantPage: View {
             }
         }
         .toolbar {
-            ToolbarItem (placement: .topBarLeading) {
-                Button {
-                    print("back button tapped \(modulePagesViewModel.currentPage)")
-                    modulePagesViewModel.currentPage -= 1
-                    modulePagesViewModel.currentTask -= 1
-                    viewModel.router.dismissScreen()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .fontWeight(.semibold)
+            if modulePagesViewModel.moduleId != 4 {
+                ToolbarItem (placement: .topBarLeading) {
+                    Button {
+                        print("back button tapped \(modulePagesViewModel.currentPage)")
+                        modulePagesViewModel.currentPage -= 1
+                        modulePagesViewModel.currentTask -= 1
+                        viewModel.router.dismissScreen()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .fontWeight(.semibold)
+                    }
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {

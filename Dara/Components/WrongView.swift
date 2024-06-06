@@ -10,6 +10,8 @@ import SwiftfulRouting
 
 struct WrongView: View {
     let router: AnyRouter
+    let isTest: Bool
+    @Binding var isDisabled: Bool
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     var body: some View {
         if !modulePagesViewModel.isLoading {
@@ -18,14 +20,14 @@ struct WrongView: View {
                     .font(.system(size: 18, weight: .bold))
                     .foregroundStyle(Colors.white)
                 Button {
-                    modulePagesViewModel.getPages()
-                } label: {
-                    if modulePagesViewModel.currentPage > modulePagesViewModel.allPages {
-                        ButtonView(buttonType: .finish)
-                    } else {
-                        ButtonView(buttonType: .continue)
+                    if isTest {
+                        modulePagesViewModel.getPages()
+                    }else {
+                        isDisabled = false
+                        router.dismissModal()
                     }
-                    
+                } label: {
+                    ButtonView(buttonType: isTest ? .continue : .tryAgain)
                 }
             }
             .padding(.horizontal, 24)
