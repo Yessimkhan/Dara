@@ -1,21 +1,23 @@
 //
-//  MathingViewModel.swift
+//  MatchimageViewModel.swift
 //  Dara
 //
-//  Created by Yessimkhan Zhumash on 27.04.2024.
+//  Created by Yessimkhan Zhumash on 08.06.2024.
 //
 
 import Foundation
 import SwiftUI
 import SwiftfulRouting
 
-final class MatchingViewModel: ObservableObject {
+final class MatchimageViewModel: ObservableObject {
     
     let router: AnyRouter
     let data: [Content]
+    private var downloadCount = 0
     @Published var isLoading: Bool = false
     @Published var image: Image?
     @Published var shuffledQuestions: [String] = []
+    @Published var shuffledQuestionsImages: [Image] = []
     @Published var shuffledAnswers: [String] = []
     @Published var isSelected0: Bool = false
     @Published var isCorrect0: Bool? = nil
@@ -39,18 +41,37 @@ final class MatchingViewModel: ObservableObject {
         self.data = data
         let firstThreeElements = Array(data.prefix(3))
         for element in firstThreeElements {
-            shuffledQuestions.append(element.variants?.first ?? "")
-            shuffledAnswers.append(element.variants?.last ?? "")
+            shuffledQuestions.append(element.image ?? "")
+            shuffledAnswers.append(element.title)
         }
-        self.shuffledQuestions = shuffledQuestions.shuffled()
-        self.shuffledAnswers = shuffledAnswers.shuffled()
+        
+        isLoading = true
+        self.shuffledQuestionsImages = Array(repeating: Image(uiImage: UIImage()), count: firstThreeElements.count)
+        var downloadImages = self.shuffledQuestionsImages
+        for (index, data) in data.enumerated() {
+            HomeRepository().downloadImage(from: data.image ?? "") { [weak self] image in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    downloadImages[index] = image ?? Image(systemName: "star.fill")
+                    self.downloadCount += 1
+                    if self.downloadCount == firstThreeElements.count {
+                        self.shuffledQuestionsImages = downloadImages
+                        var shuffled_indices = self.shuffledQuestions.indices.shuffled()
+                        self.shuffledQuestions = shuffled_indices.map { self.shuffledQuestions[$0] }
+                        self.shuffledQuestionsImages = shuffled_indices.map { self.shuffledQuestionsImages[$0] }
+                        self.shuffledAnswers = self.shuffledAnswers.shuffled()
+                        self.isLoading = false
+                    }
+                }
+            }
+        }
     }
     
     func isCorrectMatch() {
         var isCorrect = false
         if let selectedA = selectedA, let selectedQ = selectedQ {
-            if let index = self.data.firstIndex(where: {$0.variants?.first == shuffledQuestions[selectedQ]}) {
-                if self.data[index].variants?.last == shuffledAnswers[selectedA] {
+            if let index = self.data.firstIndex(where: {$0.image == shuffledQuestions[selectedQ]}) {
+                if self.data[index].title == shuffledAnswers[selectedA] {
                     isCorrect = true
                 }
             }

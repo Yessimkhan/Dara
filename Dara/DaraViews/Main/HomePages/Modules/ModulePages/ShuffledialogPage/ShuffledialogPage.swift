@@ -1,17 +1,18 @@
 //
-//  ShufflewordPage.swift
+//  ShuffledialogPage.swift
 //  Dara
 //
-//  Created by Yessimkhan Zhumash on 06.06.2024.
+//  Created by Yessimkhan Zhumash on 07.06.2024.
 //
 
 import SwiftUI
 import SwiftfulRouting
 import WrappingStack
 
-struct ShufflewordPage: View {
-    @StateObject var viewModel: ShufflewordViewModel
+struct ShuffledialogPage: View {
+    @StateObject var viewModel: ShuffledialogViewModel
     @StateObject var modulePagesViewModel: ModulePagesViewModel
+    @Environment(\.editMode) private var editMode
     
     let variants:[String] = ["Сәлеметсіз бе",
                              "Келіңіз, отырыңыз.",
@@ -77,41 +78,18 @@ struct ShufflewordPage: View {
                         Spacer()
                     }
                     
-                    VStack {
-                        Images.eaglesImage
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 100)
-                        HStack (alignment: .top){
-                            WrappingHStack(id: \.self, alignment: .leading, horizontalSpacing: 8, verticalSpacing: 8) {
-                                ForEach(viewModel.answerArray, id: \.self) { element in
-                                    TextView(text: element)
-                                        .onTapGesture {
-                                            if let index = viewModel.answerArray.firstIndex(of: element) {
-                                                viewModel.answerArray.remove(at: index)
-                                            }
-                                            viewModel.shuffledVariants.append(element)
-                                        }
-                                        .disabled(viewModel.variantsDisabled)
-                                }
-                            }
-                            
-                        }
-                    }
-                    Spacer()
-                    
-                    WrappingHStack(id: \.self, alignment: .leading, horizontalSpacing: 8, verticalSpacing: 8) {
+                    List {
                         ForEach(viewModel.shuffledVariants, id: \.self) { element in
                             TextView(text: element)
-                                .onTapGesture {
-                                    if let index = viewModel.shuffledVariants.firstIndex(of: element) {
-                                        viewModel.shuffledVariants.remove(at: index)
-                                    }
-                                    viewModel.answerArray.append(element)
-                                }
                                 .disabled(viewModel.variantsDisabled)
                         }
+                        .onMove(perform: viewModel.moveItem)
                     }
+                    .listStyle(.plain)
+                    .environment(\.editMode, $viewModel.editMode)
+                    
+                    Spacer(minLength: 0)
+                    
                     
                     Button {
                         viewModel.variantsDisabled = true
@@ -162,28 +140,14 @@ struct ShufflewordPage: View {
     }
 }
 
-struct TextView: View {
-    let text: String
-    
-    var body: some View {
-        Text(text)
-            .fixedSize(horizontal: false, vertical: true)
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Colors.brandPrimary, lineWidth: 1)
-            )
-    }
-}
-
 //#Preview {
 //    RouterView { router in
-//        ShufflewordPage(viewModel: ShufflewordViewModel(router: router, data: Content(
+//        ShuffledialogPage(viewModel: ShuffledialogViewModel(router: router, data: Content(
 //            id: "66605661e8aad763a4eb72c5",
 //            topicId: 3,
 //            moduleId: 3,
-//            pageId: 4,
-//            title: "Рақмет, жақсы. Өзіңіз қалайсыз?",
+//            pageId: 3,
+//            title: "Сәлем Аида.",
 //            description: nil,
 //            logo: nil,
 //            content: nil,
@@ -191,17 +155,21 @@ struct TextView: View {
 //            image: "",
 //            audio: "",
 //            variants: [
-//                "Рақмет,",
-//                "жақсы.",
-//                "Өзіңіз",
-//                "қалайсыз?"
+//                "Сәлем Аида.",
+//                "Сәлем.",
+//                "Қалайсың?",
+//                "Рақмет, жақсымын.",
+//                "Өзің қалайсың?",
+//                "Мен де жақсымын.",
+//                "Көріскенше",
+//                "Сау бол!"
 //            ],
-//            question: "Сөздерді дұрыс орналастырыңыз",
+//            question: "Диологты аяқтаңыз",
 //            translation: Translation(
-//                title: "Thank you, good. How do you feel?",
+//                title: "Сәлем Аида.",
 //                description: nil,
 //                example: "",
-//                question: "Place the words correctly"))),
+//                question: "Complete the dialogue"))),
 //                        modulePagesViewModel:
 //                            ModulePagesViewModel(
 //                                router: router,
@@ -213,6 +181,3 @@ struct TextView: View {
 //                                currentTask: 2))
 //    }
 //}
-
-
-

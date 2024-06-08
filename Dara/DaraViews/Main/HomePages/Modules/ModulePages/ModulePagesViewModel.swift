@@ -74,6 +74,9 @@ final class ModulePagesViewModel: ObservableObject {
         case "text":
             print("text")
             handleText(pageResponse.content, title: "Текст")
+        case "text+hint":
+            print("text+hint")
+            handleTextAndHint(pageResponse.content, title: "Текст және ереже")
         case "tf":
             print("tf")
             handleTrueFalse(pageResponse.content, title: "Тест")
@@ -83,6 +86,9 @@ final class ModulePagesViewModel: ObservableObject {
         case "matchword":
             print("matchword")
             handleMatching(pageResponse.content, title: "Сәйкестендіру")
+        case "matchimage":
+            print("matchimage")
+            handleMatchimage(pageResponse.content, title: "Сәйкестендіру")
         case "dialog":
             print("dialog")
             handleDialog(pageResponse.content, title: "Диалог")
@@ -92,6 +98,9 @@ final class ModulePagesViewModel: ObservableObject {
         case "shuffleword":
             print("shuffleword")
             handleShuffleword(pageResponse.content, title: "Аралас сөз")
+        case "shuffledialog":
+            print("shuffledialog")
+            handleShuffldialog(pageResponse.content, title: "Aралас диалог")
         default:
             print(pageResponse.page.pageType)
             print("Unknown page type")
@@ -115,6 +124,18 @@ final class ModulePagesViewModel: ObservableObject {
         if contents.count != 0 {
             router.showScreen(.push) { router in
                 TextPage(viewModel: TextViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
+                    .navigationBarTitle(title, displayMode: .inline)
+                    .navigationBarBackButtonHidden()
+            }
+        } else {
+            getPages()
+        }
+    }
+    
+    func handleTextAndHint(_ contents: [Content], title: String) {
+        if contents.count != 0 {
+            router.showScreen(.push) { router in
+                TextAndHintPage(viewModel: TextAndHintViewModel(router: router, data: contents), modulePagesViewModel: self)
                     .navigationBarTitle(title, displayMode: .inline)
                     .navigationBarBackButtonHidden()
             }
@@ -157,6 +178,16 @@ final class ModulePagesViewModel: ObservableObject {
         }
     }
     
+    func handleMatchimage(_ contents: [Content], title: String) {
+        if contents.count != 0 {
+            router.showScreen(.push) { router in
+                MatchimagePage(viewModel: MatchimageViewModel(router: router, data: contents), modulePagesViewModel: self)
+                    .navigationBarTitle(title, displayMode: .inline)
+                    .navigationBarBackButtonHidden()
+            }
+        }
+    }
+    
     func handleDialog(_ contents: [Content], title: String) {
         if contents.count != 0 {
             router.showScreen(.push) { router in
@@ -183,6 +214,18 @@ final class ModulePagesViewModel: ObservableObject {
         if contents.count != 0 {
             router.showScreen(.push) { router in
                 ShufflewordPage(viewModel: ShufflewordViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
+                    .navigationBarTitle(title, displayMode: .inline)
+                    .navigationBarBackButtonHidden()
+            }
+        } else {
+            getPages()
+        }
+    }
+    
+    func handleShuffldialog(_ contents: [Content], title: String) {
+        if contents.count != 0 {
+            router.showScreen(.push) { router in
+                ShuffledialogPage(viewModel: ShuffledialogViewModel(router: router, data: contents[0]), modulePagesViewModel: self)
                     .navigationBarTitle(title, displayMode: .inline)
                     .navigationBarBackButtonHidden()
             }

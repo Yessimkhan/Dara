@@ -16,9 +16,10 @@ final class TrueFalseViewModel: ObservableObject {
     @Published var isLoadingImage: Bool = false
     @Published var image: Image? = nil
     @Published var audioData: Data? = nil
-    @AppStorage("user_id") var userId: String?
     @Published var shuffledVariants: [String] = []
     @Published var variantsDisabled: Bool = false
+    @AppStorage("user_id") var userId: String?
+    @AppStorage("userLanguage") var userLanguage: String?
 
     init(router: AnyRouter, data: Content) {
         self.router = router
@@ -48,5 +49,25 @@ final class TrueFalseViewModel: ObservableObject {
     
     func isCorrectAnswer(_ answer: String) -> Bool {
         return answer == data.variants?.first
+    }
+    
+    func getQuestion() -> String {
+        if let question = data.question , !question.isEmpty {
+            return question
+        } else {
+            return "Дұрыс немесе бұрыс екенін табыңыз."
+        }
+    }
+    
+    func getQuestionTranslation() -> String {
+        if let question = data.translation.question , !question.isEmpty {
+            return question
+        } else {
+            if userLanguage == "ru" {
+                return "Угадайте, что правильно или неправильно."
+            } else {
+                return "Guess what is true or false."
+            }
+        }
     }
 }

@@ -55,19 +55,13 @@ struct TrueFalsePage: View {
                         }
                         
                         VStack(alignment: .leading) {
-                            Text("Дұрыс немесе бұрыс екенін тап.")
+                            Text(viewModel.getQuestion())
                                 .font(.system(size: 14, weight: .regular))
-                            if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
-                                Text("Guess what is true or false.")
-                                    .font(.system(size: 14, weight: .regular))
-                                    .foregroundStyle(Colors.buttonInactive)
-                            } else {
-                                Text("Угадайте, что правильно или неправильно.")
-                                    .font(.system(size: 14, weight: .regular))
-                                    .foregroundStyle(Colors.buttonInactive)
-                            }
+                            
+                            Text(viewModel.getQuestionTranslation())
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundStyle(Colors.buttonInactive)
                         }
-                        
                         Spacer()
                     }
                     

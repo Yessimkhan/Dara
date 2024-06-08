@@ -11,6 +11,12 @@
 		5A01838D2B92506C0086DB7B /* SignInPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A01838C2B92506C0086DB7B /* SignInPage.swift */; };
 		5A0F438D2BCDB6440087B3CE /* LessonModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F438C2BCDB6440087B3CE /* LessonModuleViewModel.swift */; };
 		5A110ED02B8508500087AA9B /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A110ECF2B8508500087AA9B /* LaunchScreen.swift */; };
+		5A1263E82C132B0A0064A55D /* ShuffledialogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1263E72C132B0A0064A55D /* ShuffledialogViewModel.swift */; };
+		5A1263EA2C132B180064A55D /* ShuffledialogPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1263E92C132B180064A55D /* ShuffledialogPage.swift */; };
+		5A1263ED2C13ABD70064A55D /* MatchimageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1263EC2C13ABD70064A55D /* MatchimageViewModel.swift */; };
+		5A1263EF2C13ABE60064A55D /* MatchimagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1263EE2C13ABE60064A55D /* MatchimagePage.swift */; };
+		5A1263F42C1416170064A55D /* TextAndHintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1263F32C1416170064A55D /* TextAndHintViewModel.swift */; };
+		5A1263F62C1416280064A55D /* TextAndHintPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1263F52C1416280064A55D /* TextAndHintPage.swift */; };
 		5A12D3A52BCDAE6C001BA71D /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A12D3A42BCDAE6C001BA71D /* LoaderView.swift */; };
 		5A2480E32B84C4F20018AA57 /* DaraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480E22B84C4F20018AA57 /* DaraApp.swift */; };
 		5A2480E52B84C4F20018AA57 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480E42B84C4F20018AA57 /* ContentView.swift */; };
@@ -112,6 +118,12 @@
 		5A01838C2B92506C0086DB7B /* SignInPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPage.swift; sourceTree = "<group>"; };
 		5A0F438C2BCDB6440087B3CE /* LessonModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModuleViewModel.swift; sourceTree = "<group>"; };
 		5A110ECF2B8508500087AA9B /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		5A1263E72C132B0A0064A55D /* ShuffledialogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffledialogViewModel.swift; sourceTree = "<group>"; };
+		5A1263E92C132B180064A55D /* ShuffledialogPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffledialogPage.swift; sourceTree = "<group>"; };
+		5A1263EC2C13ABD70064A55D /* MatchimageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchimageViewModel.swift; sourceTree = "<group>"; };
+		5A1263EE2C13ABE60064A55D /* MatchimagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchimagePage.swift; sourceTree = "<group>"; };
+		5A1263F32C1416170064A55D /* TextAndHintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAndHintViewModel.swift; sourceTree = "<group>"; };
+		5A1263F52C1416280064A55D /* TextAndHintPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAndHintPage.swift; sourceTree = "<group>"; };
 		5A12D3A42BCDAE6C001BA71D /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		5A2480DF2B84C4F20018AA57 /* Dara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2480E22B84C4F20018AA57 /* DaraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaraApp.swift; sourceTree = "<group>"; };
@@ -216,6 +228,33 @@
 				5AE1DF6C2BCA88260035319E /* ModulePages */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		5A1263E62C132AD40064A55D /* ShuffledialogPage */ = {
+			isa = PBXGroup;
+			children = (
+				5A1263E72C132B0A0064A55D /* ShuffledialogViewModel.swift */,
+				5A1263E92C132B180064A55D /* ShuffledialogPage.swift */,
+			);
+			path = ShuffledialogPage;
+			sourceTree = "<group>";
+		};
+		5A1263EB2C13ABA60064A55D /* MatchimagePage */ = {
+			isa = PBXGroup;
+			children = (
+				5A1263EC2C13ABD70064A55D /* MatchimageViewModel.swift */,
+				5A1263EE2C13ABE60064A55D /* MatchimagePage.swift */,
+			);
+			path = MatchimagePage;
+			sourceTree = "<group>";
+		};
+		5A1263F02C1415BC0064A55D /* TextAndHintPage */ = {
+			isa = PBXGroup;
+			children = (
+				5A1263F32C1416170064A55D /* TextAndHintViewModel.swift */,
+				5A1263F52C1416280064A55D /* TextAndHintPage.swift */,
+			);
+			path = TextAndHintPage;
 			sourceTree = "<group>";
 		};
 		5A2480D62B84C4F20018AA57 = {
@@ -543,12 +582,15 @@
 				5AC9891E2BCFEFA10007DA63 /* ModulePagesViewModel.swift */,
 				5AC989202BD0927E0007DA63 /* HintPage */,
 				5AC989282BD0B4800007DA63 /* TextPage */,
+				5A1263F02C1415BC0064A55D /* TextAndHintPage */,
 				5AD69A9C2BD12E5A000570EA /* TrueFalsePage */,
 				5A7CA6CC2BD730A700B2FD84 /* VariantPage */,
 				5A9AB9FD2BDCF0FA005AB13B /* MatchingPages */,
+				5A1263EB2C13ABA60064A55D /* MatchimagePage */,
 				5ACBA6B02BECA00F00E503DE /* Dialog Page */,
 				5A87442F2C037FD40033F947 /* CardPage */,
 				5AF4DCC72C11FF0700E1809F /* ShufflewordPage */,
+				5A1263E62C132AD40064A55D /* ShuffledialogPage */,
 			);
 			path = ModulePages;
 			sourceTree = "<group>";
@@ -687,6 +729,7 @@
 				5ACBA6B42BECA03200E503DE /* DialogViewModel.swift in Sources */,
 				5A7A216A2B8DAD710097B610 /* ChoseLanguagePage.swift in Sources */,
 				5A6D73EA2BC238E6007DC0B1 /* RegistrationPageViewModel.swift in Sources */,
+				5A1263ED2C13ABD70064A55D /* MatchimageViewModel.swift in Sources */,
 				5A7CA6D02BD730D600B2FD84 /* VariantViewModel.swift in Sources */,
 				5ABEE0E92C0C5093003B7951 /* SceneDelegate.swift in Sources */,
 				5A2480EC2B84C4F70018AA57 /* Persistence.swift in Sources */,
@@ -695,6 +738,7 @@
 				5AB5EFE82BCC10F0006783E6 /* HomeRepository.swift in Sources */,
 				5AFD0AAB2BBF84280096A237 /* SingleButtonView.swift in Sources */,
 				5ABA542A2BC4C4AA00D60482 /* SoundManager.swift in Sources */,
+				5A1263F62C1416280064A55D /* TextAndHintPage.swift in Sources */,
 				5A01838B2B923D8C0086DB7B /* CardsForWords.swift in Sources */,
 				5A01838D2B92506C0086DB7B /* SignInPage.swift in Sources */,
 				5A0F438D2BCDB6440087B3CE /* LessonModuleViewModel.swift in Sources */,
@@ -703,6 +747,7 @@
 				5A362E862BA5B11B00A73E0B /* LessonView.swift in Sources */,
 				5AB5EFE22BCBFBD8006783E6 /* HomeViewModel.swift in Sources */,
 				5AFA181E2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift in Sources */,
+				5A1263EF2C13ABE60064A55D /* MatchimagePage.swift in Sources */,
 				5A9BD29B2BC24CBA0090CAD2 /* CreateAccountViewModel.swift in Sources */,
 				5AC989222BD0929B0007DA63 /* HintViewModel.swift in Sources */,
 				5A7A21672B8DA13A0097B610 /* RegistrationPageView.swift in Sources */,
@@ -722,11 +767,14 @@
 				5ABEE0E72C0C4FE6003B7951 /* AppDelegate.swift in Sources */,
 				5AFA18292BC1584E00E13F9A /* ForgotPasswordPage.swift in Sources */,
 				5A78AD162BBC0A3100521A32 /* ChooseLevelPage.swift in Sources */,
+				5A1263E82C132B0A0064A55D /* ShuffledialogViewModel.swift in Sources */,
 				5A2480E52B84C4F20018AA57 /* ContentView.swift in Sources */,
+				5A1263EA2C132B180064A55D /* ShuffledialogPage.swift in Sources */,
 				5A9BD2A62BC254E90090CAD2 /* SignInViewModel.swift in Sources */,
 				5AE0F7442BC307D400079110 /* AppViewModel.swift in Sources */,
 				5AB5EFEA2BCC1131006783E6 /* TopicsResponse.swift in Sources */,
 				5ABA54282BC4BD8100D60482 /* Matching.swift in Sources */,
+				5A1263F42C1416170064A55D /* TextAndHintViewModel.swift in Sources */,
 				5A9BD2A42BC253560090CAD2 /* ChooseTimeViewModel.swift in Sources */,
 				5A9BD2A12BC251B50090CAD2 /* ChooseLevelViewModel.swift in Sources */,
 				5AFD0AA92BBF2DBB0096A237 /* ButtonView.swift in Sources */,

@@ -1,15 +1,15 @@
 //
-//  VariantViewModel.swift
+//  ShuffledialogViewModel.swift
 //  Dara
 //
-//  Created by Yessimkhan Zhumash on 23.04.2024.
+//  Created by Yessimkhan Zhumash on 07.06.2024.
 //
 
 import Foundation
 import SwiftUI
 import SwiftfulRouting
 
-final class VariantViewModel: ObservableObject {
+final class ShuffledialogViewModel: ObservableObject {
     
     let router: AnyRouter
     let data: Content
@@ -17,7 +17,15 @@ final class VariantViewModel: ObservableObject {
     @Published var image: Image?
     @Published var audioData: Data?
     @Published var shuffledVariants: [String] = []
-    @Published var variantsDisabled: Bool = false
+    @Published var answerArray: [String] = []
+    @Published var variantsDisabled: Bool = false {
+        didSet {
+            withAnimation(.spring) {
+                self.editMode = variantsDisabled ? .inactive : .active
+            }
+        }
+    }
+    @Published var editMode: EditMode = .active
     @AppStorage("user_id") var userId: String?
     @AppStorage("userLanguage") var userLanguage: String?
     
@@ -46,19 +54,23 @@ final class VariantViewModel: ObservableObject {
         }
     }
     
-    func isCorrectAnswer(_ answer: String) -> Bool {
-        if answer == data.variants?.first {
+    func isCorrectAnswer() -> Bool {
+        if shuffledVariants == data.variants {
             return true
         } else {
             return false
         }
     }
     
+    func moveItem(from: IndexSet, to: Int) {
+        shuffledVariants.move(fromOffsets: from, toOffset: to)
+    }
+    
     func getQuestion() -> String {
         if let question = data.question , !question.isEmpty {
             return question
         } else {
-            return "Дұрыс нұсқаны тап."
+            return "Сөздерді дұрыс орналастырыңыз."
         }
     }
     
@@ -67,9 +79,9 @@ final class VariantViewModel: ObservableObject {
             return question
         } else {
             if userLanguage == "ru" {
-                return "Найдите правильный вариант."
+                return "Расположите слова правильно."
             } else {
-                return "Find the correct option."
+                return "Arrange the words correctly."
             }
         }
     }

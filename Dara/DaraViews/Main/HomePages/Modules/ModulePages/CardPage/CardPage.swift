@@ -38,17 +38,12 @@ struct CardPage: View {
                         
                         HStack {
                             VStack(alignment: .leading) {
-                                Text("Жаңа сөз")
+                                Text(viewModel.getQuestion())
                                     .font(.system(size: 14, weight: .regular))
-                                if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
-                                    Text("A new word")
-                                        .font(.system(size: 14, weight: .regular))
-                                        .foregroundStyle(Colors.buttonInactive)
-                                } else {
-                                    Text("Новое слово")
-                                        .font(.system(size: 14, weight: .regular))
-                                        .foregroundStyle(Colors.buttonInactive)
-                                }
+                                
+                                Text(viewModel.getQuestionTranslation())
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundStyle(Colors.buttonInactive)
                             }
                             Spacer()
                         }

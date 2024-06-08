@@ -108,7 +108,9 @@ struct ProfilePage: View {
                             }
                             .onChange(of: isDarkMode) { value in
                                 if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                                    scene.windows.first?.overrideUserInterfaceStyle = value ? .dark : .light
+                                    withAnimation {
+                                        scene.windows.first?.overrideUserInterfaceStyle = value ? .dark : .light
+                                    }
                                 }
                             }
                             .tint(Colors.brandPrimary)

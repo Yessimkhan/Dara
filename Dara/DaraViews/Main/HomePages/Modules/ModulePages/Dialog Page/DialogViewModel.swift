@@ -16,6 +16,7 @@ final class DialogViewModel: ObservableObject {
     @Published var isPlaying: [Bool] = []
     @Published var isLoading: Bool = false
     private var downloadCount = 0
+    @AppStorage("userLanguage") var userLanguage: String?
     
     init(router: AnyRouter, data: [Content]) {
         self.router = router
@@ -35,6 +36,26 @@ final class DialogViewModel: ObservableObject {
                         self.audioData = downloadAudios
                     }
                 }
+            }
+        }
+    }
+    
+    func getQuestion() -> String {
+        if let question = data[0].question , !question.isEmpty {
+            return question
+        } else {
+            return "Тыңдаңыз және қайталаңыз."
+        }
+    }
+    
+    func getQuestionTranslation() -> String {
+        if let question = data[0].translation.question , !question.isEmpty {
+            return question
+        } else {
+            if userLanguage == "ru" {
+                return "Прослушайте и повторите."
+            } else {
+                return "Listen and repeat."
             }
         }
     }

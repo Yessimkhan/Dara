@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftfulRouting
-import AVKit
 
 struct TextPage: View {
     @StateObject var viewModel: TextViewModel
@@ -57,17 +56,12 @@ struct TextPage: View {
                         }
                         
                         VStack(alignment: .leading) {
-                            Text(viewModel.data.question ?? "Тыңдаңыз және қайталаңыз.")
+                            Text(viewModel.getQuestion())
                                 .font(.system(size: 14, weight: .regular))
-                            if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
-                                Text(viewModel.data.translation.question ?? "Listen and repeat.")
-                                    .font(.system(size: 14, weight: .regular))
-                                    .foregroundStyle(Colors.buttonInactive)
-                            } else {
-                                Text(viewModel.data.translation.question ?? "Прослушайте и повторите.")
-                                    .font(.system(size: 14, weight: .regular))
-                                    .foregroundStyle(Colors.buttonInactive)
-                            }
+                            
+                            Text(viewModel.getQuestionTranslation())
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundStyle(Colors.buttonInactive)
                         }
                         
                         Spacer()

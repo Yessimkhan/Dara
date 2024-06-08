@@ -28,6 +28,7 @@ struct Page: Codable {
 }
 
 struct Content: Codable {
+    let contentType: String?
     let id: String
     let topicId: Int
     let moduleId: Int
@@ -49,5 +50,6 @@ struct Content: Codable {
         case topicId = "topic_id"
         case moduleId = "module_id"
         case pageId = "page_id"
+        case contentType = "content_type"
     }
 }

@@ -18,6 +18,7 @@ final class TextViewModel: ObservableObject {
     @Published var image: Image?
     @Published var audioData: Data?
     @AppStorage("user_id") var userId: String?
+    @AppStorage("userLanguage") var userLanguage: String?
     
     init(router: AnyRouter, data: Content) {
         self.router = router
@@ -39,6 +40,26 @@ final class TextViewModel: ObservableObject {
                 HomeRepository().downloadAudio(from: audioData) { data in
                     self.audioData = data
                 }
+            }
+        }
+    }
+    
+    func getQuestion() -> String {
+        if let question = data.question , !question.isEmpty {
+            return question
+        } else {
+            return "Тыңдаңыз және қайталаңыз."
+        }
+    }
+    
+    func getQuestionTranslation() -> String {
+        if let question = data.translation.question , !question.isEmpty {
+            return question
+        } else {
+            if userLanguage == "ru" {
+                return "Прослушайте и повторите."
+            } else {
+                return "Listen and repeat."
             }
         }
     }

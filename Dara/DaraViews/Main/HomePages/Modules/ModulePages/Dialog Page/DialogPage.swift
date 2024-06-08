@@ -38,17 +38,12 @@ struct DialogPage: View {
                         
                         HStack() {
                             VStack(alignment: .leading) {
-                                Text("Тыңдаңыз және қайталаңыз.")
+                                Text(viewModel.getQuestion())
                                     .font(.system(size: 14, weight: .regular))
-                                if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
-                                    Text("Listen and repeat.")
-                                        .font(.system(size: 14, weight: .regular))
-                                        .foregroundStyle(Colors.buttonInactive)
-                                } else {
-                                    Text("Прослушайте и повторите.")
-                                        .font(.system(size: 14, weight: .regular))
-                                        .foregroundStyle(Colors.buttonInactive)
-                                }
+                                
+                                Text(viewModel.getQuestionTranslation())
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundStyle(Colors.buttonInactive)
                             }
                             Spacer()
                         }

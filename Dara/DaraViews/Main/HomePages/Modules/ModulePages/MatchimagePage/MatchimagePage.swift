@@ -1,14 +1,14 @@
 //
-//  Matching.swift
+//  MatchimagePage.swift
 //  Dara
 //
-//  Created by Yessimkhan Zhumash on 09.04.2024.
+//  Created by Yessimkhan Zhumash on 08.06.2024.
 //
 
 import SwiftUI
 
-struct Matching: View {
-    @StateObject var viewModel: MatchingViewModel
+struct MatchimagePage: View {
+    @StateObject var viewModel: MatchimageViewModel
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     var body: some View {
         if viewModel.isLoading || modulePagesViewModel.isLoading {
@@ -61,7 +61,7 @@ struct Matching: View {
                     HStack (spacing: 20) {
                         VStack (spacing: 20) {
                             if viewModel.shuffledQuestions.count >= 1 {
-                                MatchCards(text: viewModel.shuffledQuestions[0], isSelected: $viewModel.isSelected0, isCorrect: $viewModel.isCorrect0) {
+                                MatchCardsImages(image: viewModel.shuffledQuestionsImages[0], isSelected: $viewModel.isSelected0, isCorrect: $viewModel.isCorrect0) {
                                     viewModel.selectedQ = 0
                                     viewModel.isSelected1 = false
                                     viewModel.isSelected2 = false
@@ -69,7 +69,7 @@ struct Matching: View {
                                 }
                             }
                             if viewModel.shuffledQuestions.count >= 2 {
-                                MatchCards(text: viewModel.shuffledQuestions[1], isSelected: $viewModel.isSelected1, isCorrect: $viewModel.isCorrect1) {
+                                MatchCardsImages(image: viewModel.shuffledQuestionsImages[1], isSelected: $viewModel.isSelected1, isCorrect: $viewModel.isCorrect1) {
                                     viewModel.selectedQ = 1
                                     viewModel.isSelected0 = false
                                     viewModel.isSelected2 = false
@@ -77,7 +77,7 @@ struct Matching: View {
                                 }
                             }
                             if viewModel.shuffledQuestions.count >= 3 {
-                                MatchCards(text: viewModel.shuffledQuestions[2], isSelected: $viewModel.isSelected2, isCorrect: $viewModel.isCorrect2) {
+                                MatchCardsImages(image: viewModel.shuffledQuestionsImages[2], isSelected: $viewModel.isSelected2, isCorrect: $viewModel.isCorrect2) {
                                     viewModel.selectedQ = 2
                                     viewModel.isSelected1 = false
                                     viewModel.isSelected0 = false
@@ -156,8 +156,8 @@ struct Matching: View {
     }
 }
 
-struct MatchCards: View {
-    let text: String
+struct MatchCardsImages: View {
+    let image: Image
     @Binding var isSelected: Bool
     @Binding var isCorrect: Bool?
     var onTap: () -> Void
@@ -176,11 +176,10 @@ struct MatchCards: View {
                         .foregroundColor(Colors.wrongAnswer)
                         .frame(width: 160, height: 130)
                         .cornerRadius(12)
-                    Text(text)
-                        .font(.system(size: 18))
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Colors.white)
-                        .frame(width: 160, height: 130)
+                    image
+                        .resizable()
+                        .frame(width: 150, height: 120)
+                        .cornerRadius(12)
                 }
                 
             }
@@ -195,11 +194,10 @@ struct MatchCards: View {
                             .inset(by: 0.5)
                             .stroke(Colors.brandPrimary, lineWidth: 2)
                     )
-                Text(text)
-                    .font(.system(size: 18))
-                    .frame(width: 160, height: 130)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(Colors.black)
+                image
+                    .resizable()
+                    .frame(width: 150, height: 120)
+                    .cornerRadius(12)
             }
             .background(.clear)
             .onTapGesture {
@@ -216,11 +214,10 @@ struct MatchCards: View {
                     .cornerRadius(12)
                     .background(Colors.brandPrimary.cornerRadius(12))
                 
-                Text(text)
-                    .font(.system(size: 18))
-                    .frame(width: 160, height: 130)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(Colors.white)
+                image
+                    .resizable()
+                    .frame(width: 150, height: 120)
+                    .cornerRadius(12)
             }
             .background(.clear)
             .onTapGesture {

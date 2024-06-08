@@ -17,6 +17,7 @@ final class CardViewModel: ObservableObject {
     @Published var image: Image?
     @Published var audioData: Data?
     @AppStorage("user_id") var userId: String?
+    @AppStorage("userLanguage") var userLanguage: String?
     
     init(router: AnyRouter, data: Content) {
         self.router = router
@@ -37,6 +38,26 @@ final class CardViewModel: ObservableObject {
                 HomeRepository().downloadAudio(from: audioData) { data in
                     self.audioData = data
                 }
+            }
+        }
+    }
+    
+    func getQuestion() -> String {
+        if let question = data.question , !question.isEmpty {
+            return question
+        } else {
+            return "Жаңа сөз"
+        }
+    }
+    
+    func getQuestionTranslation() -> String {
+        if let question = data.translation.question , !question.isEmpty {
+            return question
+        } else {
+            if userLanguage == "ru" {
+                return "Новое слово"
+            } else {
+                return "A new word"
             }
         }
     }

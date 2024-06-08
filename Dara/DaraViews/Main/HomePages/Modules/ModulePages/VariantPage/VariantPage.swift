@@ -56,19 +56,13 @@ struct VariantPage: View {
                         }
                         
                         VStack(alignment: .leading) {
-                            Text(viewModel.data.question ?? "Дұрыс нұсқаны тап.")
+                            Text(viewModel.getQuestion())
                                 .font(.system(size: 14, weight: .regular))
-                            if modulePagesViewModel.userLanguage == "en" ||  modulePagesViewModel.userLanguage == "us"{
-                                Text(viewModel.data.translation.question ?? "Find the correct option.")
-                                    .font(.system(size: 14, weight: .regular))
-                                    .foregroundStyle(Colors.buttonInactive)
-                            } else {
-                                Text(viewModel.data.translation.question ?? "Найдите правильный вариант.")
-                                    .font(.system(size: 14, weight: .regular))
-                                    .foregroundStyle(Colors.buttonInactive)
-                            }
+                            
+                            Text(viewModel.getQuestionTranslation())
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundStyle(Colors.buttonInactive)
                         }
-                        
                         Spacer()
                     }
                     
