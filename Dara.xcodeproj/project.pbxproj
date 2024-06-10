@@ -17,6 +17,7 @@
 		5A1263EF2C13ABE60064A55D /* MatchimagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1263EE2C13ABE60064A55D /* MatchimagePage.swift */; };
 		5A1263F42C1416170064A55D /* TextAndHintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1263F32C1416170064A55D /* TextAndHintViewModel.swift */; };
 		5A1263F62C1416280064A55D /* TextAndHintPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1263F52C1416280064A55D /* TextAndHintPage.swift */; };
+		5A1263F82C1474350064A55D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1263F72C1474350064A55D /* ProfileViewModel.swift */; };
 		5A12D3A52BCDAE6C001BA71D /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A12D3A42BCDAE6C001BA71D /* LoaderView.swift */; };
 		5A2480E32B84C4F20018AA57 /* DaraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480E22B84C4F20018AA57 /* DaraApp.swift */; };
 		5A2480E52B84C4F20018AA57 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480E42B84C4F20018AA57 /* ContentView.swift */; };
@@ -26,7 +27,16 @@
 		5A2480EF2B84C4F70018AA57 /* Dara.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A2480ED2B84C4F70018AA57 /* Dara.xcdatamodeld */; };
 		5A362E832BA5AFBD00A73E0B /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A362E822BA5AFBD00A73E0B /* ProfilePage.swift */; };
 		5A362E862BA5B11B00A73E0B /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A362E852BA5B11B00A73E0B /* LessonView.swift */; };
-		5A362E882BA5B17F00A73E0B /* AlphabeetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A362E872BA5B17F00A73E0B /* AlphabeetPage.swift */; };
+		5A362E882BA5B17F00A73E0B /* AlphabetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A362E872BA5B17F00A73E0B /* AlphabetPage.swift */; };
+		5A5A80622C15B2B9005C43E8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5A5A80612C15B2B9005C43E8 /* Localizable.xcstrings */; };
+		5A5A80642C16D3AD005C43E8 /* AlphabetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A80632C16D3AD005C43E8 /* AlphabetResponse.swift */; };
+		5A5A80662C16D4FE005C43E8 /* AlphabetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A80652C16D4FE005C43E8 /* AlphabetViewModel.swift */; };
+		5A5A80682C16E642005C43E8 /* ModuleStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A80672C16E642005C43E8 /* ModuleStatusResponse.swift */; };
+		5A5A806A2C16EF52005C43E8 /* UserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A80692C16EF52005C43E8 /* UserDataResponse.swift */; };
+		5A5A806E2C17141D005C43E8 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A806D2C17141D005C43E8 /* MessageResponse.swift */; };
+		5A5A80712C171F75005C43E8 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A80702C171F75005C43E8 /* ChangePasswordViewModel.swift */; };
+		5A5A80762C1747C1005C43E8 /* PersonalInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A80752C1747C1005C43E8 /* PersonalInformationViewModel.swift */; };
+		5A5A80782C1747D3005C43E8 /* PersonalInformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A80772C1747D3005C43E8 /* PersonalInformationPage.swift */; };
 		5A5BDBA72BE92D7300465294 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A5BDBA52BE92D7200465294 /* success.mp3 */; };
 		5A6106C42B9DA78900956D3A /* MenuTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6106C32B9DA78900956D3A /* MenuTabBar.swift */; };
 		5A6106C62B9DC29600956D3A /* ChooseTimePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6106C52B9DC29600956D3A /* ChooseTimePage.swift */; };
@@ -93,7 +103,7 @@
 		5AFA18222BC0062300E13F9A /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18212BC0062300E13F9A /* Images.swift */; };
 		5AFA18242BC01AB600E13F9A /* PasswordTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18232BC01AB600E13F9A /* PasswordTextFieldView.swift */; };
 		5AFA18292BC1584E00E13F9A /* ForgotPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA18282BC1584E00E13F9A /* ForgotPasswordPage.swift */; };
-		5AFA182B2BC15DF400E13F9A /* ResetPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA182A2BC15DF400E13F9A /* ResetPasswordPage.swift */; };
+		5AFA182B2BC15DF400E13F9A /* ChangePasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA182A2BC15DF400E13F9A /* ChangePasswordPage.swift */; };
 		5AFD0AA72BBF27E20096A237 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AA62BBF27E20096A237 /* Colors.swift */; };
 		5AFD0AA92BBF2DBB0096A237 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AA82BBF2DBB0096A237 /* ButtonView.swift */; };
 		5AFD0AAB2BBF84280096A237 /* SingleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AAA2BBF84280096A237 /* SingleButtonView.swift */; };
@@ -124,6 +134,7 @@
 		5A1263EE2C13ABE60064A55D /* MatchimagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchimagePage.swift; sourceTree = "<group>"; };
 		5A1263F32C1416170064A55D /* TextAndHintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAndHintViewModel.swift; sourceTree = "<group>"; };
 		5A1263F52C1416280064A55D /* TextAndHintPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAndHintPage.swift; sourceTree = "<group>"; };
+		5A1263F72C1474350064A55D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		5A12D3A42BCDAE6C001BA71D /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		5A2480DF2B84C4F20018AA57 /* Dara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2480E22B84C4F20018AA57 /* DaraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaraApp.swift; sourceTree = "<group>"; };
@@ -134,7 +145,16 @@
 		5A2480EE2B84C4F70018AA57 /* Dara.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dara.xcdatamodel; sourceTree = "<group>"; };
 		5A362E822BA5AFBD00A73E0B /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 		5A362E852BA5B11B00A73E0B /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
-		5A362E872BA5B17F00A73E0B /* AlphabeetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabeetPage.swift; sourceTree = "<group>"; };
+		5A362E872BA5B17F00A73E0B /* AlphabetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetPage.swift; sourceTree = "<group>"; };
+		5A5A80612C15B2B9005C43E8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5A5A80632C16D3AD005C43E8 /* AlphabetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetResponse.swift; sourceTree = "<group>"; };
+		5A5A80652C16D4FE005C43E8 /* AlphabetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetViewModel.swift; sourceTree = "<group>"; };
+		5A5A80672C16E642005C43E8 /* ModuleStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleStatusResponse.swift; sourceTree = "<group>"; };
+		5A5A80692C16EF52005C43E8 /* UserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataResponse.swift; sourceTree = "<group>"; };
+		5A5A806D2C17141D005C43E8 /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
+		5A5A80702C171F75005C43E8 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		5A5A80752C1747C1005C43E8 /* PersonalInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewModel.swift; sourceTree = "<group>"; };
+		5A5A80772C1747D3005C43E8 /* PersonalInformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationPage.swift; sourceTree = "<group>"; };
 		5A5BDBA52BE92D7200465294 /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
 		5A6106C32B9DA78900956D3A /* MenuTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabBar.swift; sourceTree = "<group>"; };
 		5A6106C52B9DC29600956D3A /* ChooseTimePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTimePage.swift; sourceTree = "<group>"; };
@@ -196,7 +216,7 @@
 		5AFA18212BC0062300E13F9A /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		5AFA18232BC01AB600E13F9A /* PasswordTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldView.swift; sourceTree = "<group>"; };
 		5AFA18282BC1584E00E13F9A /* ForgotPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPage.swift; sourceTree = "<group>"; };
-		5AFA182A2BC15DF400E13F9A /* ResetPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPage.swift; sourceTree = "<group>"; };
+		5AFA182A2BC15DF400E13F9A /* ChangePasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPage.swift; sourceTree = "<group>"; };
 		5AFD0AA62BBF27E20096A237 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5AFD0AA82BBF2DBB0096A237 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		5AFD0AAA2BBF84280096A237 /* SingleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleButtonView.swift; sourceTree = "<group>"; };
@@ -332,7 +352,10 @@
 		5A362E812BA5AF9800A73E0B /* ProfilePages */ = {
 			isa = PBXGroup;
 			children = (
+				5A1263F72C1474350064A55D /* ProfileViewModel.swift */,
 				5A362E822BA5AFBD00A73E0B /* ProfilePage.swift */,
+				5A5A806F2C171EDB005C43E8 /* ChangePassword */,
+				5A5A80722C174737005C43E8 /* PesonalInformation */,
 			);
 			path = ProfilePages;
 			sourceTree = "<group>";
@@ -340,9 +363,35 @@
 		5A362E842BA5B0DC00A73E0B /* AlphabeetPages */ = {
 			isa = PBXGroup;
 			children = (
-				5A362E872BA5B17F00A73E0B /* AlphabeetPage.swift */,
+				5A362E872BA5B17F00A73E0B /* AlphabetPage.swift */,
+				5A5A80652C16D4FE005C43E8 /* AlphabetViewModel.swift */,
 			);
 			path = AlphabeetPages;
+			sourceTree = "<group>";
+		};
+		5A5A805E2C15AF2E005C43E8 /* UsetData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UsetData;
+			sourceTree = "<group>";
+		};
+		5A5A806F2C171EDB005C43E8 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				5A5A80702C171F75005C43E8 /* ChangePasswordViewModel.swift */,
+				5AFA182A2BC15DF400E13F9A /* ChangePasswordPage.swift */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		5A5A80722C174737005C43E8 /* PesonalInformation */ = {
+			isa = PBXGroup;
+			children = (
+				5A5A80752C1747C1005C43E8 /* PersonalInformationViewModel.swift */,
+				5A5A80772C1747D3005C43E8 /* PersonalInformationPage.swift */,
+			);
+			path = PesonalInformation;
 			sourceTree = "<group>";
 		};
 		5A5BDB812BE75AB600465294 /* Frameworks */ = {
@@ -355,6 +404,7 @@
 		5A6D73E12BC21DBD007DC0B1 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				5A5A805E2C15AF2E005C43E8 /* UsetData */,
 				5A2480E22B84C4F20018AA57 /* DaraApp.swift */,
 				5ABEE0E62C0C4FE6003B7951 /* AppDelegate.swift */,
 				5ABEE0E82C0C5093003B7951 /* SceneDelegate.swift */,
@@ -362,6 +412,7 @@
 				5ABA54292BC4C4AA00D60482 /* SoundManager.swift */,
 				5A2480E42B84C4F20018AA57 /* ContentView.swift */,
 				5ABE553C2BC2BC46003C7ABA /* Networking */,
+				5A5A80612C15B2B9005C43E8 /* Localizable.xcstrings */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -499,6 +550,9 @@
 				5ACEF5EA2BD9641600BF9158 /* ModuleResponse.swift */,
 				5ACEF5EC2BD9678000BF9158 /* PageResponse.swift */,
 				5AAF45D52BEBC60D0057A3A4 /* TestProgressResponse.swift */,
+				5A5A80632C16D3AD005C43E8 /* AlphabetResponse.swift */,
+				5A5A80672C16E642005C43E8 /* ModuleStatusResponse.swift */,
+				5A5A80692C16EF52005C43E8 /* UserDataResponse.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -536,6 +590,7 @@
 			children = (
 				5ABE55492BC2CDFD003C7ABA /* AuthRepository.swift */,
 				5ABE55462BC2CA44003C7ABA /* LoginResponse.swift */,
+				5A5A806D2C17141D005C43E8 /* MessageResponse.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -607,9 +662,8 @@
 		5AFA18272BC1578600E13F9A /* PasswordForgetPages */ = {
 			isa = PBXGroup;
 			children = (
-				5AFA18282BC1584E00E13F9A /* ForgotPasswordPage.swift */,
-				5AFA182A2BC15DF400E13F9A /* ResetPasswordPage.swift */,
 				5A9BD2A72BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift */,
+				5AFA18282BC1584E00E13F9A /* ForgotPasswordPage.swift */,
 			);
 			path = PasswordForgetPages;
 			sourceTree = "<group>";
@@ -676,6 +730,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 5A2480D62B84C4F20018AA57;
 			packageReferences = (
@@ -701,6 +756,7 @@
 			files = (
 				5AFA18202BBFFBDE00E13F9A /* DaraLaunchScreen.storyboard in Resources */,
 				5A2480EA2B84C4F70018AA57 /* Preview Assets.xcassets in Resources */,
+				5A5A80622C15B2B9005C43E8 /* Localizable.xcstrings in Resources */,
 				5AAF45CB2BE95E390057A3A4 /* sad.mp3 in Resources */,
 				5A5BDBA72BE92D7300465294 /* success.mp3 in Resources */,
 				5A2480E72B84C4F70018AA57 /* Assets.xcassets in Resources */,
@@ -717,16 +773,19 @@
 				5AD69A9B2BD12E43000570EA /* TrueFalsePage.swift in Sources */,
 				5A7A216C2B8DB2890097B610 /* CreateAccountPage.swift in Sources */,
 				5AFD0AA72BBF27E20096A237 /* Colors.swift in Sources */,
+				5A1263F82C1474350064A55D /* ProfileViewModel.swift in Sources */,
 				5AFA18242BC01AB600E13F9A /* PasswordTextFieldView.swift in Sources */,
 				5AE1A5C12BE25098007014C4 /* WrongView.swift in Sources */,
 				5A12D3A52BCDAE6C001BA71D /* LoaderView.swift in Sources */,
 				5AF4DCC62C10F1F900E1809F /* MiniLoaderView.swift in Sources */,
 				5ABE553E2BC2BC5B003C7ABA /* NetworkClient.swift in Sources */,
-				5AFA182B2BC15DF400E13F9A /* ResetPasswordPage.swift in Sources */,
-				5A362E882BA5B17F00A73E0B /* AlphabeetPage.swift in Sources */,
+				5AFA182B2BC15DF400E13F9A /* ChangePasswordPage.swift in Sources */,
+				5A5A80712C171F75005C43E8 /* ChangePasswordViewModel.swift in Sources */,
+				5A362E882BA5B17F00A73E0B /* AlphabetPage.swift in Sources */,
 				5AE0F7462BC36A8900079110 /* LessonModuleView.swift in Sources */,
 				5A8744332C0412300033F947 /* CardViewModel.swift in Sources */,
 				5ACBA6B42BECA03200E503DE /* DialogViewModel.swift in Sources */,
+				5A5A80682C16E642005C43E8 /* ModuleStatusResponse.swift in Sources */,
 				5A7A216A2B8DAD710097B610 /* ChoseLanguagePage.swift in Sources */,
 				5A6D73EA2BC238E6007DC0B1 /* RegistrationPageViewModel.swift in Sources */,
 				5A1263ED2C13ABD70064A55D /* MatchimageViewModel.swift in Sources */,
@@ -748,6 +807,7 @@
 				5AB5EFE22BCBFBD8006783E6 /* HomeViewModel.swift in Sources */,
 				5AFA181E2BBFE59F00E13F9A /* ChooseYourPasswordPage.swift in Sources */,
 				5A1263EF2C13ABE60064A55D /* MatchimagePage.swift in Sources */,
+				5A5A80662C16D4FE005C43E8 /* AlphabetViewModel.swift in Sources */,
 				5A9BD29B2BC24CBA0090CAD2 /* CreateAccountViewModel.swift in Sources */,
 				5AC989222BD0929B0007DA63 /* HintViewModel.swift in Sources */,
 				5A7A21672B8DA13A0097B610 /* RegistrationPageView.swift in Sources */,
@@ -777,10 +837,13 @@
 				5A1263F42C1416170064A55D /* TextAndHintViewModel.swift in Sources */,
 				5A9BD2A42BC253560090CAD2 /* ChooseTimeViewModel.swift in Sources */,
 				5A9BD2A12BC251B50090CAD2 /* ChooseLevelViewModel.swift in Sources */,
+				5A5A806E2C17141D005C43E8 /* MessageResponse.swift in Sources */,
 				5AFD0AA92BBF2DBB0096A237 /* ButtonView.swift in Sources */,
 				5ACEF5EB2BD9641600BF9158 /* ModuleResponse.swift in Sources */,
 				5A2480E32B84C4F20018AA57 /* DaraApp.swift in Sources */,
+				5A5A80762C1747C1005C43E8 /* PersonalInformationViewModel.swift in Sources */,
 				5AF4DCCB2C11FF4700E1809F /* ShufflewordViewModel.swift in Sources */,
+				5A5A80782C1747D3005C43E8 /* PersonalInformationPage.swift in Sources */,
 				5ABE55472BC2CA44003C7ABA /* LoginResponse.swift in Sources */,
 				5AD69A9E2BD12E7E000570EA /* TrueFalseViewModel.swift in Sources */,
 				5A9BD2A82BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift in Sources */,
@@ -788,10 +851,12 @@
 				5AF4DCC42C104A4300E1809F /* AudioPlayerView.swift in Sources */,
 				5A9BD2982BC247090090CAD2 /* ChooseLanguageViewModel.swift in Sources */,
 				5AE1A5BF2BE25077007014C4 /* CorrectVeiw.swift in Sources */,
+				5A5A80642C16D3AD005C43E8 /* AlphabetResponse.swift in Sources */,
 				5ACEF5ED2BD9678000BF9158 /* PageResponse.swift in Sources */,
 				5A9BD29E2BC24DFD0090CAD2 /* ChooseYourPasswordViewModel.swift in Sources */,
 				5AF4DCC92C11FF3400E1809F /* ShufflewordPage.swift in Sources */,
 				5AC9891F2BCFEFA20007DA63 /* ModulePagesViewModel.swift in Sources */,
+				5A5A806A2C16EF52005C43E8 /* UserDataResponse.swift in Sources */,
 				5A7CA6CE2BD730C800B2FD84 /* VariantPage.swift in Sources */,
 				5A6106C62B9DC29600956D3A /* ChooseTimePage.swift in Sources */,
 			);

@@ -18,9 +18,9 @@ final class VariantViewModel: ObservableObject {
     @Published var audioData: Data?
     @Published var shuffledVariants: [String] = []
     @Published var variantsDisabled: Bool = false
-    @AppStorage("user_id") var userId: String?
-    @AppStorage("userLanguage") var userLanguage: String?
-    
+    @AppStorage("userId") var userId: String?
+    @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
+
     init(router: AnyRouter, data: Content) {
         self.router = router
         self.data = data

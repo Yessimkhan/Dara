@@ -16,7 +16,7 @@ final class ChooseLevelViewModel: ObservableObject {
     let userNumber: String
     let userEmail: String
     let password: String
-    @Published var level: LanguageLevel = .A1
+    @Published var level: UserLevel = .A1
     
     init(router: AnyRouter, language: String, userName: String, userNumber: String, userEmail: String, password: String) {
         self.router = router
@@ -31,6 +31,7 @@ final class ChooseLevelViewModel: ObservableObject {
         print("Level: \(level.levelValue)")
         router.showScreen(.push) { router in
             ChooseTimePage(viewModel: ChooseTimeViewModel(router: router, language: self.language, userName: self.userName, userNumber: self.userNumber, userEmail: self.userEmail, password: self.password, level: self.level))
+                .navigationBarBackButtonHidden()
         }
     }
 }

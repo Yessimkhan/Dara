@@ -43,6 +43,9 @@ struct AudioPlayerView: View {
         })
         .onChange(of: data, {
             setupAudio(audioData: data)
+            withAnimation {
+                isLoading = false
+            }
         })
         .onReceive(Timer.publish(every: 0.1, on: .main, in: .common).autoconnect(), perform: { _ in
             updateProgress()
@@ -68,6 +71,11 @@ struct AudioPlayerView: View {
     }
     
     func play() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+        } catch(let error) {
+            print(error.localizedDescription)
+        }
         isPlaying = true
         player?.play()
     }

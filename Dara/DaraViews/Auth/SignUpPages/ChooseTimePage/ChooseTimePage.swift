@@ -11,12 +11,10 @@ import SwiftfulRouting
 struct ChooseTimePage: View {
     
     @StateObject var viewModel: ChooseTimeViewModel
-    
+    @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
+
     var body: some View {
         ZStack {
-            if viewModel.isLoading {
-                LoaderView()
-            }
             VStack {
                 Spacer()
                 ChooseTimeView(selectedTime: $viewModel.time)
@@ -26,8 +24,22 @@ struct ChooseTimePage: View {
                     ButtonView(buttonType: .next)
                 }
             }
+            .blur(radius: viewModel.isLoading ? 3 : 0)
+            if viewModel.isLoading {
+                LoaderView()
+            }
         }
-        .blur(radius: viewModel.isLoading ? 3 : 0)
+        .toolbar {
+            ToolbarItem (placement: .topBarLeading) {
+                Button {
+                    viewModel.router.dismissScreen()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .fontWeight(.semibold)
+                }
+            }
+        }
+        .environment(\.locale, Locale(identifier: userLanguage))
         .padding(.horizontal, 24)
         .padding(.bottom, 42)
     }
@@ -54,7 +66,7 @@ struct ChooseTimeView: View {
         
         var id: TimeLevel { self }
         
-        var stringValue: String {
+        var stringValue: LocalizedStringResource {
             return "\(self.rawValue) - minutes"
         }
     }

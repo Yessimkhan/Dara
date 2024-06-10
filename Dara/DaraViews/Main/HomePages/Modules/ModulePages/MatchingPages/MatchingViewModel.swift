@@ -32,8 +32,8 @@ final class MatchingViewModel: ObservableObject {
     @Published var selectedQ: Int? = nil
     @Published var selectedA: Int? = nil
     @Published var isDisabled: Bool = true
-    @AppStorage("userLanguage") var userLanguage: String?
-    
+    @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
+
     init(router: AnyRouter, data: [Content]) {
         self.router = router
         self.data = data

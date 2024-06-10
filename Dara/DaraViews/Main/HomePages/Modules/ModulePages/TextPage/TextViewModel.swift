@@ -17,9 +17,9 @@ final class TextViewModel: ObservableObject {
     @Published var isLoadingImage: Bool = false
     @Published var image: Image?
     @Published var audioData: Data?
-    @AppStorage("user_id") var userId: String?
-    @AppStorage("userLanguage") var userLanguage: String?
-    
+    @AppStorage("userIid") var userId: String?
+    @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
+
     init(router: AnyRouter, data: Content) {
         self.router = router
         self.data = data

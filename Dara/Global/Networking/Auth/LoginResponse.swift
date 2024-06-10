@@ -15,5 +15,5 @@ struct LoginResponse: Codable {
 
 // MARK: - User
 struct User: Codable {
-    let id, email, language: String
+    let id: String
 }

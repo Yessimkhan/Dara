@@ -10,7 +10,7 @@ import SwiftUI
 struct PasswordTextFieldView: View {
     
     @State var isPasswordVisible: Bool = false
-    var placeholder: String
+    var placeholder: LocalizedStringResource
     @Binding var text: String
     @Binding var isError: Bool
     
@@ -47,7 +47,7 @@ struct PasswordTextFieldView: View {
 
 struct PasswordTextField: View {
     
-    var placeholder: String
+    var placeholder: LocalizedStringResource
     @Binding var text: String
     @Binding var isError: Bool
     
@@ -68,7 +68,7 @@ struct PasswordTextField: View {
 
 struct PasswordSecuredTextField: View {
     
-    var placeholder: String
+    var placeholder: LocalizedStringResource
     @Binding var text: String
     @Binding var isError: Bool
     

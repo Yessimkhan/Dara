@@ -19,13 +19,7 @@ final class RegistrationPageViewModel: ObservableObject {
     func goCooseLanguagePageView() {
         router.showScreen(.push) { router in
             ChoseLanguagePage(viewModel: ChooseLanguageViewModel(router: router))
+                .navigationBarBackButtonHidden()
         }
     }
-    
-    func goSignInPageView() {
-        router.showScreen(.push) { router in
-            SignInPage(viewModel: SignInViewModel(router: router)).navigationBarBackButtonHidden()
-        }
-    }
-    
 }

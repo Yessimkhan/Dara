@@ -18,7 +18,7 @@ extension View {
 
 struct TextFieldView: View {
     
-    var placeholder: String
+    var placeholder: LocalizedStringResource
     @Binding var text: String
     @Binding var isError: Bool
     

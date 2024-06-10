@@ -14,15 +14,17 @@ final class ModulePagesViewModel: ObservableObject {
     let moduleId: Int
     let allPages: Int
     let allTasks: Int
+    let lessonName: String
     var currentPage: Int
     var currentTask: Int
     var score: Int = 0
     let router: AnyRouter
     let homeRepository = HomeRepository()
+    @Binding var isTapped: Bool
     @Published var isLoading: Bool = false
-    @AppStorage("userLanguage") var userLanguage: String?
-    
-    init(router: AnyRouter, lessonId: Int, moduleId: Int, allPages: Int, allTasks: Int, currentPage: Int, currentTask: Int) {
+    @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
+
+    init(router: AnyRouter, lessonId: Int, moduleId: Int, allPages: Int, allTasks: Int, currentPage: Int, currentTask: Int, lessonName: String, isTapped: Binding<Bool> = .constant(true)) {
         self.router = router
         self.lessonId = lessonId
         self.moduleId = moduleId
@@ -30,6 +32,8 @@ final class ModulePagesViewModel: ObservableObject {
         self.allTasks = allTasks
         self.currentPage = currentPage
         self.currentTask = currentTask
+        self.lessonName = lessonName
+        self._isTapped = isTapped
         print("was inited")
     }
     
@@ -37,18 +41,29 @@ final class ModulePagesViewModel: ObservableObject {
         guard currentPage <= allPages else {
             let scoreInPercent: Int = score == 0 ? 0 : Int((Double(score) / Double(allTasks)) * 100)
             if moduleId == 4 {
-                homeRepository.putScore(topicID: "\(lessonId)", score: scoreInPercent) { result in
+                homeRepository.putScore(topicID: lessonId, score: scoreInPercent) { result in
+                    print(result)
+                }
+            } else {
+                homeRepository.putModuleStatus(topicID: lessonId, moduleId: moduleId, isCompleted: true) { result in
                     print(result)
                 }
             }
+            router.showScreen(.push) { router in
+                LessonModulesPage(viewModel: LessonModuleViewModel(router: router, lessonId: self.lessonId, lessonName: self.lessonName))
+                    .navigationBarTitle(self.lessonName, displayMode: .inline)
+                    .toolbar(.hidden, for: .tabBar)
+                    .navigationBarBackButtonHidden()
+            }
             print("Finish")
-            router.dismissScreenStack()
+            isTapped = false
             return
         }
         isLoading = true
         homeRepository.getPage(topicID: "\(lessonId)", moduleID: "\(moduleId)", pageID: "\(currentPage)") { result in
             DispatchQueue.main.async {
                 self.isLoading = false
+                self.isTapped = false
                 switch result {
                 case .success(let response):
                     print("Page get success")

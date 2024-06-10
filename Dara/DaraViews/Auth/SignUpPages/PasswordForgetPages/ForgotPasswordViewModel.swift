@@ -7,25 +7,47 @@
 
 import Foundation
 import SwiftfulRouting
+import SwiftUI
 
 final class ForgotPasswordViewModel: ObservableObject {
     
     let router: AnyRouter
     @Published var isError: Bool = false
-    
+    @Published var isLoading: Bool = false
+    @Published var isDisabled: Bool = true
+    @Published var email: String = ""
+    @Published var message: String = ""
+    @Published var showMessage: Bool = false
+    @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
+
     init(router: AnyRouter) {
         self.router = router
     }
     
-    func goResetPasswordPage() {
-        router.showScreen(.push) { router in
-            ResetPasswordPage(viewModel: self)
+    func sendEmail() {
+        isLoading = true
+        isDisabled = true
+        AuthRepository().forgotPassword(email: email) { result in
+            self.isLoading = false
+            switch result {
+            case .success(let response):
+                self.showMessage = true
+                self.message = response.message
+            case .failure(let error):
+                self.showMessage = true
+                self.message = String(localized: "Failed to send email. Please try again later.")
+                print("Send email failed \(error)")
+            }
         }
     }
     
-    func goMainTabBar() {
-        router.showScreen(.push) { router in
-            MenuTabBar().navigationBarBackButtonHidden()
+    func verifyEmail() {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        if emailPred.evaluate(with: email) {
+            isDisabled = false
+        } else {
+            isDisabled = true
         }
     }
 }

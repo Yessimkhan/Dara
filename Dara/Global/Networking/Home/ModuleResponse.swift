@@ -12,6 +12,7 @@ struct ModuleResponseElement: Codable, Identifiable {
     let id, title: String
     let moduleResponseID: Int
     let translation: Translation?
+    let isCompleted: Bool?
     let pageCount: Int?
     let taskCount: Int?
     let score: Int?
@@ -21,6 +22,7 @@ struct ModuleResponseElement: Codable, Identifiable {
         case title
         case moduleResponseID = "id"
         case translation
+        case isCompleted = "is_completed"
         case pageCount = "page_count"
         case taskCount = "task_count"
         case score

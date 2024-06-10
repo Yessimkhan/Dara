@@ -14,20 +14,20 @@ struct MenuTabBar: View {
         TabView {
             RouterView { router in
                 HomePage(viewModel: HomeViewModel(router: router))
-                    .navigationTitle("Home")
+                    .navigationTitle("Lessons")
             }
             .tabItem {
                 Label("Home", systemImage: "house")
             }
             RouterView { router in
-                AlphabeetPage(router: router)
+                AlphabetPage(viewModel: AlphabetViewModel(router: router))
                     .navigationTitle("Alphabet")
             }
             .tabItem {
                 Label("Alphabet", systemImage: "character")
             }
             RouterView { router in
-                ProfilePage(router: router)
+                ProfilePage(viewModel: ProfileViewModel(router: router))
                     .navigationTitle("Profile")
             }
             .tabItem {

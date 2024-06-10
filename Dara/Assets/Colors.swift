@@ -18,8 +18,8 @@ enum Colors {
     static let correctAnswer = Color(hex: "5DEF46")
     static let wrongAnswer = Color(hex: "FE2C16")
     static let textFieldBackground = Color("textFieldBackground")
-    static let black = Color("black")
-    static let white = Color("white")
+    static let black = Color("blackD")
+    static let white = Color("whiteD")
     static let gradient = LinearGradient(colors: [Colors.white, brandPrimary], startPoint: .topLeading, endPoint: .bottomTrailing)
 }
 

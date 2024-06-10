@@ -55,7 +55,7 @@ struct DialogPage: View {
                                     VStack(alignment: .leading) {
                                         Text(viewModel.data[index].title.replacingOccurrences(of: "\\n", with: "\n"))
                                             .font(.system(size: 14, weight: .regular))
-                                        Text(viewModel.data[index].translation.title.replacingOccurrences(of: "\\n", with: "\n"))
+                                        Text(viewModel.data[index].translation.title?.replacingOccurrences(of: "\\n", with: "\n") ?? "")
                                             .font(.system(size: 14, weight: .regular))
                                             .foregroundStyle(Colors.buttonInactive)
                                     }
@@ -76,7 +76,7 @@ struct DialogPage: View {
                         if modulePagesViewModel.currentPage > modulePagesViewModel.allPages {
                             ButtonView(buttonType: .finish)
                         } else {
-                            ButtonView(buttonType: .continue)
+                            ButtonView(buttonType: .continueButton)
                         }
                     }
                     

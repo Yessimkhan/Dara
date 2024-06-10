@@ -11,128 +11,127 @@ import SwiftfulRouting
 
 struct ProfilePage: View {
     
-    let router: AnyRouter
-    let scenes = UIApplication.shared.connectedScenes
+    @StateObject var viewModel: ProfileViewModel
     
-    @State private var avatarImage: UIImage?
-    @State private var photosPickerItem: PhotosPickerItem?
-    @State private var numberOfLesson: Int = 1
-    @State private var nameInKazakh: String = ""
-    @State private var nameInAnotherLanguage: String = ""
-    @State private var showLogoutAlert: Bool = false
-    @State private var showReloadAlert: Bool = false
-    @AppStorage("isAuthorized") var isAuthorized: Bool = false
-    @AppStorage("userEmail") var userEmail: String?
-    @AppStorage("isDarkMode") var isDarkMode: Bool = false
-    @AppStorage("user_level") var userLevel: Int = 1
-    @AppStorage("level") var level: LanguageLevel = .A1
-
     var body: some View {
-        RouterView{ router in
+        RouterView { router in
             ZStack {
                 VStack (spacing: 60){
+                    Spacer()
                     VStack {
-                        Image(uiImage: avatarImage ?? UIImage(resource: .avatar))
+                        Image(uiImage: viewModel.avatarImage ?? UIImage(resource: .avatar))
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 128, height: 128)
                             .clipShape(.circle)
                             .overlay (alignment: .bottomTrailing){
-                                PhotosPicker(selection: $photosPickerItem, matching: .images) {
+                                PhotosPicker(selection: $viewModel.photosPickerItem, matching: .images) {
                                     Image(systemName: "pencil.circle.fill")
                                         .font(.system(size: 30))
                                         .foregroundStyle(Color.blue)
-                                    
                                 }
                                 
                             }
-                        Text(userEmail ?? "")
+                        Text(viewModel.userName ?? "")
                             .font(.system(size: 29).bold())
                     }
                     
                     VStack (spacing: 20) {
-                        ExtractedView(imageName: "person", text: "Personal Information")
-                        
-                        ExtractedView(imageName: "lock", text: "Login and security")
-                        ExtractedView(imageName: "globe", text: "Language")
-                        ExtractedView(imageName: "arrow.left.square", text: "Logout")
+                        ExtractedView(imageName: "person.circle", text: "Personal Information")
                             .onTapGesture {
-                                showLogoutAlert.toggle()
+                                viewModel.openPersonalInformation()
                             }
-                            .alert(isPresented: $showLogoutAlert) {
-                                Alert(
-                                    title: Text("Are you sure you want to logout?"),
-                                    primaryButton: .destructive(Text("Logout"), action: {
-                                        DispatchQueue.main.async {
-                                            withAnimation {
-                                                self.isAuthorized = false
-                                            }
-                                        }
-                                    }),
-                                    secondaryButton: .default(Text("Cancel"))
-                                )
+                        ExtractedView(imageName: "lock.circle", text: "Change Password")
+                            .onTapGesture {
+                                viewModel.changePassword()
                             }
                         
+                        HStack {
+                            Image(systemName: "globe")
+                                .font(.system(size: 32))
+                            Text("Language")
+                                .font(.system(size: 20))
+                            Spacer()
+                            Picker("Choose your language", selection: $viewModel.language) {
+                                ForEach(UserLanguage.allCases) { category in
+                                    Text(category.rawValue).tag(category)
+                                        .font(.callout)
+                                }
+                            }
+                            .onChange(of: viewModel.language, {
+                                viewModel.userLanguage = viewModel.language.rawValue
+                                viewModel.updatePersonalInformation()
+                            })
+                            .pickerStyle(.menu)
+                        }
                         HStack {
                             Image(systemName: "arrowshape.up.circle")
                                 .font(.system(size: 32))
                             Text("Level")
                                 .font(.system(size: 20))
                             Spacer()
-                            Picker("Choose your level", selection: $level) {
-                                ForEach(LanguageLevel.allCases) { category in
-                                    Text(category.rawValue).tag(category)
+                            Picker("Choose your level", selection: $viewModel.level) {
+                                ForEach(UserLevel.allCases) { category in
+                                    Text(category.title).tag(category)
                                         .font(.callout)
                                 }
                             }
-                            .onChange(of: level, {
-                                userLevel = level.levelValue
-                                showReloadAlert.toggle()
-                                print(userLevel)
+                            .onChange(of: viewModel.level, {
+                                viewModel.userLevel = viewModel.level.levelValue
+                                viewModel.updatePersonalInformation()
                             })
                             .pickerStyle(.menu)
                         }
-                        .alert(isPresented: $showReloadAlert) {
-                            Alert(
-                                title: Text("Get a new level"),
-                                message: Text("To get a new level you need to restart the application.")
-                            )
-                        }
                         
-                        HStack {
-                            Image(systemName: isDarkMode ? "moon" : "sun.min")
-                                .font(.system(size: 32))
-                            Toggle(isOn: $isDarkMode) {
-                                Text("Dark Mode")
-                                    .font(.system(size: 20))
+//                        HStack {
+//                            Image(systemName: isDarkMode ? "moon.circle" : "sun.max.circle")
+//                                .font(.system(size: 32))
+//                            Toggle(isOn: $isDarkMode) {
+//                                Text("Dark Mode")
+//                                    .font(.system(size: 20))
+//                            }
+//                            .onChange(of: isDarkMode) {
+//                                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+//                                    withAnimation {
+//                                        scene.windows.first?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
+//                                    }
+//                                }
+//                            }
+//                            .tint(Colors.brandPrimary)
+//                        }
+                        
+                        ExtractedView(imageName: "arrow.left.circle", text: "Logout")
+                            .onTapGesture {
+                                viewModel.showLogoutAlert.toggle()
                             }
-                            .onChange(of: isDarkMode) { value in
-                                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                                    withAnimation {
-                                        scene.windows.first?.overrideUserInterfaceStyle = value ? .dark : .light
-                                    }
-                                }
+                            .alert(isPresented: $viewModel.showLogoutAlert) {
+                                Alert(
+                                    title: Text("Are you sure you want to logout?"),
+                                    primaryButton: .destructive(Text("Logout"), action: {
+                                        viewModel.logout()
+                                    }),
+                                    secondaryButton: .default(Text("Cancel"))
+                                )
                             }
-                            .tint(Colors.brandPrimary)
-                        }
                     }
                     .padding(24)
-                    .onChange(of: photosPickerItem) { _, _ in
+                    .onChange(of: viewModel.photosPickerItem) { _, _ in
                         Task {
-                            if let photosPickerItem,
+                            if let photosPickerItem = viewModel.photosPickerItem,
                                let data = try? await photosPickerItem.loadTransferable(type: Data.self) {
                                 if let image = UIImage(data: data) {
-                                    avatarImage = image
+                                    viewModel.avatarImage = image
                                 }
                             }
                             
-                            photosPickerItem = nil
+                            viewModel.photosPickerItem = nil
                         }
                     }
                     
                     Spacer()
                 }
             }
+            
             .navigationTitle("Profile")
         }
     }
@@ -142,14 +141,14 @@ struct ProfilePage: View {
 
 #Preview {
     RouterView { router in
-        ProfilePage(router: router)
+        ProfilePage(viewModel: ProfileViewModel(router: router))
     }
 }
 
 struct ExtractedView: View {
     
     let imageName: String
-    let text: String
+    let text: LocalizedStringResource
     @State var isSelected: Bool = false {
         didSet {
             print("hello")

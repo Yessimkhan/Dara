@@ -10,7 +10,9 @@ import SwiftUI
 struct LessonView: View {
     
     let lessonDate: TopicsResponseElement
-    let image: Image
+    let lessonId: Int
+    let image: Image?
+    @State var isLoading: Bool = true
     
     var body: some View {
         ZStack (alignment: .leading){
@@ -20,7 +22,7 @@ struct LessonView: View {
                 .frame(height: 140)
             HStack(spacing: 25) {
                 VStack {
-                    Text("\(lessonDate.topicsResponseID - 1) - lesson")
+                    Text("\(lessonId) - lesson")
                         .foregroundStyle(Colors.white)
                         .font(.system(size: 14))
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -28,7 +30,7 @@ struct LessonView: View {
                         .foregroundStyle(Colors.white)
                         .font(.system(size: 24))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text(lessonDate.translation.title)
+                    Text(lessonDate.translation?.title ?? "")
                         .foregroundStyle(Colors.white)
                         .font(.system(size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -36,11 +38,22 @@ struct LessonView: View {
                 .frame(width: 160)
                 .padding(.leading, 24)
                 
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 115)
-                    .padding(.trailing)
+                if isLoading {
+                    Spacer()
+                    LoaderView()
+                        .padding(.trailing, 48)
+                }else {
+                    image?
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 115)
+                        .padding(.trailing)
+                }
+            }
+        }
+        .onChange(of: image) {
+            withAnimation {
+                isLoading = false
             }
         }
     }

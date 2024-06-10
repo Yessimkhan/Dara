@@ -56,13 +56,13 @@ struct CardPage: View {
                             if modulePagesViewModel.currentPage > modulePagesViewModel.allPages {
                                 ButtonView(buttonType: .finish)
                             } else {
-                                ButtonView(buttonType: .continue)
+                                ButtonView(buttonType: .continueButton)
                             }
                         }
                     }
                     
                     VStack (spacing: 16) {
-                        CardsForWords(title: viewModel.data.title, translate: viewModel.data.translation.title, image: viewModel.image)
+                        CardsForWords(title: viewModel.data.title, translate: viewModel.data.translation.title ?? "", image: viewModel.image)
                         
                         if viewModel.data.audio != "" {
                             Image(systemName: "speaker.wave.2")
@@ -85,7 +85,7 @@ struct CardPage: View {
                                 Text(viewModel.data.example?.replacingOccurrences(of: "\\n", with: "\n") ?? "")
                                     .font(.system(size: 14 , weight: .semibold))
                                     .multilineTextAlignment(.center)
-                                Text(viewModel.data.translation.example?.replacingOccurrences(of: "\\n", with: "\n") ?? "")
+                                Text(viewModel.data.translation.title?.replacingOccurrences(of: "\\n", with: "\n") ?? "")
                                     .font(.system(size: 14, weight: .semibold))
                                     .foregroundStyle(Colors.buttonInactive)
                                     .multilineTextAlignment(.center)

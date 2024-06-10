@@ -27,7 +27,7 @@ struct WrongView: View {
                         router.dismissModal()
                     }
                 } label: {
-                    ButtonView(buttonType: isTest ? .continue : .tryAgain)
+                    ButtonView(buttonType: isTest ? .continueButton : .tryAgain)
                 }
             }
             .padding(.horizontal, 24)

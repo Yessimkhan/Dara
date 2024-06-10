@@ -12,10 +12,10 @@ import SVGKit
 
 final class HomeRepository {
     @AppStorage("accessToken") var accessToken: String?
-    @AppStorage("userLanguage") var userLanguage: String?
+    @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
     @AppStorage("userId") var userId: String?
     private lazy var headers: HTTPHeaders = [
-        "Accept-Language": userLanguage ?? "",
+        "Accept-Language": userLanguage,
         "Authorization": "Bearer \(accessToken ?? "")"
     ]
     
@@ -139,7 +139,7 @@ final class HomeRepository {
         }
     }
     
-    func putScore(topicID: String, score: Int, completion: @escaping (Result<TestProgressResponse, Error>) -> Void) {
+    func putScore(topicID: Int, score: Int, completion: @escaping (Result<TestProgressResponse, Error>) -> Void) {
         let parameters: [String: Any] = [
             "user_id": userId ?? "",
             "topic_id": topicID,
@@ -164,29 +164,119 @@ final class HomeRepository {
         }
     }
     
-    //    func getAlphabet(completion: @escaping (Result<PageResponse, Error>) -> Void) {
-    //        let parameters: [String: Any] = [
-    //            "page_id": pageID,
-    //            "module_id": moduleID,
-    //            "topic_id": topicID,
-    //        ]
-    //
-    //        NetworkClient.shared.get(endpoint: "/page", parameters: parameters, headers: headers) { result in
-    //            switch result {
-    //            case .success(let data):
-    //                do {
-    //                    let decoder = JSONDecoder()
-    //                    let response = try decoder.decode(PageResponse.self, from: data)
-    //                    completion(.success(response))
-    //                } catch {
-    //                    print("Failed to decode response: \(error)")
-    //                    completion(.failure(error))
-    //                }
-    //            case .failure(let error):
-    //                print("Failed to make request: \(error.localizedDescription)")
-    //                completion(.failure(error))
-    //            }
-    //        }
-    //    }
+    func putModuleStatus(topicID: Int, moduleId: Int, isCompleted: Bool, completion: @escaping (Result<ModuleStatusResponse, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "user_id": userId ?? "",
+            "topic_id": topicID,
+            "module_id": moduleId,
+            "is_completed": isCompleted
+        ]
+        
+        NetworkClient.shared.put(endpoint: "/module/status", parameters: parameters, headers: headers) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(ModuleStatusResponse.self, from: data)
+                    completion(.success(response))
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to make request: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
     
+    func getAlphabet(completion: @escaping (Result<AlphabetResponse, Error>) -> Void) {
+        NetworkClient.shared.get(endpoint: "/letter") { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(AlphabetResponse.self, from: data)
+                    completion(.success(response))
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to make request: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getProfile(completion: @escaping (Result<ProfileResponse, Error>) -> Void) {
+        NetworkClient.shared.get(endpoint: "/user/my", headers: headers) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(ProfileResponse.self, from: data)
+                    completion(.success(response))
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to make request: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func updateProfile(levelId: Int, email: String, username: String, phone: String, language: String, completion: @escaping (Result<ProfileResponse, Error>) -> Void) {
+        
+        let parameters: [String: Any] = [
+            "level_id": levelId,
+            "email": email,
+            "username": username,
+            "phone": phone,
+            "language": language
+          ]
+        
+        NetworkClient.shared.put(endpoint: "/user/my",parameters: parameters, headers: headers) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(ProfileResponse.self, from: data)
+                    completion(.success(response))
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to make request: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func updatePassword(oldPassword: String, newPassword: String, completion: @escaping (Result<MessageResponse, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "current_password": oldPassword,
+            "new_password": newPassword
+        ]
+        
+        NetworkClient.shared.post(endpoint: "/user/password", parameters: parameters, headers: headers) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(MessageResponse.self, from: data)
+                    completion(.success(response))
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to make request: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
 }

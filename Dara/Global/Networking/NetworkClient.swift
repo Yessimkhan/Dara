@@ -30,8 +30,8 @@ public final class NetworkClient {
     // MARK: - Methods
     
     /// Sends a POST request to the specified endpoint.
-    public func post(endpoint: String, parameters: Parameters? = nil, completion: @escaping (Result<Data, AFError>) -> Void) {
-        request(endpoint, method: .post, parameters: parameters, completion: completion)
+    public func post(endpoint: String, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, completion: @escaping (Result<Data, AFError>) -> Void) {
+        request(endpoint, method: .post, parameters: parameters, headers: headers, completion: completion)
     }
     
     /// Sends a POST request to the specified endpoint.
@@ -47,6 +47,7 @@ public final class NetworkClient {
     /// Sends a Download request to the specified endpoint.
     public func download(_ endpoint: String, headers: HTTPHeaders? = nil, completion: @escaping (Result<(data: Data, response: HTTPURLResponse), AFError>) -> Void) {
         let url = "\(baseURL)/\(endpoint)"
+        print(url)
 
         session.download(url, headers: headers).responseData { response in
             switch response.result {

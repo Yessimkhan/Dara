@@ -5,7 +5,7 @@
 //  Created by Yessimkhan Zhumash on 09.04.2024.
 //
 
-import AVKit
+import AVFoundation
 class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     static let instance = SoundManager()
@@ -23,6 +23,11 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         
         do {
             player = try AVAudioPlayer(contentsOf: url)
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback)
+            } catch(let error) {
+                print(error.localizedDescription)
+            }
             player?.play()
         } catch let error {
             print(error.localizedDescription)
@@ -39,9 +44,14 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
                 player = try AVAudioPlayer(data: data, fileTypeHint: ".m4a")
                 player?.delegate = self  // Correctly assigning delegate
                 player?.prepareToPlay()
+                do {
+                    try AVAudioSession.sharedInstance().setCategory(.playback)
+                } catch(let error) {
+                    print(error.localizedDescription)
+                }
                 player?.play()
             } catch {
-                print("Failed to initialize player with data: \(error.localizedDescription)")
+                print("Failed to initialize player with data: \(error)")
             }
         }
     

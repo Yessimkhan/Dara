@@ -70,7 +70,7 @@ struct TrueFalsePage: View {
                             Text(viewModel.data.title.replacingOccurrences(of: "\\n", with: "\n"))
                                 .font(.system(size: viewModel.image == nil ? 20 : 14 , weight: .semibold))
                                 .multilineTextAlignment(.center)
-                            Text(viewModel.data.translation.title.replacingOccurrences(of: "\\n", with: "\n"))
+                            Text(viewModel.data.translation.title?.replacingOccurrences(of: "\\n", with: "\n") ?? "")
                                 .font(.system(size: viewModel.image == nil ? 20 : 14, weight: .semibold))
                                 .foregroundStyle(Colors.buttonInactive)
                                 .multilineTextAlignment(.center)

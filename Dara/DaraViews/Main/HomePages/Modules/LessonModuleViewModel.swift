@@ -13,14 +13,16 @@ import SwiftUI
 final class LessonModuleViewModel: ObservableObject {
     let router: AnyRouter
     @Published var moduleArray: ModuleResponse = []
-    @Published var isLoading: Bool = false
+    @Published var isLoading: Bool = true
     @Published var selectedModule: String?
     let lessonId: Int
-    @AppStorage("user_id") var userId: String?
+    let lessonName: String
+    @AppStorage("userId") var userId: String?
     
-    init(router: AnyRouter, lessonId: Int) {
+    init(router: AnyRouter, lessonId: Int, lessonName: String) {
         self.router = router
         self.lessonId = lessonId
+        self.lessonName = lessonName
         getModules()
     }
     
@@ -30,7 +32,6 @@ final class LessonModuleViewModel: ObservableObject {
                 selectedModule = nil
             } else {
                 selectedModule = moduleName
-                
             }
         }
     }

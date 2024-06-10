@@ -1,5 +1,5 @@
 //
-//  AlphabeetPage.swift
+//  AlphabetPage.swift
 //  Dara
 //
 //  Created by Yessimkhan Zhumash on 16.03.2024.
@@ -8,15 +8,14 @@
 import SwiftUI
 import SwiftfulRouting
 
-struct AlphabeetPage: View {
-    let router: AnyRouter
+struct AlphabetPage: View {
     
-    let alphabetArray: [Character] = Array("аәбвгғдежзийкқлмнңоөпрстуұүфхһцчшщъыіьэюя")
+    @StateObject var viewModel: AlphabetViewModel
     
     var body: some View {
         ScrollView (showsIndicators: false){
             VStack (spacing: 16){
-                ForEach(alphabetArray, id: \.self) { letter in
+                ForEach(viewModel.alphabetArray.indices, id: \.self) { index in
                     HStack (spacing: 60){
                         
                         Image(systemName: "speaker.wave.2")
@@ -29,13 +28,18 @@ struct AlphabeetPage: View {
                                     .stroke(lineWidth: 1)
                                     .foregroundColor(Colors.black)
                             )
+                            .onTapGesture {
+                                SoundManager.instance.playAudio(audioData: viewModel.audioData[index])
+                            }
                         
                         ZStack {
                             HStack (spacing: 16) {
-                                Text(String(letter).uppercased())
-                                    .font(.system(size: 56))
-                                Text(String(letter))
-                                    .font(.system(size: 56))
+                                Text(String(viewModel.alphabetArray[index]).uppercased())
+                                    .font(.system(size: 56, weight: .semibold))
+                                    .foregroundStyle(Colors.brandPrimary)
+                                Text(String(viewModel.alphabetArray[index]))
+                                    .font(.system(size: 56, weight: .semibold))
+                                    .foregroundStyle(Colors.brandPrimary)
                             }
                             .frame(width: 150)
                             .padding(.horizontal, 40)
@@ -51,12 +55,12 @@ struct AlphabeetPage: View {
             }
             .padding()
         }
-        .navigationTitle("Alphabeet")
+        .navigationTitle("Alphabet")
     }
 }
 
-#Preview {
-    RouterView {router in
-        AlphabeetPage(router: router)
-    }
-}
+//#Preview {
+//    RouterView {router in
+//        AlphabetPage(router: router, viewModel: AlphabetViewModel(router: <#T##AnyRouter#>, data: <#T##AlphabetResponse#>))
+//    }
+//}

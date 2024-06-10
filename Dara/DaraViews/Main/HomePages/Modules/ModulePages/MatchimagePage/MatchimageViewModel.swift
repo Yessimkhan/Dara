@@ -34,8 +34,8 @@ final class MatchimageViewModel: ObservableObject {
     @Published var selectedQ: Int? = nil
     @Published var selectedA: Int? = nil
     @Published var isDisabled: Bool = true
-    @AppStorage("userLanguage") var userLanguage: String?
-    
+    @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
+
     init(router: AnyRouter, data: [Content]) {
         self.router = router
         self.data = data
@@ -48,7 +48,7 @@ final class MatchimageViewModel: ObservableObject {
         isLoading = true
         self.shuffledQuestionsImages = Array(repeating: Image(uiImage: UIImage()), count: firstThreeElements.count)
         var downloadImages = self.shuffledQuestionsImages
-        for (index, data) in data.enumerated() {
+        for (index, data) in firstThreeElements.enumerated() {
             HomeRepository().downloadImage(from: data.image ?? "") { [weak self] image in
                 guard let self = self else { return }
                 DispatchQueue.main.async {
@@ -56,7 +56,7 @@ final class MatchimageViewModel: ObservableObject {
                     self.downloadCount += 1
                     if self.downloadCount == firstThreeElements.count {
                         self.shuffledQuestionsImages = downloadImages
-                        var shuffled_indices = self.shuffledQuestions.indices.shuffled()
+                        let shuffled_indices = self.shuffledQuestions.indices.shuffled()
                         self.shuffledQuestions = shuffled_indices.map { self.shuffledQuestions[$0] }
                         self.shuffledQuestionsImages = shuffled_indices.map { self.shuffledQuestionsImages[$0] }
                         self.shuffledAnswers = self.shuffledAnswers.shuffled()

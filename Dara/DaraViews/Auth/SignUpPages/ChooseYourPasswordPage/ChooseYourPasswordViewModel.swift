@@ -19,7 +19,7 @@ final class ChooseYourPasswordViewModel: ObservableObject {
     @Published var confirmPassword: String = ""
     @Published var isPasswordVisible: Bool = false
     @Published var isConfirmPasswordVisible: Bool = false
-    @Published var verified: Bool = false
+    @Published var verified: Bool = true
     @Published var isError: Bool = false
     @Published var errorMessage: String? = nil
     
@@ -33,15 +33,15 @@ final class ChooseYourPasswordViewModel: ObservableObject {
     
     func verifyPassword() {
         errorMessage = nil
-        verified = false
+        verified = true
         if (password.count >= 8) {
             if (password == confirmPassword) {
-                verified = true
+                verified = false
             } else {
-                errorMessage = "Passwords do not match."
+                errorMessage = String(localized:"Passwords do not match.")
             }
         } else {
-            errorMessage = "Password length must be at least 8 characters."
+            errorMessage = String(localized:"Password length must be at least 8 characters.")
         }
     }
     
@@ -49,12 +49,7 @@ final class ChooseYourPasswordViewModel: ObservableObject {
         print("Password: \(password)")
         router.showScreen(.push) { router in
             ChooseLevelPage(viewModel: ChooseLevelViewModel(router: router, language: self.language, userName: self.userName, userNumber: self.userNumber, userEmail: self.userEmail, password: self.password))
-        }
-    }
-    
-    func goSignInPageView() {
-        router.showScreen(.push) { router in
-            SignInPage(viewModel: SignInViewModel(router: router)).navigationBarBackButtonHidden()
+                .navigationBarBackButtonHidden()
         }
     }
 }

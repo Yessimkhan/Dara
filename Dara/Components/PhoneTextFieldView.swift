@@ -10,15 +10,14 @@ import iPhoneNumberField
 
 struct PhoneTextFieldView: View {
     
-    var placeholder: String
-    @State var phone: String = ""
+    var placeholder: LocalizedStringResource
     @Binding var text: String
     @Binding var isError: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(placeholder)
-            iPhoneNumberField(text: $phone)
+            iPhoneNumberField(text: $text)
                 .flagHidden(false)
                 .prefixHidden(false)
                 .autofillPrefix(true)
@@ -26,9 +25,8 @@ struct PhoneTextFieldView: View {
                 .padding()
                 .background(Colors.textFieldBackground.cornerRadius(10))
                 .addBorder(isError ? Color.red : Color.clear, width: isError ? 1 : 0, cornerRadius: 10)
-                .onChange(of: phone) {
+                .onChange(of: text) {
                     isError = false
-                    text = phone
                 }
         }
     }

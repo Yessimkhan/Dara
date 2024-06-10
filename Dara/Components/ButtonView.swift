@@ -7,41 +7,42 @@
 
 import SwiftUI
 
+import SwiftUI
+
 enum ButtonType {
     case next
-    case `continue`
+    case continueButton
     case finish
     case signIn
     case signUp
     case signOut
-    case choseYourLanguage
-    case eng
-    case rus
+    case chooseYourLanguage
+    case english
+    case russian
     case submit
-    case `true`
-    case `false`
+    case affirmative
+    case negative
     case tryAgain
     case check
     case custom
     
-    var type: String {
+    var localizedString: LocalizedStringKey {
         switch self {
-        case .next: "Next"
-        case .continue: "Continue"
-        case .finish: "Finish"
-        case .signIn: "Sign In"
-        case .signUp: "Sign Up"
-        case .signOut: "Sign Out"
-        case .choseYourLanguage: "Choose your Language"
-        case .eng: "Eng"
-        case .rus: "Rus"
-        case .submit: "Sumbit"
-        case .true: "True"
-        case .false: "False"
-        case .tryAgain: "Try again"
-        case .check: "Check"
-        case .custom:
-            "custom"
+        case .next: return "Next"
+        case .continueButton: return "Continue"
+        case .finish: return "Finish"
+        case .signIn: return "Sign In"
+        case .signUp: return "Sign Up"
+        case .signOut: return "Sign Out"
+        case .chooseYourLanguage: return "Choose your Language"
+        case .english: return "Eng"
+        case .russian: return "Rus"
+        case .submit: return "Submit"
+        case .affirmative: return "True"
+        case .negative: return "False"
+        case .tryAgain: return "Try again"
+        case .check: return "Check"
+        case .custom: return ""
         }
     }
 }
@@ -50,7 +51,7 @@ struct ButtonView: View {
     
     let buttonType: ButtonType
     let withBackground: Bool
-    var buttonText: String
+    let buttonText: String
     @Binding var disabled: Bool
     
     init(buttonType: ButtonType, withBackground: Bool = true, buttonText: String = "", disabled: Binding<Bool> = .constant(false)) {
@@ -61,28 +62,39 @@ struct ButtonView: View {
     }
     
     var body: some View {
+        let displayText: Text
+        if buttonType == .custom {
+            displayText = Text(buttonText)
+        } else {
+            displayText = Text(buttonType.localizedString)
+        }
+        
         if withBackground {
-            Text(buttonType.type == "custom" ? buttonText : buttonType.type)
+            return displayText
                 .font(.system(size: 18, weight: .regular))
-                .foregroundStyle(Colors.white)
+                .foregroundColor(Colors.white)
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(!disabled ? Colors.brandPrimary.cornerRadius(10) : Colors.buttonInactive.cornerRadius(10))
+                .background(!disabled ? Colors.brandPrimary.cornerRadius(10) : Color.gray.cornerRadius(10))
                 .lineLimit(nil)
-        }
-        else {
-            Text(buttonType.type == "custom" ? buttonText : buttonType.type)
+                .eraseToAnyView()
+        } else {
+            return displayText
                 .font(.system(size: 18, weight: .regular))
-                .foregroundStyle(Colors.brandPrimary)
+                .foregroundColor(Colors.brandPrimary)
                 .padding()
                 .frame(maxWidth: .infinity)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 1).foregroundColor(Colors.brandPrimary))
                 .lineLimit(nil)
+                .eraseToAnyView()
         }
     }
 }
 
-
-#Preview {
-    ButtonView(buttonType: .signIn, withBackground: true)
+extension View {
+    func eraseToAnyView() -> AnyView {
+        return AnyView(self)
+    }
 }
+
+

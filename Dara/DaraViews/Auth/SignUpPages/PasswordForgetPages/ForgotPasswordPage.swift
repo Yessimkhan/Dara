@@ -10,11 +10,13 @@ import SwiftfulRouting
 
 struct ForgotPasswordPage: View {
     
-    @State var email: String = ""
     @StateObject var viewModel: ForgotPasswordViewModel
     
     var body: some View {
         ZStack {
+            if viewModel.isLoading {
+                LoaderView()
+            }
             VStack (spacing: 166) {
                 Spacer()
                 VStack(spacing: 74) {
@@ -23,22 +25,41 @@ struct ForgotPasswordPage: View {
                     
                     VStack(alignment: .leading , spacing: 32) {
                         Text("Don’t worry! It happens. Please enter the address associated with your account.")
-                            .lineLimit(2)
+                            .lineLimit(nil)
                             .font(.system(size: 16, weight: .regular))
                             .fixedSize(horizontal: false, vertical: true)
                         
-                        TextFieldView(placeholder: "Email adress", text: $email, isError: $viewModel.isError)
+                        TextFieldView(placeholder: "Email", text: $viewModel.email, isError: $viewModel.isError)
+                            .onChange(of: viewModel.email) {
+                                viewModel.verifyEmail()
+                            }
+                            .keyboardType(.emailAddress)
                     }
                 }
                 Button {
-                    viewModel.goResetPasswordPage()
+                    viewModel.sendEmail()
                 } label: {
-                    ButtonView(buttonType: .continue)
+                    ButtonView(buttonType: .submit, disabled: $viewModel.isDisabled)
                 }
             }
+            .blur(radius: viewModel.isLoading ? 3 : 0)
             .padding(.horizontal, 24)
             .padding(.bottom, 194)   
         }
+        .alert(isPresented: $viewModel.showMessage, content: {
+            Alert(title: Text(viewModel.message))
+        })
+        .toolbar {
+            ToolbarItem (placement: .topBarLeading) {
+                Button {
+                    viewModel.router.dismissScreen()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .fontWeight(.semibold)
+                }
+            }
+        }
+        .environment(\.locale, Locale(identifier: viewModel.userLanguage))
     }
 }
 

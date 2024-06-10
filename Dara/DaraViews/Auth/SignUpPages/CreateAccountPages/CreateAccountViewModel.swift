@@ -16,7 +16,7 @@ final class CreateAccountViewModel: ObservableObject {
     @Published var userNumber: String = ""
     @Published var userEmail: String = ""
     @Published var isError: Bool = false
-    @Published var verified: Bool = false
+    @Published var verified: Bool = true
     @Published var errorMessage: String? = nil
     var username: Bool = false
     var phone: Bool = false
@@ -28,20 +28,32 @@ final class CreateAccountViewModel: ObservableObject {
     }
     
     func verifyUsername() {
-        verified = false
+        verified = true
         if (userName.count < 3) {
-            errorMessage = "Username is so short"
+            errorMessage = String(localized:"Username is so short")
         } else {
-            username = true
-            errorMessage = nil
-            verify()
+            AuthRepository().checkUsername(username: userName) { [weak self] result in
+                switch result {
+                case .success(let response):
+                    if response.isExists {
+                        self?.username = false
+                        self?.errorMessage = String(localized: "This username is already taken")
+                    } else {
+                        self?.username = true
+                        self?.errorMessage = nil
+                        self?.verify()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
     
     func verifyPhone() {
-        verified = false
+        verified = true
         if (userNumber.count < 3) {
-            errorMessage = "Phone Number is unavailable"
+            errorMessage = String(localized:"Phone Number is unavailable")
         } else {
             phone = true
             errorMessage = nil
@@ -52,9 +64,9 @@ final class CreateAccountViewModel: ObservableObject {
     func verifyEmail() {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        verified = false
+        verified = true
         if !(emailPred.evaluate(with: userEmail)) {
-            errorMessage = "Email is unavailable"
+            errorMessage = String(localized:"Email is unavailable")
         } else {
             email = true
             errorMessage = nil
@@ -63,15 +75,9 @@ final class CreateAccountViewModel: ObservableObject {
     }
     
     func verify() {
-        verified = false
+        verified = true
         if (email && username && phone) {
-            verified = true
-        }
-    }
-    
-    func goSignInPageView() {
-        router.showScreen(.push) { router in
-            SignInPage(viewModel: SignInViewModel(router: router)).navigationBarBackButtonHidden()
+            verified = false
         }
     }
     
@@ -81,6 +87,7 @@ final class CreateAccountViewModel: ObservableObject {
         print("Email: \(userEmail)")
         router.showScreen(.push) { router in
             ChooseYourPasswordPage(viewModel: ChooseYourPasswordViewModel(router: router, language: self.language, userName: self.userName, userNumber: self.userNumber, userEmail: self.userEmail))
+                .navigationBarBackButtonHidden()
         }
     }
     

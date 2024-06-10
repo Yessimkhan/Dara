@@ -11,7 +11,8 @@ import SwiftfulRouting
 struct ChooseYourPasswordPage: View {
     
     @StateObject var viewModel: ChooseYourPasswordViewModel
-    
+    @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
+
     var body: some View {
         ZStack {
             VStack (spacing: 32) {
@@ -54,14 +55,14 @@ struct ChooseYourPasswordPage: View {
                         Button {
                             viewModel.goChooseLevelPage()
                         } label: {
-                            ButtonView(buttonType: .continue, disabled: $viewModel.verified)
+                            ButtonView(buttonType: .continueButton, disabled: $viewModel.verified)
                         }
-                        .disabled(!viewModel.verified)
+                        .disabled(viewModel.verified)
                     }
                     VStack(spacing: 16){
                         LoginWithGoogleAndFacebookView()
                         Button {
-                            viewModel.goSignInPageView()
+                            viewModel.router.dismissScreenStack()
                         } label: {
                             SingleButtonView(buttonType: .signIn)
                         }
@@ -71,6 +72,17 @@ struct ChooseYourPasswordPage: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 42)
         }
+        .toolbar {
+            ToolbarItem (placement: .topBarLeading) {
+                Button {
+                    viewModel.router.dismissScreen()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .fontWeight(.semibold)
+                }
+            }
+        }
+        .environment(\.locale, Locale(identifier: userLanguage))
         .ignoresSafeArea()
     }
 }

@@ -122,7 +122,7 @@ struct MatchimagePage: View {
                         if modulePagesViewModel.currentPage > modulePagesViewModel.allPages {
                             ButtonView(buttonType: .finish, disabled: $viewModel.isDisabled)
                         } else {
-                            ButtonView(buttonType: .continue, disabled: $viewModel.isDisabled)
+                            ButtonView(buttonType: .continueButton, disabled: $viewModel.isDisabled)
                         }
                     }.disabled(viewModel.isDisabled)
                     

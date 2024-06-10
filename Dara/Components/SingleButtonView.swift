@@ -12,7 +12,7 @@ enum SingleButtonType {
     case signUp
     case forgotPassword
     
-    var text: String {
+    var text: LocalizedStringResource {
         switch self {
         case .signIn:
             return "Already Dara's user?"
@@ -23,7 +23,7 @@ enum SingleButtonType {
         }
     }
     
-    var link: String {
+    var link: LocalizedStringResource {
         switch self {
         case .signIn:
             return "Sign In"
@@ -39,7 +39,7 @@ struct SingleButtonView: View {
     let buttonType: SingleButtonType
     
     var body: some View {
-        HStack (spacing: 7){
+        HStack (spacing: 7) {
             Text(buttonType.text)
                 .foregroundStyle(Colors.black)
             Text(buttonType.link)

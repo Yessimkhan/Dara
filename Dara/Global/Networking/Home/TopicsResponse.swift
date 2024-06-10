@@ -14,7 +14,7 @@ struct TopicsResponseElement: Codable, Identifiable {
     let title: String
     let image: String
     let isOpened: Bool
-    let translation: Translation
+    let translation: Translation?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -26,7 +26,7 @@ struct TopicsResponseElement: Codable, Identifiable {
 
 // MARK: - Translation
 struct Translation: Codable {
-    let title: String
+    let title: String?
     let description, example, question: String?
 }
 

@@ -39,7 +39,7 @@ struct HintPage: View {
                         if modulePagesViewModel.currentPage > modulePagesViewModel.allPages {
                             ButtonView(buttonType: .finish)
                         } else {
-                            ButtonView(buttonType: .continue)
+                            ButtonView(buttonType: .continueButton)
                         }
                     }
                 }

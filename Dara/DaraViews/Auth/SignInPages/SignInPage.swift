@@ -13,31 +13,32 @@ struct SignInPage: View {
 
     var body: some View {
         ZStack {
-            if viewModel.isLoading {
-                LoaderView()
-            }
-
             VStack(spacing: 64) {
                 Spacer()
                 Text("Sign In")
                     .font(.title)
                 
-                VStack(spacing: 86) {
+                VStack(spacing: 64) {
                     VStack(alignment: .leading, spacing: 18) {
-                        TextFieldView(placeholder: "Email address", text: $viewModel.email, isError: $viewModel.isError)
+                        TextFieldView(placeholder: "Username or Email", text: $viewModel.email, isError: $viewModel.isError)
                             .submitLabel(.done)
                             .keyboardType(.emailAddress)
+                        
                         PasswordTextFieldView(placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
                             .submitLabel(.done)
-                        if viewModel.isError {
-                            Text("Email or Password is Incorrect")
-                                .foregroundStyle(Colors.wrongAnswer)
-                        }
                         
                         Button {
                             viewModel.goForgotPasswordPage()
                         } label: {
                             SingleButtonView(buttonType: .forgotPassword)
+                        }
+                        
+                        if viewModel.isError {
+                            Text(viewModel.errorMessage ?? "")
+                                .foregroundStyle(Colors.wrongAnswer)
+                        } else {
+                            Text("space")
+                                .foregroundStyle(Color.clear)
                         }
                     }
                     
@@ -56,8 +57,14 @@ struct SignInPage: View {
                     }
                 }
             }
+            .blur(radius: viewModel.isLoading ? 3 : 0)
+            
+            if viewModel.isLoading {
+                LoaderView()
+            }
         }
-        .blur(radius: viewModel.isLoading ? 3 : 0)
+        
+        .environment(\.locale, Locale(identifier: viewModel.userLanguage))
         .padding(.horizontal, 24)
         .padding(.bottom, 42)
     }

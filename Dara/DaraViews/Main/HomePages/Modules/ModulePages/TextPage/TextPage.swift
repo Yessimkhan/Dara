@@ -72,7 +72,7 @@ struct TextPage: View {
                             Text(viewModel.data.title.replacingOccurrences(of: "\\n", with: "\n"))
                                 .font(.system(size: viewModel.image == nil ? 20 : 14 , weight: .semibold))
                                 .multilineTextAlignment(.center)
-                            Text(viewModel.data.translation.title.replacingOccurrences(of: "\\n", with: "\n"))
+                            Text(viewModel.data.translation.title?.replacingOccurrences(of: "\\n", with: "\n") ?? "")
                                 .font(.system(size: viewModel.image == nil ? 20 : 14, weight: .semibold))
                                 .foregroundStyle(Colors.buttonInactive)
                                 .multilineTextAlignment(.center)
@@ -104,7 +104,7 @@ struct TextPage: View {
                         if modulePagesViewModel.currentPage > modulePagesViewModel.allPages {
                             ButtonView(buttonType: .finish)
                         } else {
-                            ButtonView(buttonType: .continue)
+                            ButtonView(buttonType: .continueButton)
                         }
                     }
                     

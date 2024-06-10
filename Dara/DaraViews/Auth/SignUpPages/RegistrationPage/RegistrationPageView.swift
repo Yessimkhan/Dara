@@ -11,7 +11,8 @@ import SwiftfulRouting
 struct RegistrationPageView: View {
     
     @StateObject var viewModel: RegistrationPageViewModel
-    
+    @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
+
     var body: some View {
         ZStack {
             VStack{
@@ -28,11 +29,11 @@ struct RegistrationPageView: View {
                     Button {
                         viewModel.goCooseLanguagePageView()
                     } label: {
-                        ButtonView(buttonType: .choseYourLanguage)
+                        ButtonView(buttonType: .chooseYourLanguage)
                     }
                     
                     Button {
-                        viewModel.goSignInPageView()
+                        viewModel.router.dismissScreenStack()
                     } label: {
                         SingleButtonView(buttonType: .signIn)
                     }
@@ -41,6 +42,7 @@ struct RegistrationPageView: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 42)
         }
+        .environment(\.locale, Locale(identifier: userLanguage))
     }
 }
 
