@@ -12,66 +12,61 @@ struct ChooseYourPasswordPage: View {
     
     @StateObject var viewModel: ChooseYourPasswordViewModel
     @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
-
+    
     var body: some View {
         ZStack {
             VStack (spacing: 32) {
-                Spacer()
                 Text("Choose your password")
                     .font(.title)
                 
-                VStack(spacing: 64) {
-                    VStack(spacing: 32) {
-                        VStack(alignment: .leading, spacing: 16) {
-                            
-                            PasswordTextFieldView(isPasswordVisible: viewModel.isPasswordVisible, placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
-                                .onChange(of: viewModel.password) {
-                                    viewModel.verifyPassword()
-                                }
-                                .hidden()
-                            
-                            
-                            PasswordTextFieldView(isPasswordVisible: viewModel.isPasswordVisible, placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
-                                .onChange(of: viewModel.password) {
-                                    viewModel.verifyPassword()
-                                }
-                            
-                            PasswordTextFieldView(isPasswordVisible: viewModel.isConfirmPasswordVisible, placeholder: "Confirm password", text: $viewModel.confirmPassword, isError: $viewModel.isError)
-                                .onChange(of: viewModel.confirmPassword) {
-                                    viewModel.verifyPassword()
-                                }
-                            
-                            if let message = viewModel.errorMessage {
-                                Text(message)
-                                    .font(.system(size: 14, weight: .regular))
-                                    .foregroundStyle(Colors.wrongAnswer)
-                            } else {
-                                Text("space")
-                                    .font(.system(size: 14, weight: .regular))
-                                    .foregroundStyle(.clear)
-                            }
+                VStack(alignment: .leading, spacing: 16) {
+                    PasswordTextFieldView(isPasswordVisible: viewModel.isPasswordVisible, placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
+                        .onChange(of: viewModel.password) {
+                            viewModel.verifyPassword()
                         }
-                        
-                        Button {
-                            viewModel.goChooseLevelPage()
-                        } label: {
-                            ButtonView(buttonType: .continueButton, disabled: $viewModel.verified)
+                        .hidden()
+                    
+                    PasswordTextFieldView(isPasswordVisible: viewModel.isPasswordVisible, placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
+                        .onChange(of: viewModel.password) {
+                            viewModel.verifyPassword()
                         }
-                        .disabled(viewModel.verified)
-                    }
-                    VStack(spacing: 16){
-                        LoginWithGoogleAndFacebookView()
-                        Button {
-                            viewModel.router.dismissScreenStack()
-                        } label: {
-                            SingleButtonView(buttonType: .signIn)
+                    
+                    PasswordTextFieldView(isPasswordVisible: viewModel.isConfirmPasswordVisible, placeholder: "Confirm password", text: $viewModel.confirmPassword, isError: $viewModel.isError)
+                        .onChange(of: viewModel.confirmPassword) {
+                            viewModel.verifyPassword()
                         }
+                    
+                    if let message = viewModel.errorMessage {
+                        Text(message)
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(Colors.wrongAnswer)
+                    } else {
+                        Text("space")
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(.clear)
                     }
                 }
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 42)
+            
+            VStack(spacing: 16) {
+                Spacer()
+                
+                Button {
+                    viewModel.goChooseLevelPage()
+                } label: {
+                    ButtonView(buttonType: .continueButton, disabled: $viewModel.verified)
+                }
+                .disabled(viewModel.verified)
+                
+                Button {
+                    viewModel.router.dismissScreenStack()
+                } label: {
+                    SingleButtonView(buttonType: .signIn)
+                }
+            }
         }
+        .padding(.horizontal, 24)
+        .padding(.bottom, 42)
         .toolbar {
             ToolbarItem (placement: .topBarLeading) {
                 Button {

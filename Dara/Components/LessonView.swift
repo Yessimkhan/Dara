@@ -15,11 +15,7 @@ struct LessonView: View {
     @State var isLoading: Bool = true
     
     var body: some View {
-        ZStack (alignment: .leading){
-            RoundedRectangle(cornerRadius: 25.0)
-                .fill(Colors.brandPrimary)
-                .frame(maxWidth: .infinity)
-                .frame(height: 140)
+        ZStack (alignment: .leading) {
             HStack(spacing: 25) {
                 VStack {
                     Text("\(lessonId) - lesson")
@@ -35,8 +31,10 @@ struct LessonView: View {
                         .font(.system(size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .frame(width: 160)
+                .padding(.vertical)
                 .padding(.leading, 24)
+                
+                Spacer()
                 
                 if isLoading {
                     Spacer()
@@ -51,6 +49,9 @@ struct LessonView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity)
+        .frame(minHeight: 140)
+        .background(Colors.brandPrimary.cornerRadius(25))
         .onChange(of: image) {
             withAnimation {
                 isLoading = false

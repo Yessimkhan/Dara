@@ -107,7 +107,6 @@
 		5AFD0AA72BBF27E20096A237 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AA62BBF27E20096A237 /* Colors.swift */; };
 		5AFD0AA92BBF2DBB0096A237 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AA82BBF2DBB0096A237 /* ButtonView.swift */; };
 		5AFD0AAB2BBF84280096A237 /* SingleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AAA2BBF84280096A237 /* SingleButtonView.swift */; };
-		5AFD0AAD2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFD0AAC2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -220,7 +219,6 @@
 		5AFD0AA62BBF27E20096A237 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5AFD0AA82BBF2DBB0096A237 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		5AFD0AAA2BBF84280096A237 /* SingleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleButtonView.swift; sourceTree = "<group>"; };
-		5AFD0AAC2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithGoogleAndFacebookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,7 +333,6 @@
 				5A362E852BA5B11B00A73E0B /* LessonView.swift */,
 				5AFD0AA82BBF2DBB0096A237 /* ButtonView.swift */,
 				5AFD0AAA2BBF84280096A237 /* SingleButtonView.swift */,
-				5AFD0AAC2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift */,
 				5AE1DF6D2BCAA2620035319E /* TextFieldView.swift */,
 				5AFA18232BC01AB600E13F9A /* PasswordTextFieldView.swift */,
 				5A629C172C072A6500498D9B /* PhoneTextFieldView.swift */,
@@ -813,7 +810,6 @@
 				5A7A21672B8DA13A0097B610 /* RegistrationPageView.swift in Sources */,
 				5AC9892A2BD0B5380007DA63 /* TextViewModel.swift in Sources */,
 				5AE1DF6E2BCAA2620035319E /* TextFieldView.swift in Sources */,
-				5AFD0AAD2BBF86310096A237 /* LoginWithGoogleAndFacebookView.swift in Sources */,
 				5A2480EF2B84C4F70018AA57 /* Dara.xcdatamodeld in Sources */,
 				5A9AB9FF2BDCF149005AB13B /* MatchingViewModel.swift in Sources */,
 				5ABA54262BC4BC4400D60482 /* TextPage.swift in Sources */,
@@ -990,6 +986,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Dara/Dara.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dara/Preview Content\"";
@@ -1003,7 +1001,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = DaraLaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1012,13 +1012,14 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Yessimkhan.Dara;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1028,6 +1029,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Dara/Dara.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dara/Preview Content\"";
@@ -1041,7 +1044,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = DaraLaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1050,13 +1055,14 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Yessimkhan.Dara;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -65,6 +65,7 @@ final class SignInViewModel: ObservableObject {
                 case .success(let response):
                     self?.getProfile(response: response)
                 case .failure(let error):
+                    self?.isLoading = false
                     self?.isError = true
                     self?.errorMessage = "Username or Password is Incorrect"
                     print("Login failed: \(error.localizedDescription)")
@@ -76,6 +77,7 @@ final class SignInViewModel: ObservableObject {
                 case .success(let response):
                     self?.getProfile(response: response)
                 case .failure(let error):
+                    self?.isLoading = false
                     self?.isError = true
                     self?.errorMessage = "Email or Password is Incorrect"
                     print("Login failed: \(error.localizedDescription)")
@@ -90,6 +92,7 @@ final class SignInViewModel: ObservableObject {
         HomeRepository().getProfile { [weak self] result in
             switch result {
             case .success(let profileResponse):
+                print(profileResponse)
                 DispatchQueue.main.async {
                     self?.userLevel = profileResponse.levelID
                     self?.userEmail = profileResponse.email
@@ -102,6 +105,7 @@ final class SignInViewModel: ObservableObject {
                     }
                 }
             case .failure(let error):
+                self?.isLoading = false
                 print("Get profile failed: \(error.localizedDescription)")
             }
         }

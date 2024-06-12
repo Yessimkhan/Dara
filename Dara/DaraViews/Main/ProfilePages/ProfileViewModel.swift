@@ -17,6 +17,7 @@ class ProfileViewModel: ObservableObject {
     @Published var showLogoutAlert: Bool = false
     @Published var language: UserLanguage = .en
     @Published var level: UserLevel = .A2
+    @Published var name: String = ""
     @AppStorage("isAuthorized") var isAuthorized: Bool = false
     @AppStorage("accessToken") var accessToken: String?
     @AppStorage("userId") var userId: String?
@@ -28,6 +29,7 @@ class ProfileViewModel: ObservableObject {
 
     init(router: AnyRouter) {
         self.router = router
+        name = userName ?? ""
         level = switch userLevel {
         case 1 : UserLevel.A1
         case 2 : UserLevel.A2
@@ -71,6 +73,7 @@ class ProfileViewModel: ObservableObject {
         HomeRepository().updateProfile(levelId: userLevel, email: userEmail ?? "", username: userName ?? "", phone: userPhone ?? "", language: userLanguage) { [weak self] result in
             switch result {
             case .success(let profileResponse):
+                print(profileResponse)
                 self?.userLevel = profileResponse.levelID
                 self?.userEmail = profileResponse.email
                 self?.userName = profileResponse.username

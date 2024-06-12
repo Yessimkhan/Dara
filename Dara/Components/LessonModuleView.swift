@@ -50,21 +50,19 @@ struct SelectedModel: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 165)
             HStack(spacing: 30) {
-                VStack {
-                    
+                VStack(alignment: .leading) {
                     Text(moduleName)
                         .font(.system(size: 30, weight: .bold))
                         .foregroundColor(Colors.white)
-                        .frame(width: 200, alignment: .leading)
-                        .padding(.leading, 24)
                     if let procent = procent {
                         Text("\(procent)%")
                             .font(.system(size: 32, weight: .bold))
                             .foregroundColor(Colors.white)
-                            .frame(width: 200, alignment: .leading)
-                            .padding(.leading, 24)
                     }
                 }
+                .padding(.leading, 24)
+                
+                Spacer()
                 
                 Image(systemName: "arrow.forward.square")
                     .resizable()
@@ -78,6 +76,7 @@ struct SelectedModel: View {
                             }
                         }
                     }
+                    .padding(.trailing, 36)
             }
         }
     }
@@ -95,26 +94,24 @@ struct NotSelectedModel: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 128)
             HStack(spacing: 0) {
-                VStack {
+                VStack (alignment: .leading){
                     if getIsCompleted() {
                         Text("Completed")
                             .font(.system(size: 14))
                             .foregroundColor(Colors.white)
-                            .frame(width: 150, alignment: .leading)
-                            .padding(.leading, 34)
                     }
                     Text(moduleName)
                         .font(.system(size: 24, weight: .semibold))
                         .foregroundColor(getIsCompleted() ? Colors.white : Colors.brandPrimary)
-                        .frame(width: 150, alignment: .leading)
-                        .padding(.leading, 34)
                 }
+                .padding(.leading, 34)
+                
+                Spacer()
                 if let procent = procent {
                     Text("\(procent)%")
                         .font(.system(size: 32, weight: .bold))
                         .foregroundColor(getIsCompleted() ? Colors.white : Colors.brandPrimary)
-                        .frame(width: 100, alignment: .leading)
-                        .padding(.leading, 24)
+                        .padding(.trailing, 34)
                 }
                 
             }

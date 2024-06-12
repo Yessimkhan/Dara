@@ -11,19 +11,10 @@ struct MatchimagePage: View {
     @StateObject var viewModel: MatchimageViewModel
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     var body: some View {
-        if viewModel.isLoading || modulePagesViewModel.isLoading {
-            LoaderView()
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            modulePagesViewModel.router.dismissScreenStack()
-                        } label: {
-                            Image(systemName: "xmark")
-                        }
-                    }
-                }
-        } else {
-            ZStack {
+        ZStack {
+            if viewModel.isLoading || modulePagesViewModel.isLoading {
+                LoaderView()
+            } else {
                 VStack (spacing: 32) {
                     VStack(spacing: 16){
                         ZStack (alignment: .leading) {
@@ -128,31 +119,31 @@ struct MatchimagePage: View {
                     
                 }
             }
-            .toolbar {
-                if modulePagesViewModel.moduleId != 4 {
-                    ToolbarItem (placement: .topBarLeading) {
-                        Button {
-                            print("back button tapped \(modulePagesViewModel.currentPage)")
-                            modulePagesViewModel.currentPage -= 1
-                            modulePagesViewModel.currentTask -= 1
-                            viewModel.router.dismissScreen()
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .fontWeight(.semibold)
-                        }
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
+        }
+        .toolbar {
+            if modulePagesViewModel.moduleId != 4 {
+                ToolbarItem (placement: .topBarLeading) {
                     Button {
-                        modulePagesViewModel.router.dismissScreenStack()
+                        print("back button tapped \(modulePagesViewModel.currentPage)")
+                        modulePagesViewModel.currentPage -= 1
+                        modulePagesViewModel.currentTask -= 1
+                        viewModel.router.dismissScreen()
                     } label: {
-                        Image(systemName: "xmark")
+                        Image(systemName: "chevron.left")
+                            .fontWeight(.semibold)
                     }
-                    
                 }
             }
-            .padding(24)
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    modulePagesViewModel.router.dismissScreenStack()
+                } label: {
+                    Image(systemName: "xmark")
+                }
+                
+            }
         }
+        .padding(24)
     }
 }
 

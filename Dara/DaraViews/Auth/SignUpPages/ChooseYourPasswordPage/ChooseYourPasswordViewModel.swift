@@ -21,7 +21,7 @@ final class ChooseYourPasswordViewModel: ObservableObject {
     @Published var isConfirmPasswordVisible: Bool = false
     @Published var verified: Bool = true
     @Published var isError: Bool = false
-    @Published var errorMessage: String? = nil
+    @Published var errorMessage: LocalizedStringResource? = nil
     
     init(router: AnyRouter, language: String, userName: String, userNumber: String, userEmail: String) {
         self.router = router
@@ -38,10 +38,10 @@ final class ChooseYourPasswordViewModel: ObservableObject {
             if (password == confirmPassword) {
                 verified = false
             } else {
-                errorMessage = String(localized:"Passwords do not match.")
+                errorMessage = "Passwords do not match."
             }
         } else {
-            errorMessage = String(localized:"Password length must be at least 8 characters.")
+            errorMessage = "Password length must be at least 8 characters."
         }
     }
     

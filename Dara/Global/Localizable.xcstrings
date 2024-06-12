@@ -546,6 +546,7 @@
       }
     },
     "Or" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

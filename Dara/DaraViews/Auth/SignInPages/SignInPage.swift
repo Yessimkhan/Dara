@@ -13,43 +13,44 @@ struct SignInPage: View {
 
     var body: some View {
         ZStack {
-            VStack(spacing: 64) {
-                Spacer()
-                Text("Sign In")
-                    .font(.title)
-                
+            ZStack {
                 VStack(spacing: 64) {
-                    VStack(alignment: .leading, spacing: 18) {
-                        TextFieldView(placeholder: "Username or Email", text: $viewModel.email, isError: $viewModel.isError)
-                            .submitLabel(.done)
-                            .keyboardType(.emailAddress)
-                        
-                        PasswordTextFieldView(placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
-                            .submitLabel(.done)
-                        
-                        Button {
-                            viewModel.goForgotPasswordPage()
-                        } label: {
-                            SingleButtonView(buttonType: .forgotPassword)
-                        }
-                        
-                        if viewModel.isError {
-                            Text(viewModel.errorMessage ?? "")
-                                .foregroundStyle(Colors.wrongAnswer)
-                        } else {
-                            Text("space")
-                                .foregroundStyle(Color.clear)
+                    Text("Sign In")
+                        .font(.title)
+                    
+                    VStack(spacing: 64) {
+                        VStack(alignment: .leading, spacing: 18) {
+                            TextFieldView(placeholder: "Username or Email", text: $viewModel.email, isError: $viewModel.isError)
+                                .submitLabel(.done)
+                                .keyboardType(.emailAddress)
+                            
+                            PasswordTextFieldView(placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
+                                .submitLabel(.done)
+                            
+                            Button {
+                                viewModel.goForgotPasswordPage()
+                            } label: {
+                                SingleButtonView(buttonType: .forgotPassword)
+                            }
+                            
+                            if viewModel.isError {
+                                Text(viewModel.errorMessage ?? "")
+                                    .foregroundStyle(Colors.wrongAnswer)
+                            } else {
+                                Text("space")
+                                    .foregroundStyle(Color.clear)
+                            }
                         }
                     }
-                    
+                }
+                VStack(spacing: 16) {
+                    Spacer()
                     Button {
                         viewModel.signInButtonTapped()
                     } label: {
                         ButtonView(buttonType: .signIn)
                     }
-                }
-                VStack(spacing: 16) {
-                    LoginWithGoogleAndFacebookView()
+                    
                     Button {
                         viewModel.goRegistrationPage()
                     } label: {
@@ -63,7 +64,6 @@ struct SignInPage: View {
                 LoaderView()
             }
         }
-        
         .environment(\.locale, Locale(identifier: viewModel.userLanguage))
         .padding(.horizontal, 24)
         .padding(.bottom, 42)

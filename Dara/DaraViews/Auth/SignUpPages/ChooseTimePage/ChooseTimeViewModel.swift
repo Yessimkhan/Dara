@@ -47,6 +47,7 @@ final class ChooseTimeViewModel: ObservableObject {
                 self?.getProfile(response: response)
             case .failure(let error):
                 self?.isError = true
+                self?.isLoading = false
                 print("Register failed: \(error.localizedDescription)")
             }
         }
@@ -70,6 +71,7 @@ final class ChooseTimeViewModel: ObservableObject {
                     }
                 }
             case .failure(let error):
+                self?.isLoading = false
                 print("Get profile failed: \(error.localizedDescription)")
             }
         }

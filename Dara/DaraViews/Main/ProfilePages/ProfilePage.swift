@@ -12,6 +12,7 @@ import SwiftfulRouting
 struct ProfilePage: View {
     
     @StateObject var viewModel: ProfileViewModel
+    @AppStorage("userName") var userName: String?
     
     var body: some View {
         RouterView { router in
@@ -32,8 +33,12 @@ struct ProfilePage: View {
                                 }
                                 
                             }
-                        Text(viewModel.userName ?? "")
+                        Text(viewModel.name)
                             .font(.system(size: 29).bold())
+                            .onChange(of: userName) {
+                                viewModel.name = userName ?? ""
+                                viewModel.userName = userName
+                            }
                     }
                     
                     VStack (spacing: 20) {

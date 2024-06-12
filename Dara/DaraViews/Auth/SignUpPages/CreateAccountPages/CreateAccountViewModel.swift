@@ -17,7 +17,7 @@ final class CreateAccountViewModel: ObservableObject {
     @Published var userEmail: String = ""
     @Published var isError: Bool = false
     @Published var verified: Bool = true
-    @Published var errorMessage: String? = nil
+    @Published var errorMessage: LocalizedStringResource? = nil
     var username: Bool = false
     var phone: Bool = false
     var email: Bool = false
@@ -30,14 +30,14 @@ final class CreateAccountViewModel: ObservableObject {
     func verifyUsername() {
         verified = true
         if (userName.count < 3) {
-            errorMessage = String(localized:"Username is so short")
+            errorMessage = "Username is so short"
         } else {
             AuthRepository().checkUsername(username: userName) { [weak self] result in
                 switch result {
                 case .success(let response):
                     if response.isExists {
                         self?.username = false
-                        self?.errorMessage = String(localized: "This username is already taken")
+                        self?.errorMessage = "This username is already taken"
                     } else {
                         self?.username = true
                         self?.errorMessage = nil
@@ -53,7 +53,7 @@ final class CreateAccountViewModel: ObservableObject {
     func verifyPhone() {
         verified = true
         if (userNumber.count < 3) {
-            errorMessage = String(localized:"Phone Number is unavailable")
+            errorMessage = "Phone Number is unavailable"
         } else {
             phone = true
             errorMessage = nil
@@ -66,7 +66,7 @@ final class CreateAccountViewModel: ObservableObject {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         verified = true
         if !(emailPred.evaluate(with: userEmail)) {
-            errorMessage = String(localized:"Email is unavailable")
+            errorMessage = "Email is unavailable"
         } else {
             email = true
             errorMessage = nil

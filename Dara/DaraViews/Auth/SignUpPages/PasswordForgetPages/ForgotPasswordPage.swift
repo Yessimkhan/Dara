@@ -47,7 +47,7 @@ struct ForgotPasswordPage: View {
             .padding(.bottom, 194)   
         }
         .alert(isPresented: $viewModel.showMessage, content: {
-            Alert(title: Text(viewModel.message))
+            Alert(title: Text(viewModel.message ?? ""))
         })
         .toolbar {
             ToolbarItem (placement: .topBarLeading) {

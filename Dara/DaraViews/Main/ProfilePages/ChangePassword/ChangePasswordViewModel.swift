@@ -15,19 +15,20 @@ class ChangePasswordViewModel: ObservableObject {
     @Published var isError: Bool = false
     @Published var isLoading: Bool = false
     @Published var isDisabled: Bool = true
-    @Published var errorMessage: String? = nil
+    @Published var errorMessage: LocalizedStringResource? = nil
     @Published var currernPassword: String = ""
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
     @Published var isCurrentPasswordVisible: Bool = false
     @Published var isPasswordVisible: Bool = false
     @Published var isConfirmPasswordVisible: Bool = false
-    @Published var message: String = ""
+    @Published var message: LocalizedStringResource? = ""
     @Published var showMessage: Bool = false
     @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
 
     init(router: AnyRouter) {
         self.router = router
+        print(userLanguage)
     }
     
     func verifyPassword() {
@@ -37,10 +38,10 @@ class ChangePasswordViewModel: ObservableObject {
             if (password == confirmPassword) {
                 isDisabled = false
             } else {
-                errorMessage = String(localized: "Passwords do not match.")
+                errorMessage = "Passwords do not match."
             }
         } else {
-            errorMessage = String(localized:"Password length must be at least 8 characters.")
+            errorMessage = "Password length must be at least 8 characters."
         }
     }
     
@@ -54,10 +55,10 @@ class ChangePasswordViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 self.showMessage = true
-                self.message = response.message
+                self.message = LocalizedStringResource(stringLiteral: response.message)
             case .failure(let error):
                 self.showMessage = true
-                self.message = String(localized: "Failed to update password. Please try again later.")
+                self.message = "Failed to update password. Please try again later."
                 print("Update password failed \(error)")
             }
         }

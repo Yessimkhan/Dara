@@ -24,9 +24,9 @@ class PersonalInformationViewModel: ObservableObject {
     
     @Published var isError: Bool = false
     @Published var verified: Bool = true
-    @Published var errorMessage: String? = nil
+    @Published var errorMessage: LocalizedStringResource? = nil
     
-    @Published var message: String = ""
+    @Published var message: LocalizedStringResource = ""
     @Published var showMessage: Bool = false
     
     @AppStorage("userLevel") var userLevel: Int = 1
@@ -45,14 +45,14 @@ class PersonalInformationViewModel: ObservableObject {
     func verifyUsername() {
         verified = true
         if (userNameF.count < 3) {
-            errorMessage = String(localized:"Username is so short")
+            errorMessage = "Username is so short"
         } else if userNameF != userName {
             AuthRepository().checkUsername(username: userNameF) { [weak self] result in
                 switch result {
                 case .success(let response):
                     if response.isExists {
                         self?.username = false
-                        self?.errorMessage = String(localized: "This username is already taken")
+                        self?.errorMessage = "This username is already taken"
                     } else {
                         self?.username = true
                         self?.errorMessage = nil
@@ -72,7 +72,7 @@ class PersonalInformationViewModel: ObservableObject {
     func verifyPhone() {
         verified = true
         if (userPhoneF.count < 3) {
-            errorMessage = String(localized:"Phone Number is unavailable")
+            errorMessage = "Phone Number is unavailable"
         } else {
             phone = true
             errorMessage = nil
@@ -85,7 +85,7 @@ class PersonalInformationViewModel: ObservableObject {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         verified = true
         if !(emailPred.evaluate(with: userEmailF)) {
-            errorMessage = String(localized: "Email is unavailable")
+            errorMessage = "Email is unavailable"
         } else {
             email = true
             errorMessage = nil
@@ -116,10 +116,10 @@ class PersonalInformationViewModel: ObservableObject {
                 self?.userPhone = profileResponse.phone
                 self?.userLanguage = profileResponse.language
                 self?.showMessage = true
-                self?.message = String(localized: "Personal information has been successfully updated!")
+                self?.message = "Personal information has been successfully updated!"
             case .failure(let error):
                 self?.showMessage = true
-                self?.message = String(localized: "Failed to update profile. Please try again later.")
+                self?.message = "Failed to update profile. Please try again later."
                 print("Update profile failed: \(error.localizedDescription)")
             }
         }

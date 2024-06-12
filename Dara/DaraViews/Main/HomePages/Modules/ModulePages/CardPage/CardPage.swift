@@ -85,7 +85,7 @@ struct CardPage: View {
                                 Text(viewModel.data.example?.replacingOccurrences(of: "\\n", with: "\n") ?? "")
                                     .font(.system(size: 14 , weight: .semibold))
                                     .multilineTextAlignment(.center)
-                                Text(viewModel.data.translation.title?.replacingOccurrences(of: "\\n", with: "\n") ?? "")
+                                Text(viewModel.data.translation.example?.replacingOccurrences(of: "\\n", with: "\n") ?? "")
                                     .font(.system(size: 14, weight: .semibold))
                                     .foregroundStyle(Colors.buttonInactive)
                                     .multilineTextAlignment(.center)

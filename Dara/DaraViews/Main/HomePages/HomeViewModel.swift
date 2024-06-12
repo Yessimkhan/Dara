@@ -12,7 +12,7 @@ import SwiftUI
 
 final class HomeViewModel: ObservableObject {
     let router: AnyRouter
-    @Published var errorMessage: String? = nil
+    @Published var errorMessage: LocalizedStringResource? = nil
     @Published var lessonsArray: TopicsResponse = []
     @Published var imagesArray: [Image?] = []
     @Published var isLoading: Bool = false
@@ -69,7 +69,7 @@ final class HomeViewModel: ObservableObject {
                     
                     print("Lessons get success")
                 case .failure(let error):
-                    self.errorMessage = String(localized: "Failed to load lessons. Please try again later.")
+                    self.errorMessage = "Failed to load lessons. Please try again later."
                     print("Get lessons failed: \(error)")
                 }
             }

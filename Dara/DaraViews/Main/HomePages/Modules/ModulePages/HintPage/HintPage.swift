@@ -23,6 +23,8 @@ struct HintPage: View {
                         
                         ForEach(viewModel.imagesArray.indices, id: \.self) { index in
                             viewModel.imagesArray[index]
+                                .resizable()
+                                .scaledToFit()
                         }
                         
                         Spacer()

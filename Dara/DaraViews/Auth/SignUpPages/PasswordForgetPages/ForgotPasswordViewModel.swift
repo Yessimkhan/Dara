@@ -16,7 +16,7 @@ final class ForgotPasswordViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var isDisabled: Bool = true
     @Published var email: String = ""
-    @Published var message: String = ""
+    @Published var message: LocalizedStringResource?
     @Published var showMessage: Bool = false
     @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
 
@@ -32,10 +32,10 @@ final class ForgotPasswordViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 self.showMessage = true
-                self.message = response.message
+                self.message =  LocalizedStringResource(stringLiteral: response.message)
             case .failure(let error):
                 self.showMessage = true
-                self.message = String(localized: "Failed to send email. Please try again later.")
+                self.message = "Failed to send email. Please try again later."
                 print("Send email failed \(error)")
             }
         }
