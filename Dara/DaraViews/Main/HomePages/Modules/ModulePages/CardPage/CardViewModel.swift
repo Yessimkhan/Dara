@@ -46,7 +46,7 @@ final class CardViewModel: ObservableObject {
         if let question = data.question , !question.isEmpty {
             return question
         } else {
-            return "Жаңа сөз"
+            return "Жаңа сөз(аудармасын көру үшін үстін басыңыз)"
         }
     }
     
@@ -55,9 +55,9 @@ final class CardViewModel: ObservableObject {
             return question
         } else {
             if userLanguage == "ru" {
-                return "Новое слово"
+                return "Новое слово(нажмите на карточку для перевода)"
             } else {
-                return "A new word"
+                return "New word(click on the card for translation)"
             }
         }
     }

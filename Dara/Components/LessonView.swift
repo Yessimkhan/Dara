@@ -17,24 +17,20 @@ struct LessonView: View {
     var body: some View {
         ZStack (alignment: .leading) {
             HStack(spacing: 25) {
-                VStack {
+                VStack(alignment: .leading) {
                     Text("\(lessonId) - lesson")
                         .foregroundStyle(Colors.white)
                         .font(.system(size: 14))
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     Text(lessonDate.title)
                         .foregroundStyle(Colors.white)
                         .font(.system(size: 24))
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     Text(lessonDate.translation?.title ?? "")
                         .foregroundStyle(Colors.white)
                         .font(.system(size: 16))
-                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical)
                 .padding(.leading, 24)
-                
-                Spacer()
                 
                 if isLoading {
                     Spacer()
@@ -45,7 +41,7 @@ struct LessonView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 115)
-                        .padding(.trailing)
+                        .padding(.trailing, 24)
                 }
             }
         }

@@ -50,13 +50,48 @@ struct PersonalInformationPage: View {
                 Button {
                     viewModel.updatePersonalInformation()
                 } label: {
-                    ButtonView(buttonType: .submit, disabled: $viewModel.verified)
+                    ButtonView(buttonType: .update, disabled: $viewModel.verified)
                 }
                 .disabled(viewModel.verified)
+                
+                HStack {
+                    Button {
+                        viewModel.showDeleteAccountAlert()
+                    } label: {
+                        Text("Delete account")
+                            .foregroundStyle(Colors.wrongAnswer)
+                    }
+                    Spacer()
+                    if let url =  URL(string: "https://docs.google.com/document/d/113Fi4N1rcU3GAFFPWegZBu75jqay3ZfGuMdct-w8VJg") {
+                        Button {
+                            viewModel.router.showSafari {
+                                url
+                            }
+                        } label: {
+                            Text("Privacy Policy")
+                                .foregroundStyle(Colors.brandPrimary)
+                        }
+                    }
+                }
+                .padding(.horizontal)
+                
             }
-            .alert(isPresented: $viewModel.showMessage, content: {
-                Alert(title: Text(viewModel.message))
-            })
+            .alert(isPresented: $viewModel.showDeleteMessage) {
+                Alert(
+                    title: Text(viewModel.deleteMessage),
+                    primaryButton: .destructive(Text("Delete"), action: {
+                        viewModel.deleteAccount()
+                    }),
+                    secondaryButton: .default(Text("Cancel"))
+                )
+            }
+            .alert(
+                viewModel.message,
+                isPresented: $viewModel.showMessage,
+                actions: {
+                    Button("OK"){}
+                }
+            )
             .blur(radius: viewModel.isLoading ? 3 : 0)
             .padding(.horizontal, 24)
             
@@ -64,6 +99,7 @@ struct PersonalInformationPage: View {
                 LoaderView()
             }
         }
+        .disabled(viewModel.isLoading)
         .environment(\.locale, Locale(identifier: viewModel.userLanguage))
         .toolbar {
             ToolbarItem (placement: .topBarTrailing) {

@@ -10,6 +10,7 @@ import SwiftfulRouting
 import SwiftUI
 
 class PersonalInformationViewModel: ObservableObject {
+    
     let router: AnyRouter
     var username: Bool = true
     var phone: Bool = true
@@ -26,8 +27,11 @@ class PersonalInformationViewModel: ObservableObject {
     @Published var verified: Bool = true
     @Published var errorMessage: LocalizedStringResource? = nil
     
-    @Published var message: LocalizedStringResource = ""
+    @Published var message: LocalizedStringKey = ""
     @Published var showMessage: Bool = false
+    
+    @Published var deleteMessage: LocalizedStringResource = "Are you sure you want to delete your account?"
+    @Published var showDeleteMessage: Bool = false
     
     @AppStorage("userLevel") var userLevel: Int = 1
     @AppStorage("userEmail") var userEmail: String?
@@ -52,6 +56,7 @@ class PersonalInformationViewModel: ObservableObject {
                 case .success(let response):
                     if response.isExists {
                         self?.username = false
+                        self?.verified = true
                         self?.errorMessage = "This username is already taken"
                     } else {
                         self?.username = true
@@ -107,7 +112,6 @@ class PersonalInformationViewModel: ObservableObject {
         verified = true
         HomeRepository().updateProfile(levelId: userLevel, email: userEmailF, username: userNameF, phone: userPhoneF, language: userLanguage) { [weak self] result in
             self?.isLoading = false
-            self?.verified = false
             switch result {
             case .success(let profileResponse):
                 self?.userLevel = profileResponse.levelID
@@ -120,8 +124,21 @@ class PersonalInformationViewModel: ObservableObject {
             case .failure(let error):
                 self?.showMessage = true
                 self?.message = "Failed to update profile. Please try again later."
+                self?.verified = true
                 print("Update profile failed: \(error.localizedDescription)")
             }
+        }
+    }
+    
+    func showDeleteAccountAlert() {
+        showDeleteMessage.toggle()
+    }
+    
+    func deleteAccount() {
+        router.showScreen(.push) { router in
+            DeleteAccountPage(viewModel: DeleteAccountViewModel(router: router))
+                .navigationTitle("Delete account")
+                .navigationBarBackButtonHidden()
         }
     }
 }

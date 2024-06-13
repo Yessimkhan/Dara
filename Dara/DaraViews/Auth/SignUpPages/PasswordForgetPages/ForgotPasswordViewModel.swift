@@ -27,15 +27,15 @@ final class ForgotPasswordViewModel: ObservableObject {
     func sendEmail() {
         isLoading = true
         isDisabled = true
-        AuthRepository().forgotPassword(email: email) { result in
-            self.isLoading = false
+        AuthRepository().forgotPassword(email: email) { [weak self] result in
+            self?.isLoading = false
             switch result {
             case .success(let response):
-                self.showMessage = true
-                self.message =  LocalizedStringResource(stringLiteral: response.message)
+                self?.showMessage = true
+                self?.message =  LocalizedStringResource(stringLiteral: response.message)
             case .failure(let error):
-                self.showMessage = true
-                self.message = "Failed to send email. Please try again later."
+                self?.showMessage = true
+                self?.message = "Failed to send email. Please try again later."
                 print("Send email failed \(error)")
             }
         }

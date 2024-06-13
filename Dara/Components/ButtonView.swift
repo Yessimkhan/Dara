@@ -23,8 +23,10 @@ enum ButtonType {
     case affirmative
     case negative
     case tryAgain
+    case retry
     case check
     case custom
+    case update
     
     var localizedString: LocalizedStringKey {
         switch self {
@@ -41,7 +43,9 @@ enum ButtonType {
         case .affirmative: return "True"
         case .negative: return "False"
         case .tryAgain: return "Try again"
+        case .retry: return "Retry"
         case .check: return "Check"
+        case .update: return "Update"
         case .custom: return ""
         }
     }
@@ -71,7 +75,7 @@ struct ButtonView: View {
         
         if withBackground {
             return displayText
-                .font(.system(size: 18, weight: .regular))
+                .font(.system(size: 18, weight: .semibold))
                 .foregroundColor(Colors.white)
                 .padding()
                 .frame(maxWidth: .infinity)

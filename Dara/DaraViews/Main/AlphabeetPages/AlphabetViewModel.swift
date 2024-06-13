@@ -17,6 +17,10 @@ final class AlphabetViewModel: ObservableObject {
     
     init(router: AnyRouter) {
         self.router = router
+        getAlphabetAudio()
+    }
+    
+    func getAlphabetAudio() {
         self.audioData = Array(repeating: nil, count: alphabetArray.count)
         HomeRepository().getAlphabet { [weak self] result in
             switch result {

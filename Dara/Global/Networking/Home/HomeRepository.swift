@@ -279,4 +279,23 @@ final class HomeRepository {
             }
         }
     }
+    
+    func deleteAccount(completion: @escaping (Result<MessageResponse, Error>) -> Void) {
+        NetworkClient.shared.delete(endpoint: "/user/delete", headers: headers) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(MessageResponse.self, from: data)
+                    completion(.success(response))
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to make request: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
 }

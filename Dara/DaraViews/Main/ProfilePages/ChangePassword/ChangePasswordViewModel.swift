@@ -15,6 +15,7 @@ class ChangePasswordViewModel: ObservableObject {
     @Published var isError: Bool = false
     @Published var isLoading: Bool = false
     @Published var isDisabled: Bool = true
+    @Published var showErrorMessge: Bool = false
     @Published var errorMessage: LocalizedStringResource? = nil
     @Published var currernPassword: String = ""
     @Published var password: String = ""
@@ -28,19 +29,21 @@ class ChangePasswordViewModel: ObservableObject {
 
     init(router: AnyRouter) {
         self.router = router
-        print(userLanguage)
     }
     
     func verifyPassword() {
+        showErrorMessge = false
         errorMessage = nil
         isDisabled = true
         if (currernPassword.count >= 8 && password.count >= 8) {
             if (password == confirmPassword) {
                 isDisabled = false
             } else {
+                showErrorMessge = true
                 errorMessage = "Passwords do not match."
             }
         } else {
+            showErrorMessge = true
             errorMessage = "Password length must be at least 8 characters."
         }
     }
@@ -48,17 +51,21 @@ class ChangePasswordViewModel: ObservableObject {
     func changePassword() {
         isLoading = true
         isDisabled = true
-        self.errorMessage = nil
-        HomeRepository().updatePassword(oldPassword: currernPassword, newPassword: password) { result in
-            self.isLoading = false
-            self.isDisabled = false
+        HomeRepository().updatePassword(oldPassword: currernPassword, newPassword: password) { [weak self] result in
+            self?.isLoading = false
             switch result {
             case .success(let response):
-                self.showMessage = true
-                self.message = LocalizedStringResource(stringLiteral: response.message)
+                self?.showMessage = true
+                self?.message = LocalizedStringResource(stringLiteral: response.message)
+                self?.currernPassword = ""
+                self?.password = ""
+                self?.confirmPassword = ""
+                self?.showErrorMessge = false
+                self?.errorMessage = nil
             case .failure(let error):
-                self.showMessage = true
-                self.message = "Failed to update password. Please try again later."
+                self?.isDisabled = false
+                self?.showMessage = true
+                self?.message = "Failed to update password. Please try again later."
                 print("Update password failed \(error)")
             }
         }

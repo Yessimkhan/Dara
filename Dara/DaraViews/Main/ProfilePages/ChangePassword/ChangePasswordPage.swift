@@ -34,7 +34,7 @@ struct ChangePasswordPage: View {
                             viewModel.verifyPassword()
                         }
                     
-                    if viewModel.isDisabled {
+                    if viewModel.showErrorMessge {
                         Text(viewModel.errorMessage ?? "")
                             .font(.system(size: 14, weight: .regular))
                             .foregroundStyle(Colors.wrongAnswer)
@@ -47,7 +47,7 @@ struct ChangePasswordPage: View {
                 Button {
                     viewModel.changePassword()
                 } label: {
-                    ButtonView(buttonType: .submit, disabled: $viewModel.isDisabled)
+                    ButtonView(buttonType: .update, disabled: $viewModel.isDisabled)
                 }
                 .disabled(viewModel.isDisabled)
             }

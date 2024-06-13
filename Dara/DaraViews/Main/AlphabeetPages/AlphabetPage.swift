@@ -29,7 +29,11 @@ struct AlphabetPage: View {
                                     .foregroundColor(Colors.black)
                             )
                             .onTapGesture {
-                                SoundManager.instance.playAudio(audioData: viewModel.audioData[index])
+                                if let audio = viewModel.audioData[index] {
+                                    SoundManager.instance.playAudio(audioData: audio)
+                                } else {
+                                    viewModel.getAlphabetAudio()
+                                }
                             }
                         
                         ZStack {

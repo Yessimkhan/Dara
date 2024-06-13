@@ -54,6 +54,8 @@ struct SelectedModel: View {
                     Text(moduleName)
                         .font(.system(size: 30, weight: .bold))
                         .foregroundColor(Colors.white)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
                     if let procent = procent {
                         Text("\(procent)%")
                             .font(.system(size: 32, weight: .bold))
@@ -62,7 +64,6 @@ struct SelectedModel: View {
                 }
                 .padding(.leading, 24)
                 
-                Spacer()
                 
                 Image(systemName: "arrow.forward.square")
                     .resizable()
@@ -121,7 +122,7 @@ struct NotSelectedModel: View {
     func getIsCompleted() -> Bool {
         if isCompleted == true {
             true
-        } else if procent ?? 0 >= 100 {
+        } else if procent ?? 0 >= 90 {
             true
         } else {
             false

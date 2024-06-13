@@ -37,6 +37,7 @@ final class CreateAccountViewModel: ObservableObject {
                 case .success(let response):
                     if response.isExists {
                         self?.username = false
+                        self?.verified = true
                         self?.errorMessage = "This username is already taken"
                     } else {
                         self?.username = true

@@ -44,6 +44,11 @@ public final class NetworkClient {
         request(endpoint, method: .get, parameters: parameters, headers: headers, completion: completion)
     }
     
+    /// Sends a DELETE request to the specified endpoint.
+    public func delete(endpoint: String, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, completion: @escaping (Result<Data, AFError>) -> Void) {
+        request(endpoint, method: .delete, parameters: parameters, headers: headers, completion: completion)
+    }
+    
     /// Sends a Download request to the specified endpoint.
     public func download(_ endpoint: String, headers: HTTPHeaders? = nil, completion: @escaping (Result<(data: Data, response: HTTPURLResponse), AFError>) -> Void) {
         let url = "\(baseURL)/\(endpoint)"

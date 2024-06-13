@@ -9,5 +9,6 @@ import Foundation
 
 // MARK: - MessageResponse
 struct MessageResponse: Codable {
+    let status: Bool?
     let message: String
 }

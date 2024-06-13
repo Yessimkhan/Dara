@@ -107,6 +107,26 @@
         }
       }
     },
+    "Are you sure you want to delete your account?" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены, что хотите удалить свою учетную запись?"
+          }
+        }
+      }
+    },
+    "Are you sure you want to delete your account? This action is irreversible and cannot be undone. Once your account is deleted, you will permanently lose access to all your data and any content associated with your account." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены, что хотите удалить свою учетную запись? Это действие необратимо и отменить его невозможно. После удаления вашей учетной записи вы навсегда потеряете доступ ко всем своим данным, настройкам и любому контенту, связанному с вашей учетной записью."
+          }
+        }
+      }
+    },
     "Are you sure you want to logout?" : {
       "localizations" : {
         "ru" : {
@@ -313,6 +333,36 @@
         }
       }
     },
+    "Delete" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
+        }
+      }
+    },
+    "Delete account" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить аккаунт"
+          }
+        }
+      }
+    },
+    "Delete My Account" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить мою учетную запись"
+          }
+        }
+      }
+    },
     "Don't have an account" : {
       "localizations" : {
         "ru" : {
@@ -373,7 +423,18 @@
         }
       }
     },
+    "Failed to delete account. Please try again later." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось удалить учетную запись. Пожалуйста, повторите попытку позже."
+          }
+        }
+      }
+    },
     "Failed to load lessons. Please try again later." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -474,6 +535,27 @@
         }
       }
     },
+    "It seems you are not connected to the network. \nPlease check your connection or try again later." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кажется, вы не подключены к сети. \nПожалуйста, проверьте подключение или повторите попытку позже."
+          }
+        }
+      }
+    },
+    "It seems you are not connected to the network. Check your connection or try again later." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кажется, вы не подключены к сети. \nПожалуйста, проверьте подключение или повторите попытку позже."
+          }
+        }
+      }
+    },
     "Language" : {
       "localizations" : {
         "ru" : {
@@ -490,6 +572,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Уроки"
+          }
+        }
+      }
+    },
+    "Lessons are currently unavailable." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уроки в настоящее время недоступны."
           }
         }
       }
@@ -541,6 +633,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Далее"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         }
       }
@@ -626,6 +728,16 @@
         }
       }
     },
+    "Privacy Policy" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
+    },
     "Profile" : {
       "localizations" : {
         "ru" : {
@@ -643,6 +755,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Восстановить пароль?"
+          }
+        }
+      }
+    },
+    "Retry" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить"
           }
         }
       }
@@ -739,6 +861,16 @@
         }
       }
     },
+    "To confirm, please enter your username in the field below. If the username matches, you will be able to tap the 'Delete My Account' button." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для подтверждения, пожалуйста, введите свое имя пользователя в поле ниже. Если имя пользователя совпадает, вы сможете нажать кнопку \"Удалить мою учетную запись\"."
+          }
+        }
+      }
+    },
     "True" : {
       "localizations" : {
         "ru" : {
@@ -755,6 +887,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Попробуйте еще раз"
+          }
+        }
+      }
+    },
+    "Update" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновлять"
           }
         }
       }

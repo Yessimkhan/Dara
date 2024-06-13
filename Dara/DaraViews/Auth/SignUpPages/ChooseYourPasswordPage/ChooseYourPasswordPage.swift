@@ -21,9 +21,6 @@ struct ChooseYourPasswordPage: View {
                 
                 VStack(alignment: .leading, spacing: 16) {
                     PasswordTextFieldView(isPasswordVisible: viewModel.isPasswordVisible, placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
-                        .onChange(of: viewModel.password) {
-                            viewModel.verifyPassword()
-                        }
                         .hidden()
                     
                     PasswordTextFieldView(isPasswordVisible: viewModel.isPasswordVisible, placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)

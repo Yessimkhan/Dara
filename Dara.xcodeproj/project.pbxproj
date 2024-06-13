@@ -61,6 +61,8 @@
 		5A9BD2A82BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD2A72BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift */; };
 		5AAF45CB2BE95E390057A3A4 /* sad.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5AAF45CA2BE95E390057A3A4 /* sad.mp3 */; };
 		5AAF45D62BEBC60D0057A3A4 /* TestProgressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF45D52BEBC60D0057A3A4 /* TestProgressResponse.swift */; };
+		5AB138462C1A31760011F1FC /* DeleteAccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB138452C1A31760011F1FC /* DeleteAccountPage.swift */; };
+		5AB138482C1A33F30011F1FC /* DeleteAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB138472C1A33F30011F1FC /* DeleteAccountViewModel.swift */; };
 		5AB5EFE22BCBFBD8006783E6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EFE12BCBFBD8006783E6 /* HomeViewModel.swift */; };
 		5AB5EFE82BCC10F0006783E6 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EFE72BCC10F0006783E6 /* HomeRepository.swift */; };
 		5AB5EFEA2BCC1131006783E6 /* TopicsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EFE92BCC1131006783E6 /* TopicsResponse.swift */; };
@@ -178,6 +180,8 @@
 		5A9BD2A72BC25A2A0090CAD2 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		5AAF45CA2BE95E390057A3A4 /* sad.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sad.mp3; sourceTree = "<group>"; };
 		5AAF45D52BEBC60D0057A3A4 /* TestProgressResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProgressResponse.swift; sourceTree = "<group>"; };
+		5AB138452C1A31760011F1FC /* DeleteAccountPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountPage.swift; sourceTree = "<group>"; };
+		5AB138472C1A33F30011F1FC /* DeleteAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewModel.swift; sourceTree = "<group>"; };
 		5AB5EFE12BCBFBD8006783E6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5AB5EFE52BCC0879006783E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AB5EFE72BCC10F0006783E6 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
@@ -353,6 +357,7 @@
 				5A362E822BA5AFBD00A73E0B /* ProfilePage.swift */,
 				5A5A806F2C171EDB005C43E8 /* ChangePassword */,
 				5A5A80722C174737005C43E8 /* PesonalInformation */,
+				5AB138492C1A35A20011F1FC /* DeleteAccountPage */,
 			);
 			path = ProfilePages;
 			sourceTree = "<group>";
@@ -537,6 +542,15 @@
 				5A9BD2A32BC253560090CAD2 /* ChooseTimeViewModel.swift */,
 			);
 			path = ChooseTimePage;
+			sourceTree = "<group>";
+		};
+		5AB138492C1A35A20011F1FC /* DeleteAccountPage */ = {
+			isa = PBXGroup;
+			children = (
+				5AB138452C1A31760011F1FC /* DeleteAccountPage.swift */,
+				5AB138472C1A33F30011F1FC /* DeleteAccountViewModel.swift */,
+			);
+			path = DeleteAccountPage;
 			sourceTree = "<group>";
 		};
 		5AB5EFE62BCC10C2006783E6 /* Home */ = {
@@ -838,6 +852,8 @@
 				5ACEF5EB2BD9641600BF9158 /* ModuleResponse.swift in Sources */,
 				5A2480E32B84C4F20018AA57 /* DaraApp.swift in Sources */,
 				5A5A80762C1747C1005C43E8 /* PersonalInformationViewModel.swift in Sources */,
+				5AB138482C1A33F30011F1FC /* DeleteAccountViewModel.swift in Sources */,
+				5AB138462C1A31760011F1FC /* DeleteAccountPage.swift in Sources */,
 				5AF4DCCB2C11FF4700E1809F /* ShufflewordViewModel.swift in Sources */,
 				5A5A80782C1747D3005C43E8 /* PersonalInformationPage.swift in Sources */,
 				5ABE55472BC2CA44003C7ABA /* LoginResponse.swift in Sources */,
@@ -1009,7 +1025,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Yessimkhan.Dara;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1052,7 +1068,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Yessimkhan.Dara;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
