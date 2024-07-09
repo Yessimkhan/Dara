@@ -14,14 +14,12 @@ struct ChooseYourPasswordPage: View {
     @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
     
     var body: some View {
-        ZStack {
+        VStack {
             VStack (spacing: 32) {
                 Text("Choose your password")
                     .font(.title)
                 
                 VStack(alignment: .leading, spacing: 16) {
-                    PasswordTextFieldView(isPasswordVisible: viewModel.isPasswordVisible, placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
-                        .hidden()
                     
                     PasswordTextFieldView(isPasswordVisible: viewModel.isPasswordVisible, placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
                         .onChange(of: viewModel.password) {
@@ -44,10 +42,9 @@ struct ChooseYourPasswordPage: View {
                     }
                 }
             }
+            .frame(maxHeight: .infinity)
             
             VStack(spacing: 16) {
-                Spacer()
-                
                 Button {
                     viewModel.goChooseLevelPage()
                 } label: {
@@ -75,7 +72,6 @@ struct ChooseYourPasswordPage: View {
             }
         }
         .environment(\.locale, Locale(identifier: userLanguage))
-        .ignoresSafeArea()
     }
 }
 

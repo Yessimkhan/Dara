@@ -60,7 +60,7 @@ struct DialogPage: View {
                                             .foregroundStyle(Colors.buttonInactive)
                                     }
                                     
-                                    AudioPlayerView(data: $viewModel.audioData[index], isPlaying: $viewModel.isPlaying[index])
+                                    AudioPlayerView(data: $viewModel.audioData[index], isPlaying: $viewModel.isPlaying[index], viewModel: viewModel)
                                 }
                                 .padding()
                                 .background(.ultraThinMaterial)

@@ -11,15 +11,17 @@ struct MiniLoaderView: View {
     @State private var isAnimating = false
     
     var body: some View {
-        GradientCircularLoaderMini()
-            .rotationEffect(Angle(degrees: self.isAnimating ? 360 : 0))
-            .animation(Animation.linear(duration: 0.8).repeatForever(autoreverses: false), value: isAnimating)
-            .onAppear() {
-                self.isAnimating = true
-            }
-            .onDisappear() {
-                self.isAnimating = false
-            }
+        ZStack {
+            GradientCircularLoaderMini()
+                .rotationEffect(Angle(degrees: self.isAnimating ? 360 : 0))
+                .animation(Animation.linear(duration: 0.8).repeatForever(autoreverses: false), value: isAnimating)
+                .onAppear() {
+                    self.isAnimating = true
+                }
+                .onDisappear() {
+                    self.isAnimating = false
+                }
+        }
     }
 }
 

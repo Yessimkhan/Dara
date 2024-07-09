@@ -17,7 +17,7 @@ struct ForgotPasswordPage: View {
             if viewModel.isLoading {
                 LoaderView()
             }
-            VStack (spacing: 166) {
+            VStack {
                 Spacer()
                 VStack(spacing: 74) {
                     Text("Forgot password?")
@@ -34,17 +34,20 @@ struct ForgotPasswordPage: View {
                                 viewModel.verifyEmail()
                             }
                             .keyboardType(.emailAddress)
+                        
+                        Spacer()
+                        
+                        Button {
+                            viewModel.sendEmail()
+                        } label: {
+                            ButtonView(buttonType: .submit, disabled: $viewModel.isDisabled)
+                        }
                     }
-                }
-                Button {
-                    viewModel.sendEmail()
-                } label: {
-                    ButtonView(buttonType: .submit, disabled: $viewModel.isDisabled)
                 }
             }
             .blur(radius: viewModel.isLoading ? 3 : 0)
             .padding(.horizontal, 24)
-            .padding(.bottom, 194)   
+            .padding(.bottom, 42)   
         }
         .alert(isPresented: $viewModel.showMessage, content: {
             Alert(title: Text(viewModel.message ?? ""))

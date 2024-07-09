@@ -54,8 +54,8 @@ struct myCard: View {
                     image
                         .resizable()
                         .scaledToFit()
-                        .frame(maxWidth: 300, maxHeight: 200)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .frame(maxWidth: 300, maxHeight: 200)
 
                 } else {
                     LoaderView()
@@ -69,8 +69,8 @@ struct myCard: View {
                     .padding(.horizontal)
             }
         }
-        .frame(maxWidth: .infinity)
         .padding(.vertical, 16)
+        .padding(.horizontal)
         .background(color)
         .cornerRadius(24)
         .overlay(RoundedRectangle(cornerRadius: 24).stroke(lineWidth: 2).foregroundColor(Colors.brandPrimary))

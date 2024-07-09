@@ -10,41 +10,54 @@ import SwiftfulRouting
 
 struct SignInPage: View {
     @StateObject var viewModel: SignInViewModel
-
+    
+    @FocusState private var focusedField: Field?
+    
+    enum Field {
+        case email
+        case password
+    }
+    
     var body: some View {
         ZStack {
-            ZStack {
+            VStack (spacing: 16){
                 VStack(spacing: 64) {
                     Text("Sign In")
                         .font(.title)
                     
-                    VStack(spacing: 64) {
-                        VStack(alignment: .leading, spacing: 18) {
-                            TextFieldView(placeholder: "Username or Email", text: $viewModel.email, isError: $viewModel.isError)
-                                .submitLabel(.done)
-                                .keyboardType(.emailAddress)
-                            
-                            PasswordTextFieldView(placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
-                                .submitLabel(.done)
-                            
-                            Button {
-                                viewModel.goForgotPasswordPage()
-                            } label: {
-                                SingleButtonView(buttonType: .forgotPassword)
+                    VStack(alignment: .leading, spacing: 18) {
+                        TextFieldView(placeholder: "Username or Email", text: $viewModel.email, isError: $viewModel.isError)
+                            .submitLabel(.next)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .focused($focusedField, equals: .email)
+                            .onSubmit {
+                                focusedField = .password
                             }
-                            
-                            if viewModel.isError {
-                                Text(viewModel.errorMessage ?? "")
-                                    .foregroundStyle(Colors.wrongAnswer)
-                            } else {
-                                Text("space")
-                                    .foregroundStyle(Color.clear)
+                        
+                        PasswordTextFieldView(placeholder: "Password", text: $viewModel.password, isError: $viewModel.isError)
+                            .submitLabel(.done)
+                            .focused($focusedField, equals: .password)
+                            .onSubmit {
+                                viewModel.signInButtonTapped()
                             }
+                        
+                        if viewModel.isError, let errorMessage = viewModel.errorMessage {
+                            Text(errorMessage)
+                                .foregroundStyle(Colors.wrongAnswer)
+                        }
+                        
+                        Button {
+                            viewModel.goForgotPasswordPage()
+                        } label: {
+                            SingleButtonView(buttonType: .forgotPassword)
                         }
                     }
                 }
+                .frame(maxHeight: .infinity)
+                
                 VStack(spacing: 16) {
-                    Spacer()
                     Button {
                         viewModel.signInButtonTapped()
                     } label: {
@@ -69,7 +82,6 @@ struct SignInPage: View {
         .padding(.bottom, 42)
     }
 }
-
 
 #Preview {
     RouterView { router in

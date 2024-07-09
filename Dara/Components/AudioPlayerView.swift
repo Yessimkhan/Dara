@@ -16,20 +16,25 @@ struct AudioPlayerView: View {
     @State private var totalTime: Double = 0.0
     @State private var currentTime: Double = 0.0
     @State private var player: AVAudioPlayer?
+    @ObservedObject var viewModel: DialogViewModel
     
     var body: some View {
         HStack (spacing: 24) {
             if !isLoading {
-                Image(systemName: (isPlaying ? "pause.circle" : "play.circle"))
-                    .resizable()
-                    .renderingMode(.template)
-                    .foregroundColor(Colors.brandPrimary)
-                    .frame(width: 30, height: 30)
-                    .onTapGesture {
-                        withAnimation {
-                            isPlaying ? pause() : play()
+                Button {
+                    withAnimation {
+                        if !isPlaying {
+                            viewModel.stopAllAudio()
                         }
+                        isPlaying.toggle()
                     }
+                } label: {
+                    Image(systemName: (isPlaying ? "pause.circle" : "play.circle"))
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(Colors.brandPrimary)
+                        .frame(width: 30, height: 30)
+                }
             } else {
                 MiniLoaderView()
                     .frame(width: 30, height: 30)
@@ -38,17 +43,30 @@ struct AudioPlayerView: View {
                 seekAudio(to: currentTime)
             }
         }
-        .onAppear(perform: {
-            setupAudio(audioData: data)
+        .onChange(of: isPlaying, {
+            if isPlaying {
+                play()
+            } else {
+                pause()
+            }
         })
         .onChange(of: data, {
-            setupAudio(audioData: data)
             withAnimation {
                 isLoading = false
             }
+            setupAudio(audioData: data)
         })
         .onReceive(Timer.publish(every: 0.1, on: .main, in: .common).autoconnect(), perform: { _ in
-            updateProgress()
+            if isPlaying {
+                if let player = player {
+                    if player.isPlaying {
+                        updateProgress(time: player.currentTime)
+                    } else {
+                        updateProgress(time: totalTime)
+                        isPlaying = false
+                    }
+                }
+            }
         })
     }
     
@@ -64,10 +82,6 @@ struct AudioPlayerView: View {
         } catch {
             print("Failed to initialize player with data: \(error.localizedDescription)")
         }
-        
-        withAnimation {
-            isLoading = false
-        }
     }
     
     func play() {
@@ -76,6 +90,7 @@ struct AudioPlayerView: View {
         } catch(let error) {
             print(error.localizedDescription)
         }
+        viewModel.stopAllAudio()
         isPlaying = true
         player?.play()
     }
@@ -85,13 +100,9 @@ struct AudioPlayerView: View {
         player?.pause()
     }
     
-    func updateProgress() {
-        guard let player = player else {return}
-        withAnimation {
-            currentTime = player.currentTime
-        }
-        if currentTime == 0.0 {
-            pause()
+    func updateProgress(time: Double) {
+        withAnimation(.linear(duration: 0.1)) {
+            currentTime = time
         }
     }
     
@@ -101,10 +112,10 @@ struct AudioPlayerView: View {
 }
 
 //struct AudioPlayerView: View {
-//    
+//
 //    @State var isPlaying: Bool = false
 //    let data: Data = Data()
-//    
+//
 //    var body: some View {
 //        AudioPlayerView1(data: data, isPlaying: $isPlaying)
 //            .padding(24)

@@ -28,9 +28,15 @@ final class DialogViewModel: ObservableObject {
             HomeRepository().downloadAudio(from: url.audio ?? "") { [weak self] audio in
                 guard let self = self else { return }
                 DispatchQueue.main.async {
-                    self.audioData[index] = audio ?? Data()
+                    self.audioData[index] = audio ?? nil
                 }
             }
+        }
+    }
+    
+    func stopAllAudio() {
+        for index in isPlaying.indices {
+            isPlaying[index] = false
         }
     }
     

@@ -14,14 +14,14 @@ struct CreateAccountPage: View {
     @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
     
     var body: some View {
-        ZStack {
+        VStack {
             VStack (spacing: 32) {
-                
                 Text("Create an Account")
                     .font(.title)
-                
                 VStack(alignment: .leading, spacing: 16) {
                     TextFieldView(placeholder: "Username", text: $viewModel.userName, isError: $viewModel.isError)
+                        .disableAutocorrection(true)
+                        .keyboardType(.alphabet)
                         .onChange(of: viewModel.userName) {
                             viewModel.verifyUsername()
                         }
@@ -30,10 +30,12 @@ struct CreateAccountPage: View {
                         .onChange(of: viewModel.userNumber) {
                             viewModel.verifyPhone()
                         }
+                    
                     TextFieldView(placeholder: "Email", text: $viewModel.userEmail, isError: $viewModel.isError)
                         .onChange(of: viewModel.userEmail) {
                             viewModel.verifyEmail()
                         }
+                        .disableAutocorrection(true)
                         .keyboardType(.emailAddress)
                     if let message = viewModel.errorMessage {
                         Text(message)
@@ -46,10 +48,9 @@ struct CreateAccountPage: View {
                     }
                 }
             }
+            .frame(maxHeight: .infinity)
             
             VStack(spacing: 16){
-                Spacer()
-                
                 Button {
                     viewModel.goChooseYourPassword()
                 } label: {
@@ -77,7 +78,6 @@ struct CreateAccountPage: View {
             }
         }
         .environment(\.locale, Locale(identifier: userLanguage))
-        .ignoresSafeArea()
     }
 }
 
