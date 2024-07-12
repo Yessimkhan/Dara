@@ -29,7 +29,7 @@ struct GradientCircularLoader: View {
     var body: some View {
         Circle()
             .trim(from: 0, to: 0.7)  // Partial circle for the loader effect
-            .stroke(LinearGradient(colors: [Colors.brandPrimary,.blue], startPoint: .topLeading, endPoint: .bottomTrailing),style: StrokeStyle(lineWidth: 5.5,lineCap: .round,lineJoin:.round))
+            .stroke(LinearGradient(colors: [.blue, Colors.brandPrimary], startPoint: .topLeading, endPoint: .bottomTrailing),style: StrokeStyle(lineWidth: 5.5,lineCap: .round,lineJoin:.round))
             .rotationEffect(Angle(degrees: -90)) // Start from the top
             .frame(width: 50, height: 50)
     }

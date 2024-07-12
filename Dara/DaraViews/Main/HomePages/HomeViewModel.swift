@@ -29,54 +29,27 @@ final class HomeViewModel: ObservableObject {
         self.router = router
         self.monitor = NWPathMonitor()
         self.startNetworkMonitoring()
-        getLessons()
+        self.getLessons()
     }
     
     deinit {
         monitor.cancel()
     }
     
-    func getLessons() {
+    func getLessons(languageChanged: Bool = false) {
         isError = false
         isLoading = true
         
         HomeRepository().getTopics(levelID: userLevel) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.isError = false
                 self.isLoading = false
                 switch result {
                 case .success(let response):
                     self.lessonsArray = response
-                    self.imagesArray = Array(repeating: nil, count: response.count)
-                    
-                    // Create a Dispatch Group
-                    let dispatchGroup = DispatchGroup()
-                    
-                    for (index, url) in response.enumerated() {
-                        dispatchGroup.enter()
-                        HomeRepository().downloadImage(from: url.image) { [weak self] image in
-                            guard let self = self else {
-                                dispatchGroup.leave()
-                                return
-                            }
-                            DispatchQueue.main.async {
-                                if index < self.imagesArray.count {
-                                    self.imagesArray[index] = image ?? Image(systemName: "star.fill")
-                                    print("\(index) image got \(String(describing: image))")
-                                } else {
-                                    print("Index \(index) is out of range for imagesArray")
-                                }
-                                dispatchGroup.leave()
-                            }
-                        }
+                    if !languageChanged {
+                        self.loadImages(for: response)
                     }
-                    
-                    // Notify when all downloads are completed
-                    dispatchGroup.notify(queue: .main) {
-                        self.isLoading = false
-                    }
-                    
                     print("Lessons get success")
                 case .failure(let error):
                     self.isError = true
@@ -86,22 +59,50 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
+    private func loadImages(for topics: TopicsResponse) {
+        self.imagesArray = Array(repeating: nil, count: topics.count)
+        
+        let dispatchGroup = DispatchGroup()
+        
+        for (index, topic) in topics.enumerated() {
+            dispatchGroup.enter()
+            HomeRepository().downloadImage(from: topic.image) { [weak self] image in
+                guard let self = self else {
+                    dispatchGroup.leave()
+                    return
+                }
+                DispatchQueue.main.async {
+                    if index < self.imagesArray.count {
+                        self.imagesArray[index] = image ?? Image(systemName: "star.fill")
+                        print("\(index) image got \(String(describing: image))")
+                    } else {
+                        print("Index \(index) is out of range for imagesArray")
+                    }
+                    dispatchGroup.leave()
+                }
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            print("All images loaded")
+        }
+    }
+    
     private func startNetworkMonitoring() {
         monitor.pathUpdateHandler = { [weak self] path in
             guard let self = self else { return }
-            if path.status == .satisfied {
-                print("connected yesso retry!!!")
-                if !self.isConnected {
-                    self.isConnected = true
-                    print("Network connected")
-                    self.getLessons()
-                }
-            } else {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                if path.status == .satisfied {
+                    if !self.isConnected {
+                        self.isConnected = true
+                        print("Network connected")
+                        self.getLessons()
+                    }
+                } else {
                     self.isError = true
                     self.isConnected = false
+                    print("Network disconnected")
                 }
-                print("Network disconnected")
             }
         }
         let queue = DispatchQueue(label: "NetworkMonitor")

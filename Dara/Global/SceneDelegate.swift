@@ -10,10 +10,11 @@ import SwiftUI
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
     var window: UIWindow?
-//    @AppStorage("isDarkMode") var isDarkMode: Bool = false
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
+//        scene.windows.first?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
         scene.windows.first?.overrideUserInterfaceStyle = .light
         print("SceneDelegate is connected!")
     }

@@ -254,6 +254,8 @@ final class ModulePagesViewModel: ObservableObject {
         width = (width / Double(allTasks)) * Double((currentTask - 1))
         if width > 342.0 {
             width = 342.0
+        } else if width < 0 {
+            width = 0
         }
         return CGFloat(width)
     }

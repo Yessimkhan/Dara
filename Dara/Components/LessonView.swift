@@ -50,7 +50,11 @@ struct LessonView: View {
         .background(Colors.brandPrimary.cornerRadius(25))
         .onChange(of: image) {
             withAnimation {
-                isLoading = false
+                if image != nil {
+                    isLoading = false
+                } else {
+                    isLoading = true
+                }
             }
         }
     }

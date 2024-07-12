@@ -16,8 +16,8 @@ struct DialogPage: View {
             if modulePagesViewModel.isLoading {
                 LoaderView()
             } else {
-                VStack (spacing: 32) {
-                    VStack(spacing: 16){
+                VStack (spacing: 0) {
+                    VStack(spacing: 16) {
                         ZStack (alignment: .leading) {
                             Rectangle()
                                 .foregroundColor(.clear)
@@ -48,8 +48,10 @@ struct DialogPage: View {
                             Spacer()
                         }
                     }
+                    
                     ScrollView(showsIndicators: false) {
                         VStack {
+                            Spacer(minLength: 20)
                             ForEach(viewModel.data.indices, id: \.self) { index in
                                 VStack(alignment: .leading) {
                                     VStack(alignment: .leading) {
@@ -65,8 +67,8 @@ struct DialogPage: View {
                                 .padding()
                                 .background(.ultraThinMaterial)
                                 .cornerRadius(16)
-                                Spacer()
                             }
+                            Spacer(minLength: 50)
                         }
                     }
                     
@@ -79,6 +81,7 @@ struct DialogPage: View {
                             ButtonView(buttonType: .continueButton)
                         }
                     }
+                    .shadow(color: Colors.white, radius: 20, x: 0, y: -20)
                     
                 }
                 .padding(24)

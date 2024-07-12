@@ -13,7 +13,7 @@ struct HintPage: View {
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     
     var body: some View {
-        ZStack {
+        VStack(spacing: -20) {
             if viewModel.isLoading || modulePagesViewModel.isLoading {
                 LoaderView()
             } else {
@@ -24,17 +24,19 @@ struct HintPage: View {
                         ForEach(viewModel.imagesArray.indices, id: \.self) { index in
                             viewModel.imagesArray[index]
                                 .resizable()
+//                                .renderingMode(.template)
                                 .scaledToFit()
+//                                .foregroundColor(Colors.black)
                         }
                         
-                        Spacer()
+                        Spacer(minLength: 50)
                     }
                     .blur(radius: viewModel.isLoading || modulePagesViewModel.isLoading ? 3 : 0)
                 }
-                .padding(.bottom, 10)
+                .padding(.horizontal, 24)
+                .frame(maxHeight: .infinity)
                 
                 VStack {
-                    Spacer()
                     Button {
                         modulePagesViewModel.getPages()
                     } label: {
@@ -44,11 +46,12 @@ struct HintPage: View {
                             ButtonView(buttonType: .continueButton)
                         }
                     }
+//                    .shadow(color: Colors.white, radius: 20, x: 0, y: -20)
+                    .padding(.horizontal, 24)
                 }
             }
         }
         .padding(.bottom, 24)
-        .padding(.horizontal, 24)
         .toolbar {
             ToolbarItem (placement: .topBarLeading) {
                 Button {

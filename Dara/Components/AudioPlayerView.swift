@@ -11,16 +11,16 @@ import AVFoundation
 struct AudioPlayerView: View {
     
     @Binding var data: Data?
-    @State var isLoading: Bool = true
     @Binding var isPlaying: Bool
     @State private var totalTime: Double = 0.0
     @State private var currentTime: Double = 0.0
     @State private var player: AVAudioPlayer?
+    @State private var isAudioSetupDone: Bool = false
     @ObservedObject var viewModel: DialogViewModel
     
     var body: some View {
         HStack (spacing: 24) {
-            if !isLoading {
+            if data != nil {
                 Button {
                     withAnimation {
                         if !isPlaying {
@@ -45,16 +45,13 @@ struct AudioPlayerView: View {
         }
         .onChange(of: isPlaying, {
             if isPlaying {
+                if !isAudioSetupDone{
+                    setupAudio(audioData: data)
+                }
                 play()
             } else {
                 pause()
             }
-        })
-        .onChange(of: data, {
-            withAnimation {
-                isLoading = false
-            }
-            setupAudio(audioData: data)
         })
         .onReceive(Timer.publish(every: 0.1, on: .main, in: .common).autoconnect(), perform: { _ in
             if isPlaying {
@@ -79,6 +76,8 @@ struct AudioPlayerView: View {
             player = try AVAudioPlayer(data: data, fileTypeHint: AVFileType.m4a.rawValue)
             player?.prepareToPlay()
             totalTime = player?.duration ?? 0.0
+            
+            isAudioSetupDone = true
         } catch {
             print("Failed to initialize player with data: \(error.localizedDescription)")
         }
@@ -90,7 +89,6 @@ struct AudioPlayerView: View {
         } catch(let error) {
             print(error.localizedDescription)
         }
-        viewModel.stopAllAudio()
         isPlaying = true
         player?.play()
     }

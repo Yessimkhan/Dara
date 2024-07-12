@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -36,21 +35,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topLineImage" translatesAutoresizingMaskIntoConstraints="NO" id="qUf-FO-Yju">
-                                <rect key="frame" x="0.0" y="59" width="393" height="130"/>
+                                <rect key="frame" x="16" y="59" width="377" height="130"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eaglesImage" translatesAutoresizingMaskIntoConstraints="NO" id="uQx-d0-57T">
                                 <rect key="frame" x="126.66666666666669" y="344" width="140" height="164"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
-                        <color key="backgroundColor" name="white"/>
+                        <color key="backgroundColor" name="whiteD"/>
                         <constraints>
                             <constraint firstItem="uQx-d0-57T" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4hw-R8-hmO"/>
                             <constraint firstItem="qUf-FO-Yju" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="6u9-xA-2gW"/>
                             <constraint firstItem="VI2-Sv-t0H" firstAttribute="top" secondItem="GJd-Yh-RWb" secondAttribute="bottom" constant="8" id="Dxa-PK-An9"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="Q3B-4B-g5h"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="VI2-Sv-t0H" secondAttribute="bottom" constant="100" id="XoC-aI-3Y7"/>
-                            <constraint firstItem="qUf-FO-Yju" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="YO7-KQ-Lte"/>
+                            <constraint firstItem="qUf-FO-Yju" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="16" id="YO7-KQ-Lte"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ZJE-R8-iIq"/>
                             <constraint firstItem="uQx-d0-57T" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="iPl-l5-eOk"/>
                             <constraint firstItem="uQx-d0-57T" firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="pYT-vB-kjz"/>
@@ -70,7 +69,7 @@
         <namedColor name="AccentColor">
             <color red="0.28627450980392155" green="0.63921568627450975" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="white">
+        <namedColor name="whiteD">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>

@@ -11,7 +11,7 @@ struct Matching: View {
     @StateObject var viewModel: MatchingViewModel
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     var body: some View {
-        ZStack {
+        VStack {
             if viewModel.isLoading || modulePagesViewModel.isLoading {
                 LoaderView()
             } else {
@@ -45,8 +45,7 @@ struct Matching: View {
                                 .font(.system(size: 14, weight: .regular))
                                 .foregroundStyle(Colors.buttonInactive)
                         }
-                        
-                        Spacer()
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
                     HStack (spacing: 20) {
@@ -103,8 +102,7 @@ struct Matching: View {
                             }
                         }
                     }
-                    
-                    Spacer()
+                    .frame(maxHeight: .infinity)
                     
                     Button {
                         modulePagesViewModel.score += 1
@@ -192,7 +190,7 @@ struct MatchCards: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(Colors.black)
             }
-            .background(.clear)
+            .background(Colors.white)
             .onTapGesture {
                 withAnimation(.spring) {
                     isSelected.toggle()

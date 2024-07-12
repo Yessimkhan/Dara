@@ -14,21 +14,13 @@ struct ShuffledialogPage: View {
     @StateObject var modulePagesViewModel: ModulePagesViewModel
     @Environment(\.editMode) private var editMode
     
-    let variants:[String] = ["Сәлеметсіз бе",
-                             "Келіңіз, отырыңыз.",
-                             "Әрине, айта беріңіз",
-                             "Рақмет. Мен журналистпін. 7 арнада жұмыс істеймін.",
-                             "Сізге сұрағым бар.",
-                             "Сәлеметсіз бе!"
-    ]
-    
     var body: some View {
         ZStack {
             if modulePagesViewModel.isLoading {
                 LoaderView()
                 
             } else {
-                VStack (spacing: 32) {
+                VStack (spacing: 20) {
                     VStack(spacing: 16){
                         ZStack (alignment: .leading) {
                             Rectangle()
@@ -74,8 +66,7 @@ struct ShuffledialogPage: View {
                                 .font(.system(size: 14, weight: .regular))
                                 .foregroundStyle(Colors.buttonInactive)
                         }
-                        
-                        Spacer()
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
                     List {
@@ -85,11 +76,9 @@ struct ShuffledialogPage: View {
                         }
                         .onMove(perform: viewModel.moveItem)
                     }
+                    .frame(maxHeight: .infinity)
                     .listStyle(.plain)
                     .environment(\.editMode, $viewModel.editMode)
-                    
-                    Spacer(minLength: 0)
-                    
                     
                     Button {
                         viewModel.variantsDisabled = true
@@ -108,7 +97,9 @@ struct ShuffledialogPage: View {
                         }
                     } label: {
                         ButtonView(buttonType: .check, disabled: $viewModel.variantsDisabled)
-                    }.disabled(viewModel.variantsDisabled)
+                    }
+                    .disabled(viewModel.variantsDisabled)
+                    .shadow(color: Colors.white, radius: 20, x: 0, y: -40)
                 }
                 .padding(24)
                 .blur(radius: modulePagesViewModel.isLoading ? 3 : 0)
@@ -140,44 +131,46 @@ struct ShuffledialogPage: View {
     }
 }
 
-//#Preview {
-//    RouterView { router in
-//        ShuffledialogPage(viewModel: ShuffledialogViewModel(router: router, data: Content(
-//            id: "66605661e8aad763a4eb72c5",
-//            topicId: 3,
-//            moduleId: 3,
-//            pageId: 3,
-//            title: "Сәлем Аида.",
-//            description: nil,
-//            logo: nil,
-//            content: nil,
-//            example: "",
-//            image: "",
-//            audio: "",
-//            variants: [
-//                "Сәлем Аида.",
-//                "Сәлем.",
-//                "Қалайсың?",
-//                "Рақмет, жақсымын.",
-//                "Өзің қалайсың?",
-//                "Мен де жақсымын.",
-//                "Көріскенше",
-//                "Сау бол!"
-//            ],
-//            question: "Диологты аяқтаңыз",
-//            translation: Translation(
-//                title: "Сәлем Аида.",
-//                description: nil,
-//                example: "",
-//                question: "Complete the dialogue"))),
-//                        modulePagesViewModel:
-//                            ModulePagesViewModel(
-//                                router: router,
-//                                lessonId: 1,
-//                                moduleId: 1,
-//                                allPages: 1,
-//                                allTasks: 1,
-//                                currentPage: 1,
-//                                currentTask: 2))
-//    }
-//}
+#Preview {
+    RouterView { router in
+        ShuffledialogPage(viewModel: ShuffledialogViewModel(router: router, data: Content(
+            contentType: "",
+            id: "66605661e8aad763a4eb72c5",
+            topicId: 3,
+            moduleId: 3,
+            pageId: 3,
+            title: "Сәлем Аида.",
+            description: nil,
+            logo: nil,
+            content: nil,
+            example: "",
+            image: "",
+            audio: "",
+            variants: [
+                "Сәлем Аида.",
+                "Сәлем.",
+                "Қалайсың?",
+                "Рақмет, жақсымын.",
+                "Өзің қалайсың?",
+                "Мен де жақсымын.",
+                "Көріскенше",
+                "Сау бол!"
+            ],
+            question: "Диологты аяқтаңыз",
+            translation: Translation(
+                title: "Сәлем Аида.",
+                description: nil,
+                example: "",
+                question: "Complete the dialogue"))),
+                        modulePagesViewModel:
+                            ModulePagesViewModel(
+                                router: router,
+                                lessonId: 1,
+                                moduleId: 1,
+                                allPages: 1,
+                                allTasks: 1,
+                                currentPage: 1,
+                                currentTask: 2, 
+                                lessonName: "Yesso"))
+    }
+}

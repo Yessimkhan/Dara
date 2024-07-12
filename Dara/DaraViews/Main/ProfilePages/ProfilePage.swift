@@ -17,8 +17,7 @@ struct ProfilePage: View {
     var body: some View {
         RouterView { router in
             ZStack {
-                VStack (spacing: 60){
-                    Spacer()
+                VStack (spacing: 60) {
                     VStack {
                         Image(uiImage: viewModel.avatarImage ?? UIImage(resource: .avatar))
                             .resizable()
@@ -56,7 +55,7 @@ struct ProfilePage: View {
                                 .font(.system(size: 32))
                             Text("Language")
                                 .font(.system(size: 20))
-                            Spacer()
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             Picker("Choose your language", selection: $viewModel.language) {
                                 ForEach(UserLanguage.allCases) { category in
                                     Text(category.rawValue).tag(category)
@@ -74,7 +73,7 @@ struct ProfilePage: View {
                                 .font(.system(size: 32))
                             Text("Level")
                                 .font(.system(size: 20))
-                            Spacer()
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             Picker("Choose your level", selection: $viewModel.level) {
                                 ForEach(UserLevel.allCases) { category in
                                     Text(category.title).tag(category)
@@ -89,16 +88,16 @@ struct ProfilePage: View {
                         }
                         
 //                        HStack {
-//                            Image(systemName: isDarkMode ? "moon.circle" : "sun.max.circle")
+//                            Image(systemName: viewModel.isDarkMode ? "moon.circle" : "sun.max.circle")
 //                                .font(.system(size: 32))
-//                            Toggle(isOn: $isDarkMode) {
+//                            Toggle(isOn: $viewModel.isDarkMode) {
 //                                Text("Dark Mode")
 //                                    .font(.system(size: 20))
 //                            }
-//                            .onChange(of: isDarkMode) {
+//                            .onChange(of: viewModel.isDarkMode) {
 //                                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
 //                                    withAnimation {
-//                                        scene.windows.first?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
+//                                        scene.windows.first?.overrideUserInterfaceStyle = viewModel.isDarkMode ? .dark : .light
 //                                    }
 //                                }
 //                            }
@@ -133,10 +132,9 @@ struct ProfilePage: View {
                         }
                     }
                     
-                    Spacer()
                 }
             }
-            
+            .minimumScaleFactor(0.8)
             .navigationTitle("Profile")
         }
     }
@@ -168,7 +166,7 @@ struct ExtractedView: View {
                 .font(.system(size: 32))
             Text(text)
                 .font(.system(size: 20))
-            Spacer()
+                .frame(maxWidth: .infinity, alignment: .leading)
             Image(systemName: "chevron.right")
 //                .rotationEffect(angle)
 //                .onTapGesture {

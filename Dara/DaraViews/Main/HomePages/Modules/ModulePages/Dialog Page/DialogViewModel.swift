@@ -24,11 +24,24 @@ final class DialogViewModel: ObservableObject {
         self.isLoading = true
         self.audioData = Array(repeating: nil, count: data.count)
         self.isPlaying = Array(repeating: false, count: data.count)
+        
+        let dispatchGroup = DispatchGroup()
         for (index, url) in data.enumerated() {
+            dispatchGroup.enter()
             HomeRepository().downloadAudio(from: url.audio ?? "") { [weak self] audio in
-                guard let self = self else { return }
+                guard let self = self else {
+                    dispatchGroup.leave()
+                    return
+                }
                 DispatchQueue.main.async {
-                    self.audioData[index] = audio ?? nil
+                    if index < self.audioData.count {
+                        withAnimation {
+                            self.audioData[index] = audio ?? nil
+                        }
+                    } else {
+                        print("Index \(index) is out of range for audioData")
+                    }
+                    dispatchGroup.leave()
                 }
             }
         }

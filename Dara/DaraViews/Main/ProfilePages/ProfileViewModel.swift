@@ -26,6 +26,7 @@ class ProfileViewModel: ObservableObject {
     @AppStorage("userName") var userName: String?
     @AppStorage("userPhone") var userPhone: String?
     @AppStorage("userLanguage") var userLanguage: String = NSLocale.current.language.languageCode?.identifier ?? "en"
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false
 
     init(router: AnyRouter) {
         self.router = router
